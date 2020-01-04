@@ -1,68 +1,41 @@
+## Install ubuntu
+
+* [tutorial1](https://blog.xuite.net/yh96301/blog/341994889-%E5%AE%89%E8%A3%9DUbuntu+18.04) ,  [tutorial2](https://www.itread01.com/content/1546486745.html)
+
+*  Download .ISO from [ubuntu-tw.org](http://www.ubuntu-tw.org/modules/tinyd0/)
+
+* make install disk with [Rufus](https://rufus.ie/)
+
+* distribute departures 
+
+   | 掛載點  |  分區 |  空間大小(MB) |　作用　|　  
+   | ------------- | ------------- | ------------- | ------------- | 
+   | /  | 主分割槽  |10GB ~ 15GB |  儲存系統檔案|  
+   | swap  | 邏輯分割槽  |實體記憶體的2倍 |  虛擬記憶體|  
+   | /boot  |邏輯分割槽  | 200M |  系統啟動| 
+   | /home  | 邏輯分割槽  | 所有剩下 | home目錄 |  
+
+* 安裝開機程式於`/boot` 
+
 
 ## Applications
 
  * Google chrome 
- ```
-wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i google-chrome-stable_current_amd64.deb
-```
+   ```
+   wget -c https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+   sudo dpkg -i google-chrome-stable_current_amd64.deb
+   ```
 
 * media player(.mp4)  
 ` sudo apt-get install ubuntu-restricted-extras
 `
-## Coding  environment setting
-
-* C++ compiler  
-`sudo apt-get install g++ build-essential
-` 
-- C++ compile with  editor VScode  
-press `ctrl+shift+B` to add `task.json` with following content and run `ctrl+shift+B` to build. 
-   ```
-   {
-      "version": "2.0.0",
-      "tasks": [
-         {
-               "label": "debug",
-               "type": "shell",
-               "command": "",
-               "args": ["g++","-g", "${relativeFile}", "-o","a.exe"]
-         },
-         {
-               "label": "Compile and run",
-               "type": "shell",
-               "command": "",
-               "args": [
-                  "g++","-g", "${relativeFile}", "-o","${fileBasenameNoExtension}.out", "&&", "clear" , "&&" , "./${fileBasenameNoExtension}.out"
-               ],
-               "group": {
-                  "kind": "build",
-                  "isDefault": true  
-               },
-               "problemMatcher": {
-                  "owner": "cpp",
-                  "fileLocation": ["relative", "${workspaceRoot}"],
-                  "pattern": {
-                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                     "file": 1,
-                     "line": 2,
-                     "column": 3,
-                     "severity": 4,
-                     "message": 5
-                  }
-               }
-         },
-         
-      ]
-   }
-   ```
-
 
 ## System Command
 
 * add file  
 ` touch  <fileName>`
 
-## Error 
+## System Error 
 
 * Ubuntu 18.04 LTS _Bionic Beaver_ - Release amd64 (20180426)' in the drive
    '/media/cdrom/' and press [Enter] 
