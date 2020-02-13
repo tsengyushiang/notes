@@ -17,7 +17,7 @@
   git clone https://github.com/opencv/opencv_contrib.git
   ```
 
-  install specific version `cd` to `opencv` and `opencv_contrib`directories and run `git checkout <opencv-version>`, such as `git checkout 3.4` and check git version/branch by `git show`
+  install specific version `cd` to `opencv` and `opencv_contrib`directories and run `git checkout <opencv-version>`, such as `git checkout 3.4.1` and check git version/branch by `git show`
 
 - configuring OpenCV with CMake
 
@@ -31,13 +31,7 @@
   Set up the OpenCV build with CMake:
 
   ```
-  cmake -D CMAKE_BUILD_TYPE=RELEASE \
-      -D CMAKE_INSTALL_PREFIX=/usr/local \
-      -D INSTALL_C_EXAMPLES=ON \
-      -D INSTALL_PYTHON_EXAMPLES=ON \
-      -D OPENCV_GENERATE_PKGCONFIG=ON \
-      -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules \
-      -D BUILD_EXAMPLES=ON .
+  cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_GENERATE_PKGCONFIG=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules -D BUILD_EXAMPLES=ON .
   ```
 
 - Compiling OpenCV
