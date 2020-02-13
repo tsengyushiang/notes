@@ -33,7 +33,8 @@
   ```
   cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_GENERATE_PKGCONFIG=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules -D BUILD_EXAMPLES=ON .
   ```
-
+  if get err:`does not appear to contain cmakelists.txt` , replace Last word `.` with `..` or `absolute path`
+  
 - Compiling OpenCV
 
   Modify the `-j` flag according to your processor. If you do not know the number of cores your processor you can find it by `nproc`. My system has 8 cores, so I am using the `-j8` flag.
@@ -41,6 +42,8 @@
   ```
   make -j8
   ```
+  
+  if get err:`Makefile:160: recipe for target 'all' failed make: ***` run without argument `-j8`
 
 - Installing OpenCV
 
