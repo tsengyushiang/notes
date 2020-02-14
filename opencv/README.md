@@ -63,3 +63,23 @@
 
     1. `sudo apt-get install ffmpeg`
     2. go " configuring OpenCV with CMake "
+
+- Run with CMakeLists.txt
+  
+  - CMakeLists.txt build executable `main`
+  ```
+  cmake_minimum_required(VERSION 2.8)
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+  project( main )
+  find_package( OpenCV 3.4.1 REQUIRED )
+  add_executable( main main.cpp )
+  target_link_libraries( main ${OpenCV_LIBS} )
+  ```
+  - command
+  ```
+  cmake .
+  make 
+  ./main
+  ```
+
+
