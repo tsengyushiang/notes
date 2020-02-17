@@ -251,3 +251,17 @@ ICD loader properties
 		but it seems to support up to OpenCL 2.1 too.
 
 ```
+
+- run sample code in `/openCL sample code`
+
+```
+Platform Name: Intel Gen OCL Driver
+ GPU device
+Without opencl umat 	 with opencl umat	 with opencl mat 	 without opencl mat for cvtColor(0),Blur(1),Canny(2)
+getNumberOfCPUs =4	 getNumThreads = 4
+cvtColor = (3.21349 +/-0.567536)false		(0.342036 +/-0.499697)true		(2.22043 +/-0.459774)false		(1.31083 +/-0.338563true
+gaussianblur = (79.2918 +/-13.6697)false		(63.0626 +/-9.87501)true		(73.6913 +/-9.98689)false		(70.0938 +/-6.76619)true
+Canny = (21.3214 +/-3.09806)false		(10.3678 +/-12.9219)true		(23.1271 +/-2.30336)false		(22.5169 +/-0.605387)true
+1 GPU devices are detected.
+4
+```
