@@ -34,7 +34,12 @@
   cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D OPENCV_GENERATE_PKGCONFIG=ON -D OPENCV_EXTRA_MODULES_PATH=~/opencv_build/opencv_contrib/modules -D BUILD_EXAMPLES=ON .
   ```
 
-  if get err:`does not appear to contain cmakelists.txt` , replace Last word `.` with `..` or `absolute path`
+  - if get err:`does not appear to contain cmakelists.txt` , replace Last word `.` with `..` or `absolute path`
+  - check `ffmepg` is `yes`,otherwise
+    ```
+    sudo apt-get install ffmpeg
+    apt-get install libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libavresample-dev
+    ```
 
 - Compiling OpenCV
 
@@ -57,13 +62,6 @@
   ```
   pkg-config --modversion opencv
   ```
-
-- Errors
-
-  - opencv Unable to stop the stream: Inappropriate ioctl for device
-
-    1. `sudo apt-get install ffmpeg`
-    2. go " configuring OpenCV with CMake "
 
 - Run with CMakeLists.txt
 
