@@ -10,7 +10,7 @@ node -v
 npm -v
 
 sudo apt-get install npm
-sudo npm i gnomon
+sudo npm i -g gnomon
 
 // test command
 ping -c 3 8.8.8.8 | gnomon
