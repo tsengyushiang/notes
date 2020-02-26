@@ -84,6 +84,29 @@
   ./main
   ```
 
+- Build .so(dynamic library) and use in python
+
+  - CMakeLists.txt :
+
+  ```
+  cmake_minimum_required(VERSION 2.8)
+  set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+  project( main )
+  find_package( OpenCV 3.4.1 REQUIRED )
+  ADD_LIBRARY(_name SHARED lib.cpp)
+  target_link_libraries( _name ${OpenCV_LIBS} )
+  ```
+
+  - python code :
+
+  ```
+  from ctypes import cdll
+  import json
+
+  lib = cdll.LoadLibrary('./lib_name.so')
+  lib.func(args)
+  ```
+
 ## OpenCL
 
 - install `beignet1.3`, use .deb in folder `/deb`, use following command
