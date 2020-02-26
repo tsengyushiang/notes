@@ -105,6 +105,11 @@
 
   lib = cdll.LoadLibrary('./lib_name.so')
   lib.func(args)
+  
+  ```
+  use 'helloworld'.encode('ascii') instead of 'helloworld' to pass argment in python3, or it will pass only the first letter
+  ```
+  
   ```
 
 ## OpenCL
