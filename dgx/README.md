@@ -25,7 +25,15 @@
 - `docker stop <NAME>` : 關掉container
 - `docker exec -it <NAME> bash` : 進入環境
 - `exit` : 退出環境
+- `docker cp <from> <to>` :將檔案/資料夾傳入傳出container
+    - `<container-name>:/<path in container>` : `openpose-M10815098:/openpose`
+    - `<host path>` : `/home/dgx_user1/Desktop`
 
+## openpose
 
+- `docker pull cwaffles/openpose`
 
-
+- `nvidia-docker run --name openpose -e NVIDIA_VISIBLE_DEVICES=2,3 -dt cwaffles/openpose
+`
+- `nvidia-docker start openpose-M10815098`
+- `docker exec -it openpose-M10815098 bash`
