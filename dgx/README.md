@@ -98,6 +98,37 @@
 
 - 下載 [openpose_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/blob/master/training/README.md)
 
+- LMDB : ~~`openpose_train-master`中執行 `cd training && bash a_downloadAndUpzipLmdbs.sh`. 檢查 `dataset/` 中有多個` dataset/lmdb_X`檔名的檔案~~
+    - `apt-get install wget`
+    - download scripts folder: `cd training`
+    - COCO : `bash a_lmdbGetBody.sh`
+    - Foot / Face / Hand / Dome: `bash a_lmdbGetFace.sh; bash a_lmdbGetFoot.sh; bash a_lmdbGetHands.sh; bash a_lmdbGetDome.sh`
+    - MPII:`bash a_lmdbGetMpii.sh`
+
 - 下載 [cocoapi](https://github.com/gineshidalgo99/cocoapi) 放到`openpose_train-master/dataset/COCO/cocoapi`
 
-- LMDB : `openpose_train-master`中執行 `cd training && bash a_downloadAndUpzipLmdbs.sh`. 檢查 `dataset/` 中有多個` dataset/lmdb_X`檔名的檔案
+- 到`/training`修改`d_setLayers.py.example`
+    - `mv d_setLayers.py.example d_setLayers.py`
+    - 修改參數
+        ```
+        sCaffeFolder =  '/root/openpose_caffe_train-master'
+        
+        sAddFoot = 1
+        sAddMpii = 1
+        sAddFace = 1
+        sAddHands = 1
+        sAddDome = 1
+
+        sProbabilityOnlyBackground = 0.02
+
+        sSuperModel = 0
+        ```
+    - `python d_setLayers.py`
+        - `apt-get install python-skimage`
+        - `apt-get install python-pip`
+        - `pip install --upgrade pip`
+        - `python -m pip install protobuf`
+
+- 下載 [pretrained VGG-19 model](https://gist.github.com/ksimonyan/3785162f95cd2d5fee77), 放到 `dataset/vgg/` 命名為 `dataset/vgg/VGG_ILSVRC_19_layers.caffemodel` 和 `dataset/vgg/vgg_deploy.prototxt`
+
+- 到 `training_results/pose/` 執行 `bash train_pose.sh 0,1,2,3`,0-3表示使用GPUs
