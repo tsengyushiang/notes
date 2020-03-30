@@ -28,12 +28,76 @@
 - `docker cp <from> <to>` :將檔案/資料夾傳入傳出container
     - `<container-name>:/<path in container>` : `openpose-M10815098:/openpose`
     - `<host path>` : `/home/dgx_user1/Desktop`
+- `docker container rm <container id>` : 用`docker container ls -a`找到要移除的`<container id>`,記得先關掉
 
-## openpose
+## edit file with vim
 
-- `docker pull cwaffles/openpose`
+- `apt-get update`
+- `apt-get install vim`
 
-- `nvidia-docker run --name openpose -e NVIDIA_VISIBLE_DEVICES=2,3 -dt cwaffles/openpose
-`
-- `nvidia-docker start openpose-M10815098`
-- `docker exec -it openpose-M10815098 bash`
+- 結束編輯`:x + Enter`
+- 切換到插入模式 : `i` , `Esc`結束
+
+## openpose_train
+
+- `docker pull exsidius/openpose`
+
+- `nvidia-docker run --name openpose-train -e NVIDIA_VISIBLE_DEVICES=0,1,2,3 -dt exsidius/openpose`
+
+- `nvidia-docker start openpose-train`
+- `docker exec -it openpose-train bash`
+
+- 下載[openpose_caffe_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_caffe_train)
+    - 重新命名 : `mv Makefile.config.example Makefile.config`
+    - 安裝 : `make all -j{num_cores} && make pycaffe -j{num_cores}`,可用`nproc`查`{num_cores}`
+    - `hdf5.h` : 
+        - `apt install libhdf5-dev`
+        - `find / -name hdf5.h`
+            ```
+            /usr/include/opencv2/flann/hdf5.h
+            /usr/include/hdf5/serial/hdf5.h
+            ```
+        - 修改 `Makefile.config`
+            ```
+            INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+            LIBRARY_DIRS := $(PYTHON_LIB) /usr/lib/x86_64-linux-gnu/hdf5/serial
+            ```
+    - `numpy/arrayobject.h`:
+        - `apt-get install python-numpy`
+    - ~~`lmdb.h`~~ :
+        - `apt-get install liblmdb-dev`
+    - ~~`leveldb/db.h`~~
+        ```
+        git clone --recurse-submodules https://github.com/google/leveldb.git
+        mkdir -p build && cd build
+        cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
+        make
+        cd ..
+        cp -r include/leveldb /usr/local/include/
+        ```
+    - ~~`'accumulate' is not a member of 'std'` add header`#include <numeric>` to `src/caffe/openpose/layers/oPDataLayer.cpp` and `oPVideoLayer.cpp` as following~~
+        ```
+        #include <numeric>
+        namespace caffe
+        {
+        ```
+    - ~~`cannot find -l{name}`, 像是`/usr/bin/ld: cannot find -lsnappy`~~
+        - `apt-cache search libsnappy`找到
+            ```
+            libsnappy-dev - fast compression/decompression library (development files)
+            libsnappy1v5 - fast compression/decompression library
+            libsnappy-java - Snappy for Java, a fast compressor/decompresser
+            libsnappy-jni - Snappy for Java, a fast compressor/decompresser (JNI library)
+            ```
+        - 安裝 `apt-get install libsnappy-dev`
+    - ~~`/usr/bin/ld: cannot find -lopencv_contrib`~~
+        - `pkg-config --modversion opencv`
+
+    - [~~其他caffe常見錯誤~~](https://github.com/BVLC/caffe/wiki/Commonly-encountered-build-issues) 
+
+
+- 下載 [openpose_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/blob/master/training/README.md)
+
+- 下載 [cocoapi](https://github.com/gineshidalgo99/cocoapi) 放到`openpose_train-master/dataset/COCO/cocoapi`
+
+- LMDB : `openpose_train-master`中執行 `cd training && bash a_downloadAndUpzipLmdbs.sh`. 檢查 `dataset/` 中有多個` dataset/lmdb_X`檔名的檔案
