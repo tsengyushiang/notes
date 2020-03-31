@@ -1,4 +1,4 @@
-## Login
+## Login DGX
 
 - Tool : [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) 
 
@@ -45,6 +45,15 @@
 
 - 結束編輯`:x + Enter`
 - 切換到插入模式 : `i` , `Esc`結束
+
+## Run process in the background
+
+- `apt-get install screen`
+- `screen` : 建立新的cmd
+- 將目前process放到background執行,在screen建立的cmd中按`ctrl+a`+`d`(detach)
+- `screen -ls`: 查詢正在執行的process
+- `screen -r <id>` : `id`可從`screen -ls`找到 
+- `screen -X -S <id>`: 關閉attached cmd
 
 ## Openpose_train
 
