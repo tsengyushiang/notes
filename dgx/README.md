@@ -6,6 +6,7 @@
     - `Remote host`
     - `Specfy username`
     - `password`, 直接輸入即可,console不會顯示。
+
 ## Volume(shared folder)
 
 - 在`docker run`指令中加入參數`-v host_folder`:`/container_folder`
@@ -57,50 +58,51 @@
 - 下載[openpose_caffe_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_caffe_train)
     - 重新命名 : `mv Makefile.config.example Makefile.config`
     - 安裝 : `make all -j{num_cores} && make pycaffe -j{num_cores}`,可用`nproc`查`{num_cores}`
-    - `hdf5.h` : 
-        - `apt install libhdf5-dev`
-        - `find / -name hdf5.h`
+    - 錯誤 :
+        - `hdf5.h` : 
+            - `apt install libhdf5-dev`
+            - `find / -name hdf5.h`
+                ```
+                /usr/include/opencv2/flann/hdf5.h
+                /usr/include/hdf5/serial/hdf5.h
+                ```
+            - 修改 `Makefile.config`
+                ```
+                INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
+                LIBRARY_DIRS := $(PYTHON_LIB) /usr/lib/x86_64-linux-gnu/hdf5/serial
+                ```
+        - `numpy/arrayobject.h`:
+            - `apt-get install python-numpy`
+        - ~~`lmdb.h`~~ :
+            - `apt-get install liblmdb-dev`
+        - ~~`leveldb/db.h`~~
             ```
-            /usr/include/opencv2/flann/hdf5.h
-            /usr/include/hdf5/serial/hdf5.h
+            git clone --recurse-submodules https://github.com/google/leveldb.git
+            mkdir -p build && cd build
+            cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
+            make
+            cd ..
+            cp -r include/leveldb /usr/local/include/
             ```
-        - 修改 `Makefile.config`
+        - ~~`'accumulate' is not a member of 'std'` add header`#include <numeric>` to `src/caffe/openpose/layers/oPDataLayer.cpp` and `oPVideoLayer.cpp` as following~~
             ```
-            INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/include/hdf5/serial
-            LIBRARY_DIRS := $(PYTHON_LIB) /usr/lib/x86_64-linux-gnu/hdf5/serial
+            #include <numeric>
+            namespace caffe
+            {
             ```
-    - `numpy/arrayobject.h`:
-        - `apt-get install python-numpy`
-    - ~~`lmdb.h`~~ :
-        - `apt-get install liblmdb-dev`
-    - ~~`leveldb/db.h`~~
-        ```
-        git clone --recurse-submodules https://github.com/google/leveldb.git
-        mkdir -p build && cd build
-        cmake -DCMAKE_BUILD_TYPE=Release .. && cmake --build .
-        make
-        cd ..
-        cp -r include/leveldb /usr/local/include/
-        ```
-    - ~~`'accumulate' is not a member of 'std'` add header`#include <numeric>` to `src/caffe/openpose/layers/oPDataLayer.cpp` and `oPVideoLayer.cpp` as following~~
-        ```
-        #include <numeric>
-        namespace caffe
-        {
-        ```
-    - ~~`cannot find -l{name}`, 像是`/usr/bin/ld: cannot find -lsnappy`~~
-        - `apt-cache search libsnappy`找到
-            ```
-            libsnappy-dev - fast compression/decompression library (development files)
-            libsnappy1v5 - fast compression/decompression library
-            libsnappy-java - Snappy for Java, a fast compressor/decompresser
-            libsnappy-jni - Snappy for Java, a fast compressor/decompresser (JNI library)
-            ```
-        - 安裝 `apt-get install libsnappy-dev`
-    - ~~`/usr/bin/ld: cannot find -lopencv_contrib`~~
-        - `pkg-config --modversion opencv`
+        - ~~`cannot find -l{name}`, 像是`/usr/bin/ld: cannot find -lsnappy`~~
+            - `apt-cache search libsnappy`找到
+                ```
+                libsnappy-dev - fast compression/decompression library (development files)
+                libsnappy1v5 - fast compression/decompression library
+                libsnappy-java - Snappy for Java, a fast compressor/decompresser
+                libsnappy-jni - Snappy for Java, a fast compressor/decompresser (JNI library)
+                ```
+            - 安裝 `apt-get install libsnappy-dev`
+        - ~~`/usr/bin/ld: cannot find -lopencv_contrib`~~
+            - `pkg-config --modversion opencv`
 
-    - [~~其他caffe常見錯誤~~](https://github.com/BVLC/caffe/wiki/Commonly-encountered-build-issues) 
+        - [~~其他caffe常見錯誤~~](https://github.com/BVLC/caffe/wiki/Commonly-encountered-build-issues) 
 
 
 - 下載 [openpose_train](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/blob/master/training/README.md)
