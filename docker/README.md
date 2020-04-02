@@ -129,20 +129,6 @@
 
 - 到`/training`修改`d_setLayers.py.example`
     - `mv d_setLayers.py.example d_setLayers.py`
-    - 修改參數
-        ```
-        sCaffeFolder =  '/root/openpose_caffe_train-master'
-        
-        sAddFoot = 1
-        sAddMpii = 1
-        sAddFace = 1
-        sAddHands = 1
-        sAddDome = 1
-
-        sProbabilityOnlyBackground = 0.02
-
-        sSuperModel = 0
-        ```
     - `python d_setLayers.py`
         - `apt-get install python-skimage`
         - `apt-get install python-pip`
@@ -152,3 +138,12 @@
 - 下載 [pretrained VGG-19 model](https://gist.github.com/ksimonyan/3785162f95cd2d5fee77), 放到 `dataset/vgg/` 命名為 `dataset/vgg/VGG_ILSVRC_19_layers.caffemodel` 和 `dataset/vgg/vgg_deploy.prototxt`
 
 - 到 `training_results/pose/` 執行 `bash train_pose.sh 0,1,2,3`,0-3表示使用GPUs
+    - 報錯`cudasuccess (2 vs. 0) out of memory`:
+        - 修改`d_setLayers.py`中`batch size`
+            ```
+            if sSuperModel == 2:
+                sLearningRateInit /= 2.5
+                sBatchSizes = [3]
+            else:
+                sBatchSizes = [4] # [10], Gines: 21 <--此處原本是10
+            ```
