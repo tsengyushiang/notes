@@ -111,6 +111,7 @@
         --gpu=$1 --snapshot=model/pose_iter_88000.solverstate \
         2>&1 | tee ./resumed_training_log.txt
         ```
+        
 ## Test BODY_25B
 
  - [Windows Portable Demo](https://github.com/CMU-Perceptual-Computing-Lab/openpose/releases)

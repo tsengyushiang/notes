@@ -1,3 +1,4 @@
+
 ## Login DGX
 
 - Tool : [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) 
@@ -6,6 +7,10 @@
     - `Remote host`
     - `Specfy username`
     - `password`, 直接輸入即可,console不會顯示。
+
+## Install docker
+
+   - [tutorial](https://medium.com/@grady1006/ubuntu18-04%E5%AE%89%E8%A3%9Ddocker%E5%92%8Cnvidia-docker-%E4%BD%BF%E7%94%A8%E5%A4%96%E6%8E%A5%E9%A1%AF%E5%8D%A1-1e3c404c517d)
 
 ## Volume(shared folder)
 
