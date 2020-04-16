@@ -9,6 +9,32 @@
 - [OpenPose - Quick Start](https://github.com/CMU-Perceptual-Computing-Lab/openpose/blob/master/doc/quick_start.md)
 
 - [Experimental Models](https://github.com/CMU-Perceptual-Computing-Lab/openpose_train/tree/master/experimental_models#body-25b-model-option-1-maximum-accuracy-less-speed)
+## Datasets
+
+- COCO Datasets :
+    - `linux`環境下安裝`matlab`
+    -  `genCOCOMask.m` 錯誤:
+        ```
+        1/ 21634
+        2/ 21634
+        3/ 21634
+        4/ 21634
+        5/ 21634
+        6/ 21634
+        6/ 21634
+        Undefined function or variable 'maskApiMex'.
+
+        Error in MaskApi.decode (line 84)
+              masks = maskApiMex( 'decode', Rs );
+
+        Error in genCOCOMask (line 48)
+                            mask_crowd = logical(MaskApi.decode( coco_kpt(i).annorect(p).segmentation ));
+        ```
+        - 解決方法 : [參考](https://blog.csdn.net/qq_38469553/article/details/82348255)
+            -  `cd cocoAPI/MatlabAPI `
+            - 開啟`matlab`
+            - 輸入`mex('CFLAGS=\$CFLAGS -Wall -std=c99','-largeArrayDims','private/maskApiMex.c','../common/maskApi.c','-I../common/','-outdir','private');`
+
 
 ## Train
 
