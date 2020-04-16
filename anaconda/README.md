@@ -8,6 +8,10 @@
     - 進入新環境 `conda activate my_env_name`
     - 離開環境 `conda deactivate`
     - 刪除環境 `conda env remove -n my_env_name`
+    - 儲存/載入環境
+        - 儲存環境 `conda env export > environment.yaml`
+        - 依據環境檔創建環境 `conda env create -f environment.yaml`
+
 
 - 管理套件
 
