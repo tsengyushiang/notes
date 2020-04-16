@@ -1,6 +1,7 @@
 ## Category
 
 - [docker](./docker)
+- [anaconda](./anaconda)
 - [ubuntu](./ubuntu)
     - [c++](./ubuntu/c++)
     - [opencv](./ubuntu/opencv)
