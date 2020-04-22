@@ -48,7 +48,7 @@
 ## CUDA
 
 - 到[官網](https://developer.nvidia.com/cuda-downloads)選擇系統，複製下方command進行安裝
-![Alt text](/cuda.png)
+![Alt text](./cuda.png)
    ```
    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-ubuntu1804.pin
    sudo mv cuda-ubuntu1804.pin /etc/apt/preferences.d/cuda-repository-pin-600

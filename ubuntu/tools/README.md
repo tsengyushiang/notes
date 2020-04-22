@@ -30,3 +30,17 @@ wt@wt-EMB-APL1:~/Desktop/opticalFLow/opencv/optical flow$ ping -c 3 8.8.8.8 | gn
 
      Total   1.7099s
 ```
+
+- System Monitor 
+
+  ![Alt text](./conky.png)
+
+  - install : `sudo apt install conky-all`
+  - custom style to right :
+    - `sudo sed -i 's/left/right/' /etc/conky/conky.conf`
+    - `cp /etc/conky/conky.conf ~/.conkyrc`
+  - set to startup app
+  
+    ![Alt text](./startUpCommand.png)
+  - [Tutorial](https://linuxconfig.org/system-monitoring-on-ubuntu-18-04-linux-with-conky)
+

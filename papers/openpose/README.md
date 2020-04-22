@@ -49,6 +49,8 @@
     - 重新命名 : `mv Makefile.config.example Makefile.config`
     - 安裝 : `make all -j{num_cores} && make pycaffe -j{num_cores}`,可用`nproc`查`{num_cores}`
     - 錯誤 :
+        - `make: Nothing to be done for all`:
+            - `make clean`在重新`make`
         - `hdf5.h` : 
             - `apt install libhdf5-dev`
             - `find / -name hdf5.h`
