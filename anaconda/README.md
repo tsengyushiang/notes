@@ -24,6 +24,10 @@
     - 更新所有套件 `conda update -all`
     - 清除安裝後下載的原始檔 `conda clean -tp`
 
+## Tutorial
+
+- [Install on ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart)
+
 ## Refernece
 
 - [tutorial](https://medium.com/@raymonduchen/anaconda%E7%9A%84%E5%AE%89%E8%A3%9D%E8%88%87%E4%BD%BF%E7%94%A8-86d77c231417)
