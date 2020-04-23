@@ -30,7 +30,7 @@
 - `nvidia-docker run --name YOLO --mount source=openpose-train,target=/root -e NVIDIA_VISIBLE_DEVICES=2,3 -dt tensorflow/tensorflow:1.14.0-gpu`: 安裝 docker container
     - `--name YOLO`：container名字
     - `--mount source=openpose-train,target=/root`:掛載volume`openpose-train`到container的`/root`
-    - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡
+    - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡,也可使用使用`--gpus all`
     - `-dt tensorflow/tensorflow:latest-gpu-py3` : 要裝的pull的映像檔
 
 - `nvidia-docker start <NAME>` : 打開container
@@ -42,6 +42,13 @@
     - `<host path>` : `/home/dgx_user1/Desktop`
 - `docker container rm <container id>` : 用`docker container ls -a`找到要移除的`<container id>`,記得先關掉
 
+## Container  with GUI
+
+- [Docker image with OpenCV with X11 forwarding for GUI](https://marcosnietoblog.wordpress.com/2017/04/30/docker-image-with-opencv-with-x11-forwarding-for-gui/)
+    ```
+    xhost +
+    sudo docker run --name openpose -ti --net=host --ipc=host --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -dt exsidius/openpose
+    ```
 
 ## Edit file with vim
 
