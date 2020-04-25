@@ -1,7 +1,10 @@
 
 ## Login DGX
 
-- Tool : [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) 
+- Tool : 
+    - Windows : [MobaXterm](https://mobaxterm.mobatek.net/download-home-edition.html) 
+    - ubuntu : [asbru-cm](https://www.asbru-cm.net/)
+
 
 - `Session/SSH` :
     - `Remote host`
@@ -41,6 +44,11 @@
     - `<container-name>:/<path in container>` : `openpose-M10815098:/openpose`
     - `<host path>` : `/home/dgx_user1/Desktop`
 - `docker container rm <container id>` : 用`docker container ls -a`找到要移除的`<container id>`,記得先關掉
+- `docker system prune`,刪除下列物件
+    - all stopped containers
+    -  all networks not used by at least one container
+    - all dangling images
+    - all dangling build cache
 
 ## Container  with GUI
 
@@ -66,3 +74,34 @@
 - `screen -ls`: 查詢正在執行的process
 - `screen -r <id>` : `id`可從`screen -ls`找到 
 - `screen -X -S <id>`: 關閉attached cmd
+
+## Dockerfile
+- [tutorial](https://ithelp.ithome.com.tw/articles/10191016)
+- `Docekrfile`
+    - sample : 
+        ```
+        FROM centos:7
+        MAINTAINER jack
+
+        RUN yum install -y wget
+
+        RUN cd /
+
+        ADD jdk-8u152-linux-x64.tar.gz /
+
+        RUN wget http://apache.stu.edu.tw/tomcat/tomcat-7/v7.0.82/bin/apache-tomcat-7.0.82.tar.gz
+        RUN tar zxvf apache-tomcat-7.0.82.tar.gz
+
+        ENV JAVA_HOME=/jdk1.8.0_152
+        ENV PATH=$PATH:/jdk1.8.0_152/bin
+        CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
+        ```
+    - `FROM`: 使用到的 Docker Image 名稱
+    - `MAINTAINER` : 作者,也可以給 E-mail的資訊
+    - `RUN`: Linux 指令
+    - `ADD`: 跑`docker build `時把 Local 的檔案複製到 Image 裡，如果是 tar.gz 檔複製進去 Image 時會順便自動解壓縮。
+    - `ENV`:用來設定環境變數
+    - `CMD`:在指行`docker run`的指令時會直接呼叫開啟 Tomcat Service
+- `image`
+    - `cd`到`dockerfile`同層開啟terminal
+    - `docker build -t <dock> . --no-cache`
