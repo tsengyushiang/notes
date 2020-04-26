@@ -8,5 +8,6 @@
     - [tools](./ubuntu/tools)
     - [nvidia](./ubuntu/nvidia)
 - [Web-based Tool](./web-based-tool)
-- paper with code
-    - [openpose](./papers/openpose)
+- project setup
+    - [openpose](./projects/openpose)
+    - [openpose-depth](./projects/openpose-depth)

@@ -72,7 +72,7 @@
 - `screen` : 建立新的cmd
 - 將目前process放到background執行,在screen建立的cmd中按`ctrl+a`+`d`(detach)
 - `screen -ls`: 查詢正在執行的process
-- `screen -r <id>` : `id`可從`screen -ls`找到 
+- `screen -rd <id>` : `id`可從`screen -ls`找到 
 - `screen -X -S <id>`: 關閉attached cmd
 
 ## File Transmit
