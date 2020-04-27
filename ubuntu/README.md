@@ -34,6 +34,8 @@
 
 * add file  
 ` touch  <fileName>`
+* search file 
+`find <dir> -name <fileName>`
 
 ## System Error 
 
