@@ -7,29 +7,30 @@
 
 ## Windows
 - 存成`.bat`檔,下方監控範例指令為`nvidia-smi`
-```
-@ECHO OFF
 
-:: 執行的指令
-SET ExecuteCommand=nvidia-smi
+  ```
+  @ECHO OFF
 
-:: 單位: 秒
-SET ExecutePeriod=1
+  :: 執行的指令
+  SET ExecuteCommand=nvidia-smi
 
-SETLOCAL EnableDelayedExpansion
+  :: 單位: 秒
+  SET ExecutePeriod=1
 
-:loop
+  SETLOCAL EnableDelayedExpansion
 
-  cls
+  :loop
 
-  echo !date! !time!
-  echo every !ExecutePeriod! second, command^: !ExecuteCommand!
+    cls
 
-  echo.
+    echo !date! !time!
+    echo every !ExecutePeriod! second, command^: !ExecuteCommand!
 
-  %ExecuteCommand%
-  
-  timeout /t %ExecutePeriod% > nul
+    echo.
 
-goto loop
-```
+    %ExecuteCommand%
+    
+    timeout /t %ExecutePeriod% > nul
+
+  goto loop
+  ```
