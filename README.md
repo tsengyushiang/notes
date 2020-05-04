@@ -6,8 +6,9 @@
     - [openpose](./projects/openpose)
     - [openpose-depth](./projects/openpose-depth)
 - [monitor](./monitor)
-- [opencv-python]
-    - [video process](./opencv/video)
+- python
+    - [file I/O](./python/fileIO)
+    - [opencv-video process](./python/opencv-video)
 - [ubuntu](./ubuntu)
     - [c++](./ubuntu/c++)
     - [nvidia](./ubuntu/nvidia)
