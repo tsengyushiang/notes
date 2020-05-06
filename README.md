@@ -7,6 +7,7 @@
     - [openpose-depth](./projects/openpose-depth)
 - [monitor](./monitor)
 - python
+    - [algorithm](./python/Algorithm)
     - [file I/O](./python/fileIO)
     - [opencv-video process](./python/opencv-video)
 - [ubuntu](./ubuntu)
