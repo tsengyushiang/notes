@@ -21,13 +21,19 @@
     - `host_folder` : 在主機的資料夾
     - `/container_folder` : 在container中的資料夾
 
+## Docker for windows
+
+- `... run -v ...` : 使用volume前要先到`setting/Resources/FILE SHARING`指定根目之後用相對路徑即可`
+    - 設定 `C:\Users\tseng\Desktop\dockerhub`
+    - 指令使用 `-v /data:/root` 即可綁定 `C:\Users\tseng\Desktop\dockerhub\ocr`
+- `docker run --name ocr -v /ocr:/root -it ubuntu:16.04 bash`
+
 ## Container
 
 - `docker ps` : 列出正在使用的container
 - `docker pull <NAME>` : 從[dockerhub](https://hub.docker.com/)下載映像檔
     ```
-    docker pull tensorflow/tensorflow:latest-gpu-py3
-    docker pull floydhub/pytorch: 1.0.0-gpu.cuda9cudnn7-py3.40
+    docker pull ubuntu:16.04
     ```
 - `nvidia-smi` : 查看顯卡使用狀況
 - `nvidia-docker run --name YOLO --mount source=openpose-train,target=/root -e NVIDIA_VISIBLE_DEVICES=2,3 -dt tensorflow/tensorflow:1.14.0-gpu`: 安裝 docker container
@@ -111,3 +117,11 @@
 - `image`
     - `cd`到`dockerfile`同層開啟terminal
     - `docker build -t <dock> . --no-cache`
+
+## Docker Hub
+
+- 上傳到dockerhub
+    ```
+    docker tag docker101tutorial tsengyushiang/docker/docker101tutorial
+    docker push docker101tutorial tsengyushiang/docker/docker101tutorial
+    ```
