@@ -4,6 +4,7 @@
 
 - Install the necessary packages
   ```
+  sudo apt-get update
   sudo apt install build-essential cmake git pkg-config libgtk-3-dev
   sudo apt install libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev
   sudo apt install libjpeg-dev libpng-dev libtiff-dev gfortran openexr libatlas-base-dev
