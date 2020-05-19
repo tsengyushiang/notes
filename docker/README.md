@@ -122,7 +122,7 @@
 
 - `docker export` 將容器存成本機檔案
 
-    `docker export <conatinerName> <filename>.tar`
+    `docker export <conatinerName> -o <filename>.tar`
 
 - `docker import` 將容器匯入為`image`
 
