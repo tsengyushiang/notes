@@ -120,8 +120,26 @@
 
 ## Docker Hub
 
-- 上傳到dockerhub
+- `docker export` 將容器存成本機檔案
+
+    `docker export <conatinerName> <filename>.tar`
+
+- `docker import` 將容器匯入為`image`
+
+    - `docker import <filename>.tar`
+
+        ```
+        C:\Users\tseng>docker import ocr.tar
+        sha256:f85e453a4a760c1cfc4401c0ddea9b1532fcb926d54a03299c46dc723baedd6d
+
+        C:\Users\tseng>docker images -a
+        REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+        <none>              <none>              f85e453a4a76        7 minutes ago       2.63GB
+        ubuntu              16.04               005d2078bdfa        3 weeks ago         125MB
+        ```
+
+- 將`image`上傳到dockerhub
     ```
-    docker tag docker101tutorial tsengyushiang/docker/docker101tutorial
-    docker push docker101tutorial tsengyushiang/docker/docker101tutorial
+    docker tag <IMAGE ID> tsengyushiang/<reponame>
+    docker push tsengyushiang/<reponame>
     ```

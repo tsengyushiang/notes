@@ -31,3 +31,23 @@
         from os.path import isfile, isdir
         folders = getDirectory('./ppt',isdir)
         ```
+- Json
+
+    - source code 
+
+        ```
+        import json
+
+        def readJson(fileName):
+            with open(fileName, 'r') as reader:
+                jf = json.loads(reader.read())
+            return jf 
+        ```
+
+    - usage
+    
+        ```
+        joints = readJson('test.json')
+        print(joints)
+        ```
+
