@@ -126,7 +126,7 @@
 
 - `docker import` 將容器匯入為`image`
 
-    - `docker import <filename>.tar`
+    - `docker import <filename>.tar`,匯入不命名的`image`
 
         ```
         C:\Users\tseng>docker import ocr.tar
@@ -137,9 +137,10 @@
         <none>              <none>              f85e453a4a76        7 minutes ago       2.63GB
         ubuntu              16.04               005d2078bdfa        3 weeks ago         125MB
         ```
+    - `cat <filename>.tar | sudo docker import - <image name>`,匯入命名的`image`(`windows`中使用需要`gitbash`)
 
 - 將`image`上傳到dockerhub
     ```
-    docker tag <IMAGE ID> tsengyushiang/<reponame>
+    docker tag <tag> tsengyushiang/<reponame>
     docker push tsengyushiang/<reponame>
     ```
