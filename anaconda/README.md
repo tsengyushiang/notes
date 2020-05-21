@@ -24,6 +24,10 @@
     - 更新所有套件 `conda update -all`
     - 清除安裝後下載的原始檔 `conda clean -tp`
 
+- 在`GitBash`中啟用
+
+    - `eval "$(conda shell.bash hook)"`
+
 ## Tutorial
 
 - [Install on ubuntu](https://www.digitalocean.com/community/tutorials/how-to-install-anaconda-on-ubuntu-18-04-quickstart)
