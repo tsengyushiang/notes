@@ -9,6 +9,7 @@
     - [openpose-depth](./projects/openpose-depth)
 - python
     - [algorithm](./python/Algorithm)
+    - [command line tool](./python/command)
     - [file I/O](./python/fileIO)
     - [opencv-video process](./python/opencv-video)
     - [issue](./python/issue)
