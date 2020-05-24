@@ -41,7 +41,15 @@
         def readJson(fileName):
             with open(fileName, 'r') as reader:
                 jf = json.loads(reader.read())
-            return jf 
+            return jf
+        
+        def writeJSON(jsonf,jsonData):
+            with open(jsonf, 'w+') as f:
+                f.seek(0)
+                # ascii for chinese 
+                json.dump(jsonData, f,ensure_ascii=False)
+                f.truncate()
+
         ```
 
     - usage
@@ -49,5 +57,6 @@
         ```
         joints = readJson('test.json')
         print(joints)
+        writeJSON('save.json',joints)
         ```
 
