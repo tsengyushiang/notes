@@ -2,19 +2,28 @@
 
 - `args.py`
 
-   ```
-   from argparse import ArgumentParser, SUPPRESS
+   - basic
 
-   def build_argparser():
-      parser = ArgumentParser(add_help=False)
-      args = parser.add_argument_group('Options')   
-      args.add_argument('-h', '--help', action='help',default=SUPPRESS') 
+      ```
+      from argparse import ArgumentParser, SUPPRESS
 
-      # custom command line input parameters       
-      args.add_argument("-t", "--time", type=int,default=False)
-     
-      return parser
-   ```
+      def build_argparser():
+         parser = ArgumentParser(add_help=False)
+         args = parser.add_argument_group('Options')   
+         args.add_argument('-h', '--help', action='help',default=SUPPRESS') 
+
+         # custom command line input parameters       
+         args.add_argument("-t", "--time", type=int,default=False)
+      
+         return parser
+      ```
+      
+   - custom command line
+
+      - multiple float number 
+         
+         ` parser.add_argument('times', metavar='N', type=float, nargs='+',help='times for images')`
+
 - `main.py`
    
    ```
