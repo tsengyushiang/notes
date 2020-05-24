@@ -39,7 +39,7 @@
         import json
 
         def readJson(fileName):
-            with open(fileName, 'r') as reader:
+            with open(fileName, 'r',encoding="utf-8") as reader:
                 jf = json.loads(reader.read())
             return jf
         
