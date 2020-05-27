@@ -25,11 +25,16 @@
                     
             return files_or_dirs
 
+        def recusiveGetFile(PATH,ext):
+            return [os.path.join(dp, f) for dp, dn, filenames in os.walk(PATH) for f in filenames if os.path.splitext(f)[1] == ext]
+
         ```
     - usage
         ```
         from os.path import isfile, isdir
         folders = getDirectory('./ppt',isdir)
+
+        files = recusiveGetFile("./",".json")
         ```
 - Json
 

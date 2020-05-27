@@ -7,6 +7,7 @@
 - project setup
     - [openpose](./projects/openpose)
     - [openpose-depth](./projects/openpose-depth)
+    - [CenterNet](./projects/CenterNet)
 - python
     - [algorithm](./python/Algorithm)
     - [command line tool](./python/command)
