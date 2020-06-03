@@ -60,7 +60,7 @@
 - command
 
     - `python demo.py ctdet --demo webcam --load_model ../models/ctdet_coco_dla_2x.pth`
-    - `python demo.py ctdet --demo webcam --load_model ../models/multi_pose_dla_3x.pth`
+    - `python demo.py multi_pose --demo webcam --load_model ../models/multi_pose_dla_3x.pth`
 
 - runtime error
 
