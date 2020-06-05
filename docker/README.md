@@ -21,12 +21,9 @@
     - `host_folder` : 在主機的資料夾
     - `/container_folder` : 在container中的資料夾
 
-## Docker for windows
+## Ubuntu with Chinese
 
-- `... run -v ...` : 使用volume前要先到`setting/Resources/FILE SHARING`指定根目之後用相對路徑即可`
-    - 設定 `C:\Users\tseng\Desktop\dockerhub`
-    - 指令使用 `-v /data:/root` 即可綁定 `C:\Users\tseng\Desktop\dockerhub\ocr`
-- `docker run --name ocr -v /ocr:/root -it ubuntu:16.04 bash`
+- `docker run --name ocr --env LC_ALL=en_US.UTF-8 -v /ocr:/root -it ubuntu:16.04 bash`
 
 ## Container
 
