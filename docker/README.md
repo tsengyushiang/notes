@@ -20,11 +20,7 @@
 - 在`docker run`指令中加入參數`-v host_folder`:`/container_folder`
     - `host_folder` : 在主機的資料夾
     - `/container_folder` : 在container中的資料夾
-
-## Ubuntu with Chinese
-
-- `docker run --name ocr --env LC_ALL=en_US.UTF-8 -v /ocr:/root -it ubuntu:16.04 bash`
-
+    
 ## Container
 
 - `docker ps` : 列出正在使用的container
