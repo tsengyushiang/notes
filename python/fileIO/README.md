@@ -65,3 +65,11 @@
         writeJSON('save.json',joints)
         ```
 
+- Path operation
+
+    - get last name
+    
+        ```
+        >>> os.path.basename(os.path.normpath('/folderA/folderB/folderC/folderD/'))
+        'folderD'
+        ```

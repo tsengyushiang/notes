@@ -19,6 +19,8 @@
 
 - 在`docker run`指令中加入參數`-v host_folder`:`/container_folder`
     - `host_folder` : 在主機的資料夾
+        - Docker for Windows : `C:\Users\tseng\...`
+        - Docker Toolbox on Windows : `/c/User/...`
     - `/container_folder` : 在container中的資料夾
     
 ## Container
