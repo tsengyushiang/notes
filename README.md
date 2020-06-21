@@ -8,6 +8,8 @@
     - [openpose](./projects/openpose)
     - [openpose-depth](./projects/openpose-depth)
     - [CenterNet](./projects/CenterNet)
+    - [Pifu/PifuHD](./projects/Pifu)
+
 - python
     - [algorithm](./python/Algorithm)
     - [command line tool](./python/command)
