@@ -16,6 +16,8 @@
     - [file I/O](./python/fileIO)
     - [opencv-video process](./python/opencv-video)
     - [issue](./python/issue)
+    - [widgets](./python/widgets)
+
 - [ubuntu](./ubuntu)
     - [c++](./ubuntu/c++)
     - [nvidia](./ubuntu/nvidia)
