@@ -42,6 +42,6 @@ export LD_LIBRARY_PATH=/where/you/install/lib:$LD_LIBRARY_PATH
 
 ```
 cd G2LTex/bin
-./G2LTex ../Data/bloster/textureimages ../Data/bloster/bloster.ply
+./G2LTex ../Data/bloster/textureimages ../Data/bloster/bloster.ply | gnomon
 ```
 
