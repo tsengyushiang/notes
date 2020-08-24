@@ -28,7 +28,7 @@
 - command line tool Gitbash
 
     - Download [wget.exe](https://eternallybored.org/misc/wget/) Place it into `Git\mingw64\bin`
-    - use conda in Gitbash `eval "$(conda shell.bash hook)`
+    - use conda in Gitbash `eval "$(conda shell.bash hook)"`
 
 ### Demo(see detail in github page)
 
