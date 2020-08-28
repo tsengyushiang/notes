@@ -1,6 +1,7 @@
 ## WSL(windows subsystem linux)
 
 - 系統管理員執行`powershell`, 執行以下指令後重新開機
+
 ```
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 
@@ -8,6 +9,7 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 
 wsl --set-default-version 2
 ```
+
 - 檢查版本`4.19.121+`,若比此版本低到windows開發者channel進行更新
    `wsl cat /proc/version`
 
