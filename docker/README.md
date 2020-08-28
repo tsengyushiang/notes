@@ -11,6 +11,26 @@
     - `Specfy username`
     - `password`, 直接輸入即可,console不會顯示。
 
+## WSL
+
+- Install
+
+```
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt-get update
+```
+- start or stop docker
+
+```
+sudo service docker start
+sudo service docker stop
+```
+- test container with GPU with version `19.03+`
+```
+sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benchmark
+```
+
 ## Install docker
 
    - [tutorial](https://medium.com/@grady1006/ubuntu18-04%E5%AE%89%E8%A3%9Ddocker%E5%92%8Cnvidia-docker-%E4%BD%BF%E7%94%A8%E5%A4%96%E6%8E%A5%E9%A1%AF%E5%8D%A1-1e3c404c517d)

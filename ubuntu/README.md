@@ -10,8 +10,9 @@ dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /nores
 wsl --set-default-version 2
 ```
 
-- 檢查版本`4.19.121+`,若比此版本低到windows開發者channel進行更新
-   `wsl cat /proc/version`
+- 到windows開發者channel進行更新   
+   - `wsl cat /proc/version`檢查版本`4.19.121+`
+   - 若更新沒找到最新kernel先到應用程式移除`Windows Subsystem for Linux Update`在重試,[參考](https://github.com/microsoft/WSL/issues/5529#issuecomment-653625309)
 
 - 到microsoft store安裝`ubuntu`
    - [Ubuntu 16.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-1604-lts/9pjn388hp8c9?rtc=1#activetab=pivot:overviewtab)
@@ -19,8 +20,35 @@ wsl --set-default-version 2
    - [Ubuntu 20.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&activetab=pivot:overviewtab)
 
 - 安裝[cuda on WSL](https://developer.nvidia.com/cuda/wsl)
+   - setup
+   ```
+   sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
+   sudo sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
+   sudo apt-get update
+   sudo apt-get install -y cuda-toolkit-11-0
+   ```
+   - test
+   ```
+   cd /usr/local/cuda-11.0/samples/4_Finance/BlackScholes
+   make
+   ./BlackScholes
+   ```
+   ```
+   result should be
+   [./BlackScholes] - Starting...
+   GPU Device 0: "Turing" with compute capability 7.5
 
-- 參考 : [WSL安裝](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10), [CUDA安裝](https://docs.nvidia.com/cuda/wsl-user-guide/index.html)
+   Initializing data...
+   ...allocating CPU memory for options.
+   ...allocating GPU memory for options.
+   ...generating input data in CPU mem.
+   ...copying input data to GPU mem.
+   Data init done.
+   ```
+
+- 安裝[nvidia-docker](./docker)
+
+- 參考 : [WSL安裝](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10)
 
 ## Install ubuntu
 
