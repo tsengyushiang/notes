@@ -48,7 +48,7 @@ wsl --set-default-version 2
    Data init done.
    ```
 
-- 安裝[nvidia-docker](./docker)
+- 安裝[nvidia-docker](../docker)
 
 - 參考 : [WSL安裝](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10)
 
