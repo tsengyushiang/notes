@@ -1,3 +1,25 @@
+## WSL(windows subsystem linux)
+
+- 系統管理員執行`powershell`, 執行以下指令後重新開機
+```
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
+wsl --set-default-version 2
+```
+- 檢查版本`4.19.121+`,若比此版本低到windows開發者channel進行更新
+   `wsl cat /proc/version`
+
+- 到microsoft store安裝`ubuntu`
+   - [Ubuntu 16.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-1604-lts/9pjn388hp8c9?rtc=1#activetab=pivot:overviewtab)
+   - [Ubuntu 18.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab)
+   - [Ubuntu 20.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&activetab=pivot:overviewtab)
+
+- 安裝[cuda on WSL](https://developer.nvidia.com/cuda/wsl)
+
+- 參考 : [WSL安裝](https://docs.microsoft.com/zh-tw/windows/wsl/install-win10), [CUDA安裝](https://docs.nvidia.com/cuda/wsl-user-guide/index.html)
+
 ## Install ubuntu
 
 * [tutorial1](https://blog.xuite.net/yh96301/blog/341994889-%E5%AE%89%E8%A3%9DUbuntu+18.04) ,  [tutorial2](https://www.itread01.com/content/1546486745.html)

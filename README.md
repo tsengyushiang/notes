@@ -19,7 +19,7 @@
     - [issue](./python/issue)
     - [widgets](./python/widgets)
 
-- [ubuntu](./ubuntu)
+- [ubuntu/WSL](./ubuntu)
     - [c++](./ubuntu/c++)
     - [nvidia](./ubuntu/nvidia)
     - [opencv](./ubuntu/opencv)
