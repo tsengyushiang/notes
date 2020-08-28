@@ -28,11 +28,13 @@ wsl --set-default-version 2
    sudo apt-get install -y cuda-toolkit-11-0
    ```
    - test
+   
    ```
    cd /usr/local/cuda-11.0/samples/4_Finance/BlackScholes
    make
    ./BlackScholes
    ```
+   
    ```
    result should be
    [./BlackScholes] - Starting...
