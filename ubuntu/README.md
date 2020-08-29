@@ -19,13 +19,14 @@ wsl --set-default-version 2
    - [Ubuntu 18.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-1804-lts/9n9tngvndl3q?rtc=1&activetab=pivot:overviewtab)
    - [Ubuntu 20.04 LTS](https://www.microsoft.com/zh-tw/p/ubuntu-2004-lts/9n6svws3rx71?rtc=1&activetab=pivot:overviewtab)
 
-- 安裝[cuda on WSL](https://developer.nvidia.com/cuda/wsl)
+- 下載[cuda on WSL](https://developer.nvidia.com/cuda/wsl)並安裝, [多版本設定連結](./nvidia)
    - setup
    ```
    sudo apt-key adv --fetch-keys http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
    sudo sh -c 'echo "deb http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64 /" > /etc/apt/sources.list.d/cuda.list'
    sudo apt-get update
    sudo apt-get install -y cuda-toolkit-11-0
+   sudo apt-get install -y cuda-toolkit-10-0
    ```
    - test
    

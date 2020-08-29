@@ -1,4 +1,17 @@
 
+## Install on ubuntu
+
+```
+wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
+./Anaconda3–4.4.0-Linux-x86_64.sh
+export PATH='~/anaconda3/bin:$PATH'
+source ~/.bashrc
+conda info
+conda update conda
+pip install pycryptosat
+
+source activate pix2vox
+```
 ## Command
 
 - 管理開發環境
@@ -11,7 +24,6 @@
     - 儲存/載入環境
         - 儲存環境 `conda env export > environment.yaml`
         - 依據環境檔創建環境 `conda env create -f environment.yaml`
-
 
 - 管理套件
 
@@ -27,6 +39,10 @@
 - 在`GitBash`中啟用
 
     - `eval "$(conda shell.bash hook)"`
+
+- 查看CUDA是否安裝 
+
+    - `numba -s`
 
 ## Tutorial
 
