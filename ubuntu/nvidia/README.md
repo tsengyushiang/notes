@@ -114,6 +114,37 @@
    Result = PASS
    ```
 
+## CUDA in WSL
+
+- [參考1](https://medium.com/@peterjussi/multicuda-multiple-versions-of-cuda-on-one-machine-4b6ccda6faae),[參考1](https://zhuanlan.zhihu.com/p/48641682)
+
+- 連結cuda10.0成cuda
+
+```
+cd /usr/local
+sudo rm cuda
+sudo ln -s cuda-10.0 cuda
+```
+
+- 安裝`nvcc`:
+
+```
+sudo apt install nvidia-cuda-toolkit
+```
+
+- 在`~/.bashrc`更改或新增PATH :
+
+```
+export PATH="$PATH:/usr/local/cuda/bin"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/cuda/lib64"
+export LIBRARY_PATH="$LIBRARY_PATH:/usr/local/cuda/lib64"
+```
+
+- 在`/usr/bin/nvcc`修改版本 ( 用`which nvcc`找到檔案 ) :
+
+```
+exec /usr/local/cuda/bin/nvcc
+```
 ## Reference
 
    - [nvidia 環境安裝](https://gitpress.io/@chchang/install-nvidia-driver-cuda-pgstrom-in-ubuntu-1804)
