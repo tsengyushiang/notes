@@ -2,7 +2,7 @@
 
 ### Reference
 
-- [paper](https://shunsukesaito.github.io/PIFu/)
+- [paper](https://arxiv.org/pdf/1906.02739.pdf)
 - [code](https://github.com/facebookresearch/meshrcnn)
 
 ### Installation with dockerfile 
