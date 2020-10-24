@@ -12,7 +12,7 @@
     - [Texture Mapping for 3D Reconstruction with RGB-D Sensor](./projects/G2LTex)
     - [meshrcnn](./projects/meshrcnn)
 
-- python
+- [python](./python)
     - [algorithm](./python/Algorithm)
     - [command line tool](./python/command)
     - [file I/O](./python/fileIO)
