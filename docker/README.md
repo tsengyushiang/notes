@@ -60,7 +60,7 @@ sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benc
 
 - `nvidia-docker start <NAME>` : 打開container
 - `docker stop <NAME>` : 關掉container
-- `docker exec -it <NAME> bash` : 進入環境
+- `docker exec -it <NAME> bash` 或 `docker attach <NAME>` : 進入環境
 - `exit` : 退出環境
 - `docker cp <from> <to>` :將檔案/資料夾傳入傳出container
     - `<container-name>:/<path in container>` : `openpose-M10815098:/openpose`
