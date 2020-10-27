@@ -91,6 +91,8 @@ wsl --set-default-version 2
 ` touch  <fileName>`
 * search file 
 `find <dir> -name <fileName>`
+* set lib path
+`export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH`
 
 ## System Error 
 

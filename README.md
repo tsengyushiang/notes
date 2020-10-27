@@ -10,6 +10,7 @@
     - [CenterNet](./projects/CenterNet)
     - [Pifu/PifuHD](./projects/Pifu)
     - [Texture Mapping for 3D Reconstruction with RGB-D Sensor](./projects/G2LTex)
+    - [Joint Texture and Geometry Optimization for RGB-D Reconstruction](./projects/JointTG)
     - [meshrcnn](./projects/meshrcnn)
 
 - [python](./python)
