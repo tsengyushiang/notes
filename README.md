@@ -4,6 +4,7 @@
 - [docker](./docker)
 - [electron](./electron)
 - [monitor](./monitor)
+- [Github](./github)
 - project setup
     - [openpose](./projects/openpose)
     - [openpose-depth](./projects/openpose-depth)
