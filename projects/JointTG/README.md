@@ -42,7 +42,7 @@ apt install libomp-dev
 ```
 git clone https://github.com/fdp0525/JointTG.git
 export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH
-rm ./lib/libJointTexGeo.so.1.0.0 libJointTexGeo.so.1
+mv ./lib/libJointTexGeo.so.1.0.0 ./lib/libJointTexGeo.so.1
 
 ```
 
