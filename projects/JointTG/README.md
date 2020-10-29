@@ -20,7 +20,7 @@ apt-get install libboost-all-dev
 wget https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.gz
 tar -zxvf boost_1_65_1.tar.gz
 cd boost_1_65_1
-./bootsrap.sh –with-libraries=all
+./bootstrap.sh –with-libraries=all
 ./b2 install 
 ./b2 cxxflags=-fPIC cflags=-fPIC --c++11
 
