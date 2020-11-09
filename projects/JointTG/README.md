@@ -20,7 +20,7 @@ apt-get install libboost-all-dev
 wget https://dl.bintray.com/boostorg/release/1.65.1/source/boost_1_65_1.tar.gz
 tar -zxvf boost_1_65_1.tar.gz
 cd boost_1_65_1
-./bootsrap.sh –with-libraries=all
+./bootstrap.sh –with-libraries=all
 ./b2 install 
 ./b2 cxxflags=-fPIC cflags=-fPIC --c++11
 
@@ -42,7 +42,7 @@ apt install libomp-dev
 ```
 git clone https://github.com/fdp0525/JointTG.git
 export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH
-rm ./lib/libJointTexGeo.so.1.0.0 libJointTexGeo.so.1
+mv ./lib/libJointTexGeo.so.1.0.0 ./lib/libJointTexGeo.so.1
 
 ```
 
