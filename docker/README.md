@@ -52,9 +52,9 @@ sudo docker run --gpus all nvcr.io/nvidia/k8s/cuda-sample:nbody nbody -gpu -benc
     docker pull ubuntu:16.04
     ```
 - `nvidia-smi` : 查看顯卡使用狀況
-- `nvidia-docker run --name YOLO --mount source=openpose-train,target=/root -e NVIDIA_VISIBLE_DEVICES=2,3 -dt tensorflow/tensorflow:1.14.0-gpu`: 安裝 docker container
+- `nvidia-docker run --name YOLO -v /folderOnLocal:/root -e NVIDIA_VISIBLE_DEVICES=2,3 -dt ubuntu:16.04`: 安裝 docker container
     - `--name YOLO`：container名字
-    - `--mount source=openpose-train,target=/root`:掛載volume`openpose-train`到container的`/root`
+    - `-v /folderOnLocal:/root`:掛載`/folderOnLocal`到container的`/root`
     - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡,也可使用使用`--gpus all`
     - `-dt tensorflow/tensorflow:latest-gpu-py3` : 要裝的pull的映像檔
 
