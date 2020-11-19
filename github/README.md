@@ -10,3 +10,8 @@
         curl -H 'Authorization: token 1bb635a629d7d803c02af48188df34b710ec0786' -s "https://api.github.com/search/repositories?q=user:$GHUSER+is:private" | grep -w clone_url | grep -o '[^"]\+://.\+.git' | xargs -L1 git clone
         ```
     - [search by something](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/searching-for-repositories)
+ 
+- Fork repo by URL :
+    
+    - From your GitLab dashboard click New project
+    - Switch to the Import project tab
