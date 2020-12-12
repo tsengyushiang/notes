@@ -22,6 +22,8 @@
     - [issue](./python/issue)
     - [widgets](./python/widgets)
 
+- [javascript](./javascript)
+
 - [ubuntu/WSL](./ubuntu)
     - [c++](./ubuntu/c++)
     - [nvidia](./ubuntu/nvidia)
