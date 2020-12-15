@@ -82,8 +82,16 @@ wsl --set-default-version 2
    ```
 
 * media player(.mp4)  
-` sudo apt-get install ubuntu-restricted-extras
-`
+
+   `sudo apt-get install ubuntu-restricted-extras`
+
+* Filezilla
+
+   `sudo apt-get install filezilla`
+
+* chinese keyboard,install-reboot-setting-RegionAndLanguage
+
+   `sudo apt install ibus-chewing`
 
 ## System Command
 
