@@ -4,6 +4,7 @@
 - [docker](./docker)
 - [electron](./electron)
 - [monitor](./monitor)
+- [nodejs](./nodejs)
 - [Github](./github)
 - project setup
     - [openpose](./projects/openpose)
