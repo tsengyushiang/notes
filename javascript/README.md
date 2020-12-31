@@ -20,3 +20,11 @@
     })
     ```
 
+# JS/TS config
+
+- import path 
+    ```
+    "compilerOptions": {
+        "baseUrl": "./src"
+    }
+    ```
