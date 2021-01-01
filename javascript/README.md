@@ -20,6 +20,10 @@
     })
     ```
 
+# Yarn
+
+- start with local network to debug on mobile : `yarn start --host 0.0.0.0`
+
 # JS/TS config
 
 - import path 
