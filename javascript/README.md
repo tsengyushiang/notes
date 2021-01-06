@@ -3,22 +3,41 @@
 - packages:
 
     - [lodash](https://lodash.com/)
+    - [animejs](https://animejs.com/)
 
-# THREE.JS
+- Vanilla Js:
 
-- [WebGL Hardware limitation](https://webglreport.com/)
-- [Tips](https://discoverthreejs.com/tips-and-tricks/)
-- `WebGLRenderer.logarithmicDepthBuffer` and `camera.near/far` may cause weird depthTest.
-- Max TextureSize on mobile : 4096*4096
-- when using `transparent` and `renderOrder` to clip something, they're parent must be the same
-- sovle z-fighting by polygon offset
+    - [Request](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
+
     ```
-    const material = new THREE.Material({
-        polygonOffset: true,
-        polygonOffsetFactor: 1.0,
-        polygonOffsetUnits: 4.0
-    })
+    fetch('http://example.com/movies.json').then(function(response) {
+        return response.json();
+    }).then(function(myJson) {
+        console.log(myJson);
+    });
     ```
+
+# [Three.js](https://threejs.org/)
+
+- [WebGL Hardware limitation](https://webglreport.com/), [Tips](https://discoverthreejs.com/tips-and-tricks/)
+
+- Render(scene,renderer,camera)
+    - [depthTest](https://www.itread01.com/articles/1476667276.html)
+        - `WebGLRenderer.logarithmicDepthBuffer` and `camera.near/far` may cause weird depthTest.
+        - when using `transparent` and `renderOrder` to clip something
+
+- Material :
+    - Max TextureSize : 4096*4096
+    - sovle z-fighting by polygon offset
+        ```
+        const material = new THREE.Material({
+            polygonOffset: true,
+            polygonOffsetFactor: 1.0,
+            polygonOffsetUnits: 4.0
+        })
+        ```
+- Object :
+    - Billboard : `Obejct3D.onAfterRender/.onBeforeRender` is usefull, function is called with the following parameters: renderer, scene, camera, geometry, material, group.
 
 # Yarn
 
@@ -32,3 +51,9 @@
         "baseUrl": "./src"
     }
     ```
+
+# React 16.8 Hook
+
+- variable to update components
+    -  `useContext` cross components
+    -  `useState` in component
