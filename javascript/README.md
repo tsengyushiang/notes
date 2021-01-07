@@ -7,15 +7,33 @@
 
 - Vanilla Js:
 
+    - Object :
+
+        - merge object to another, usefull when inherent getter
+
+            ```
+            public get targetInfo(): RaycastInfo
+            {
+                return {
+                    type: RaycastType.SHOWMODAL | RaycastType.MOVE,
+                    id: EObjectType.MODEL,
+                    url: this.openLink,
+                    ...super[ 'targetInfo' ]
+                }
+            }
+            ```
+        
+        - beatify JSON : `JSON.stringify(jsObj, null, 4);`
+
     - [Request](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
 
-    ```
-    fetch('http://example.com/movies.json').then(function(response) {
-        return response.json();
-    }).then(function(myJson) {
-        console.log(myJson);
-    });
-    ```
+        ```
+        fetch('http://example.com/movies.json').then(function(response) {
+            return response.json();
+        }).then(function(myJson) {
+            console.log(myJson);
+        });
+        ```
 
     - bitwise tag :
         ```
