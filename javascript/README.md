@@ -17,6 +17,19 @@
     });
     ```
 
+    - bitwise tag :
+        ```
+        export class Property
+        {
+            static SHOWMODAL = 0b0001;
+            static EDIT = 0b0010;
+            static checkProperty( value: number, type: number )
+            {
+                return ( value & type ) === type
+            }
+        }
+        ```
+
 # [Three.js](https://threejs.org/)
 
 - [WebGL Hardware limitation](https://webglreport.com/), [Tips](https://discoverthreejs.com/tips-and-tricks/)
@@ -38,6 +51,23 @@
         ```
 - Object :
     - Billboard : `Obejct3D.onAfterRender/.onBeforeRender` is usefull, function is called with the following parameters: renderer, scene, camera, geometry, material, group.
+
+- Interact :
+
+    - Raycaster : face normal
+        ```
+        private intersect2rot4( intersect: THREE.Intersection ): THREE.Matrix4
+        {
+            if ( intersect )
+            {
+                const n = intersect.face.normal.clone();
+                intersect.object.updateMatrixWorld( true )
+                n.transformDirection( intersect.object.matrixWorld );
+                const mat4 = new THREE.Matrix4().lookAt( n, new THREE.Vector3( 0, 0, 0 ), this.camera.up );
+                return mat4;
+            }
+        }
+        ```
 
 # Yarn
 
