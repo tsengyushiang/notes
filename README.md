@@ -24,6 +24,8 @@
     - [widgets](./python/widgets)
 
 - [javascript](./javascript)
+    -[React](./javascript/react)
+    -[Three](./javascript/three)
 
 - [ubuntu/WSL](./ubuntu)
     - [c++](./ubuntu/c++)
