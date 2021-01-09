@@ -4,6 +4,7 @@
 
     - [lodash](https://lodash.com/)
     - [animejs](https://animejs.com/)
+    - [dat.gui](https://github.com/dataarts/dat.gui)
 
 - Vanilla Js:
 

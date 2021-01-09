@@ -17,6 +17,20 @@
             polygonOffsetUnits: 4.0
         })
         ```
+    - shaderMaterial : calculate normal in shader
+        ```
+        const shadermat = new THREE.ShaderMaterial(...);
+
+        // enable dFdx,dFdy
+        shadermat.extensions.derivatives = true
+
+        // in vertex shader
+        pos =  position;
+
+        // in fragment shader
+        vec3 normal = normalize(cross(dFdx(pos), dFdy(pos)));
+        ```
+    
 - Object :
     - Billboard : `Obejct3D.onAfterRender/.onBeforeRender` is usefull, function is called with the following parameters: renderer, scene, camera, geometry, material, group.
 
