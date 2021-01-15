@@ -50,3 +50,15 @@
             }
         }
         ```
+    - project 3d point to screen coordinate
+        ```
+        function createVector(x, y, z, camera, width, height) {
+            var p = new THREE.Vector3(x, y, z);
+            var vector = p.project(camera);
+
+            vector.x = (vector.x + 1) / 2 * width;
+            vector.y = -(vector.y - 1) / 2 * height;
+
+            return vector;
+        }
+        ```
