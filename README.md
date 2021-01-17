@@ -23,9 +23,12 @@
     - [issue](./python/issue)
     - [widgets](./python/widgets)
 
-- [javascript](./javascript)
-    - [React](./javascript/react)
-    - [Three](./javascript/three)
+- [front-end](./front-end)
+    - [React](./front-end/react)
+    - [Threejs](./front-end/three)
+    - [Vanilla Js](./front-end/VanillaJs)
+    - [CSS](./front-end/CSS)
+
 
 - [ubuntu/WSL](./ubuntu)
     - [c++](./ubuntu/c++)
