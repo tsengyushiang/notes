@@ -52,3 +52,19 @@
         }
     }
     ```
+
+- Redirect :
+
+    - current page :
+    ```
+    function redirect(url) {
+        window.location.href = url;   
+    }
+    ```
+    - new tab :
+    ```
+    function openInNewTab(url) {
+        var win = window.open(url, '_blank');
+        win.focus();
+    }
+    ```
