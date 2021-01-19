@@ -32,7 +32,19 @@
         ```
     
 - Object :
+
     - Billboard : `Obejct3D.onAfterRender/.onBeforeRender` is usefull, function is called with the following parameters: renderer, scene, camera, geometry, material, group.
+
+    - local-axis aligned bounding box :
+        ```
+        this.boxHelper?.parent?.remove( this.boxHelper )
+        const quaternion = this.object.quaternion.clone();
+        this.object.quaternion.set( 0, 0, 0, 1 );
+        this.boxHelper = new THREE.BoxHelper( this.object, 0x0077ff );
+        this.object.quaternion.copy( quaternion );
+        this.boxHelper.applyMatrix4( this.object.matrixWorld.invert() )
+        this.object.add( this.boxHelper )
+        ```
 
 - Interact :
 
