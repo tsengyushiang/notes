@@ -11,6 +11,7 @@
         const blob = new Blob( [ JSON.stringify( json ) ], { type: "application/json" } );
         saveAs( blob, "media.json" );
         ```
+    - [stats.js](https://github.com/mrdoob/stats.js/)
 
 - start with local network to debug on mobile : `yarn start --host 0.0.0.0`
 
