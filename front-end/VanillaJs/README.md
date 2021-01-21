@@ -68,3 +68,10 @@
         win.focus();
     }
     ```
+- Debug :
+
+    - log color in console
+    ```
+    const css = `background: rgba(${zeroTo255R},${zeroTo255G},${zeroTo255B},${1.0});`
+    console.log('%c color', css)
+    ```
