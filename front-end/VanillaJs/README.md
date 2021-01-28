@@ -75,3 +75,18 @@
     const css = `background: rgba(${zeroTo255R},${zeroTo255G},${zeroTo255B},${1.0});`
     console.log('%c color', css)
     ```
+
+- mouseevent
+
+    - get cursor position
+    ```
+    updateMouse(event, mouse: THREE.Vector2) {
+        if (event.type.includes('touch')) {
+            mouse.x = event.changedTouches[0].clientX;
+            mouse.y = event.changedTouches[0].clientY;
+        } else {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        }
+    }
+    ```

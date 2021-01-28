@@ -30,6 +30,19 @@
         // in fragment shader
         vec3 normal = normalize(cross(dFdx(pos), dFdy(pos)));
         ```
+
+    - discard pixel instead write it transparent in fragmentShader
+        ```
+        uniform mediump vec3 chromaKeyColor;
+        varying mediump vec3 vertexColor;
+        void main{
+            if((length(tColor - chromaKeyColor) - 0.5) * 7.0<0.1){
+                 discard;
+            }else{
+                gl_FragColor = vec4(vertexColor,1.0);
+            }
+        }
+        ```
     
 - Object :
 
