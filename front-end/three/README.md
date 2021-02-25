@@ -32,15 +32,25 @@
         ```
 
     - discard pixel instead write it transparent in fragmentShader
+        - remove all transparent pixel avoid weird occlusion
         ```
-        uniform mediump vec3 chromaKeyColor;
-        varying mediump vec3 vertexColor;
-        void main{
-            if((length(tColor - chromaKeyColor) - 0.5) * 7.0<0.1){
-                 discard;
-            }else{
-                gl_FragColor = vec4(vertexColor,1.0);
+        THREE.Material.prototype.onBeforeCompile = function ( shader )
+        {
+            function insert( str, index, value )
+            {
+                return str.substr( 0, index ) + value + str.substr( index );
             }
+            
+            const mainEndIndex = shader.fragmentShader.lastIndexOf( '}' );
+
+            const addOnshader = [
+                `if(gl_FragColor.a < 0.1){`,
+                `   discard;`,
+                `}`,
+                ``
+            ].join( "\n" );
+
+            shader.fragmentShader = insert( shader.fragmentShader, mainEndIndex, addOnshader )
         }
         ```
     
