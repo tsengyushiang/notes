@@ -95,12 +95,10 @@ wsl --set-default-version 2
 
 ## System Command
 
-* add file  
-` touch  <fileName>`
-* search file 
-`find <dir> -name <fileName>`
-* set lib path
-`export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH`
+* add file  `touch  <fileName>`
+* search file `find <dir> -name <fileName>`
+* set lib path `export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH`
+* [ssh-tutorial](./ssh-tutorial.html)
 
 ## System Error 
 
