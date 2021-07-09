@@ -1,6 +1,7 @@
 ## Category
 
 - [anaconda](./anaconda)
+- [c++](./c++)
 - [docker](./docker)
 - [electron](./electron)
 - [monitor](./monitor)
