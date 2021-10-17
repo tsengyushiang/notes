@@ -67,21 +67,23 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
     
 ## Container
 
+- `nvidia-docker run --name YOLO -v /folderOnLocal:/root -p 2222:22 -e NVIDIA_VISIBLE_DEVICES=2,3 -dt ubuntu:16.04`: 安裝 docker container
+    - `--name YOLO`：container名字
+    - `-v /folderOnLocal:/root`:掛載`/folderOnLocal`到container的`/root`
+    - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡
+    - `-p 2222:22`: container對應哪個port
+    - `-dt tensorflow/tensorflow:latest-gpu-py3` : 要裝的pull的映像檔
+
+- `docker exec -it <NAME> bash` : 進入環境
+
 - `docker ps` : 列出正在使用的container
 - `docker pull <NAME>` : 從[dockerhub](https://hub.docker.com/)下載映像檔
     ```
-    docker pull ubuntu:16.04
+    docker pull ubuntu:18.04
     ```
 - `nvidia-smi` : 查看顯卡使用狀況
-- `nvidia-docker run --name YOLO -v /folderOnLocal:/root -e NVIDIA_VISIBLE_DEVICES=2,3 -dt ubuntu:16.04`: 安裝 docker container
-    - `--name YOLO`：container名字
-    - `-v /folderOnLocal:/root`:掛載`/folderOnLocal`到container的`/root`
-    - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡,也可使用使用`--gpus all`
-    - `-dt tensorflow/tensorflow:latest-gpu-py3` : 要裝的pull的映像檔
-
 - `nvidia-docker start <NAME>` : 打開container
 - `docker stop <NAME>` : 關掉container
-- `docker exec -it <NAME> bash` 或 `docker attach <NAME>` : 進入環境
 - `exit` : 退出環境
 - `docker cp <from> <to>` :將檔案/資料夾傳入傳出container
     - `<container-name>:/<path in container>` : `openpose-M10815098:/openpose`
@@ -101,13 +103,44 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
     sudo docker run --name openpose -ti --net=host --ipc=host --gpus all -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -dt exsidius/openpose
     ```
 
-## Edit file with vim
+## Edit file 
 
-- `apt-get update`
-- `apt-get install vim`
+- Vim in bash
+    - `apt-get update`
+    - `apt-get install vim`
+    - 結束編輯`:x + Enter`
+    - 切換到插入模式 : `i` , `Esc`結束
 
-- 結束編輯`:x + Enter`
-- 切換到插入模式 : `i` , `Esc`結束
+- Jupyter notebook in browser
+
+    - Install
+        ```
+        apt update
+        apt install python3-pip -y
+        pip3 --version
+        pip3 install --upgrade pip
+        pip3 install jupyter
+        ```
+    - Run : 
+        - 確認port在建立container時有做設定`-p 2222:22` 
+        - 以對應的port`22`開啟 `jupyter notebook --no-browser --port 22 -ip 0.0.0.0`
+        ```
+        [I 09:41:10.756 NotebookApp] Serving notebooks from local directory: /root
+        [I 09:41:10.756 NotebookApp] Jupyter Notebook 6.4.4 is running at:
+        [I 09:41:10.756 NotebookApp] http://1bdd0c753134:22/?token=28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef
+        [I 09:41:10.756 NotebookApp]  or http://127.0.0.1:22/?token=28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef
+        [I 09:41:10.756 NotebookApp] Use Control-C to stop this server and shut down all kernels (twice to skip confirmation).
+        [C 09:41:10.762 NotebookApp]
+
+            To access the notebook, open this file in a browser:
+                file:///root/.local/share/jupyter/runtime/nbserver-4331-open.html
+            Or copy and paste one of these URLs:
+                http://1bdd0c753134:22/?token=28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef
+            or http://127.0.0.1:22/?token=28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef
+
+        ```
+        - 使用browser開啟port`2222`的網頁 `140.118.175.94:2222`
+        - 登入頁使用上方token `28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef`
 
 ## Run process in the background
 
