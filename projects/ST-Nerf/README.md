@@ -55,4 +55,6 @@ pip install PyOpenGL-accelerate
 
 apt-get install vtk6
 pip install mayavi
+
+pip install imageio_ffmpeg
 ```
