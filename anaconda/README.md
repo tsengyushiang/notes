@@ -13,7 +13,7 @@ bash Anaconda3-2019.10-Linux-x86_64.sh
 // option1 :
 apt-get install wget
 wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
-./Anaconda3–4.4.0-Linux-x86_64.sh
+bash Anaconda3–4.4.0-Linux-x86_64.sh
 
 export PATH='~/anaconda3/bin:$PATH'
 source ~/.bashrc
