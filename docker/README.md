@@ -73,7 +73,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
     - `-e NVIDIA_VISIBLE_DEVICES=2,3`：要使用哪張顯卡
     - `-p 2222:22`: container對應哪個port
     - `-dt tensorflow/tensorflow:latest-gpu-py3` : 要裝的pull的映像檔
-
+    - [Found no NVIDIA driver on your system](https://github.com/NVIDIA/nvidia-docker/issues/533) : `docker run -ti --runtime=nvidia -e NVIDIA_DRIVER_CAPABILITIES=compute,utility -e NVIDIA_VISIBLE_DEVICES=all ...`
 - `docker exec -it <NAME> bash` : 進入環境
 
 - `docker ps` : 列出正在使用的container
@@ -123,7 +123,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
         ```
     - Run : 
         - 確認port在建立container時有做設定`-p 2222:22` 
-        - 以對應的port`22`開啟 `jupyter notebook --no-browser --port 22 -ip 0.0.0.0`
+        - 以對應的port`22`開啟 `jupyter notebook --no-browser --port 22 --ip 0.0.0.0 --allow-root`
         ```
         [I 09:41:10.756 NotebookApp] Serving notebooks from local directory: /root
         [I 09:41:10.756 NotebookApp] Jupyter Notebook 6.4.4 is running at:
