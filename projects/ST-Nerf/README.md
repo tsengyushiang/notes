@@ -2,7 +2,8 @@
 
 ### Reference
 
-- [ST-Nerf](https://github.com/DarlingHang/st-nerf)
+- [offical ST-Nerf](https://github.com/DarlingHang/st-nerf)
+- [modified ST-Nerf with correct instruction](https://github.com/tsengyushiang/st-nerf)
 
 ### Docker 
 
