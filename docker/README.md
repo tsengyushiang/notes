@@ -142,6 +142,20 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
         - 使用browser開啟port`2222`的網頁 `140.118.175.94:2222`
         - 登入頁使用上方token `28c2bad4109495d25e347dda4b9ed1adab9700cbee94a8ef`
 
+    - Reset password
+
+        - 找到config檔
+            ```
+            (base) root@066e5a7d9608:~# jupyter notebook --generate-config --allow-root
+            ... /root/.jupyter/jupyter_notebook_config.py ...
+            ```
+
+        - 更改jupyter_notebook_config.py
+            ```
+            c.NotebookApp.password = ''
+            c.NotebookApp.password_required = False
+            ```
+
 ## Run process in the background
 
 - `apt-get install screen`
