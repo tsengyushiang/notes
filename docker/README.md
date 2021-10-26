@@ -159,7 +159,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ## Run process in the background
 
 - `apt-get install screen`
-- `screen` : 建立新的cmd
+- `screen -L` : 建立新的cmd後執行指令, `exit`離開
 - 將目前process放到background執行,在screen建立的cmd中按`ctrl+a`+`d`(detach)
 - `screen -ls`: 查詢正在執行的process
 - `screen -rd <id>` : `id`可從`screen -ls`找到 
