@@ -17,6 +17,8 @@
     - [Joint Texture and Geometry Optimization for RGB-D Reconstruction](./projects/JointTG)
     - [meshrcnn](./projects/meshrcnn)
 
+- Premiere
+    -  [GreenBackgroundRemove](./Premiere/backgroundRemove.md)
 - [python](./python)
     - [algorithm](./python/Algorithm)
     - [command line tool](./python/command)
