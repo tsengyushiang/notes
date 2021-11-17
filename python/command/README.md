@@ -14,7 +14,9 @@
 
          # custom command line input parameters       
          args.add_argument("-t", "--time", type=int,default=False)
-      
+
+         args.add_argument("--maskNoise", action='store_true', help='True only if defined in command line')
+
          return parser
       ```
       
@@ -29,12 +31,12 @@
    ```
    from args import build_argparser
    args = build_argparser().parse_args()
-   print(args.time)
+   print(args.time,args.maskNoise)
    ```
 
 - usage
 
-   - run `python main.py -t 123`
-   - will get `123` printed
+   - run `python main.py -t 123 --maskNoise`
+   - will get `123 True` printed
    - [futher usages](https://docs.python.org/zh-tw/3/howto/argparse.html)
 
