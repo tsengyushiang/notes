@@ -8,15 +8,16 @@
 - [nodejs](./nodejs)
 - [Github](./github)
 - project setup
+    - [CenterNet](./projects/CenterNet)
+    - [DONerf](./projects/DONerf)
+    - [Detectron](./projects/detectron)
+    - [Joint Texture and Geometry Optimization for RGB-D Reconstruction](./projects/JointTG)
+    - [meshrcnn](./projects/meshrcnn)
     - [openpose](./projects/openpose)
     - [openpose-depth](./projects/openpose-depth)
-    - [CenterNet](./projects/CenterNet)
     - [Pifu/PifuHD](./projects/Pifu)
     - [ST-nerf](./projects/ST-Nerf)
     - [Texture Mapping for 3D Reconstruction with RGB-D Sensor](./projects/G2LTex)
-    - [Joint Texture and Geometry Optimization for RGB-D Reconstruction](./projects/JointTG)
-    - [meshrcnn](./projects/meshrcnn)
-    - [detectron](./projects/detectron)
 
 - Premiere
     -  [GreenBackgroundRemove](./Premiere/backgroundRemove.md)
