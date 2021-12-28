@@ -50,3 +50,10 @@ cd torchsearchsorted
 pip install .
 cd ..
 ```
+### Jupyter notebook
+```
+pip install jupyter
+jupyter notebook --ip 0.0.0.0 --port=22 --allow-root
+
+http://140.118.175.96:2222/
+```
