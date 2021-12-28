@@ -12,6 +12,7 @@ docker run -ti --runtime=nvidia --name DNerf -v /raid/dgx2_user3/DSNerf:/root -p
 docker start DNerf
 
 docker exec -it DNerf bash
+
 ```
 
 ### Anaconda
@@ -37,6 +38,9 @@ dgx_user1@DGX-Station:/raid/dgx_user1/st-nerf$ conda info
 ### Conda Env
 
 ```
+apt-get install libglib2.0-0
+apt-get install freeglut3-dev
+
 git clone https://github.com/albertpumarola/D-NeRF.git
 cd D-NeRF
 conda create -n dnerf python=3.6
