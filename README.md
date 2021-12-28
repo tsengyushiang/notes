@@ -10,6 +10,7 @@
 - project setup
     - [CenterNet](./projects/CenterNet)
     - [DONerf](./projects/DONerf)
+    - [DONerf](./projects/D-Nerf)
     - [Detectron](./projects/detectron)
     - [Joint Texture and Geometry Optimization for RGB-D Reconstruction](./projects/JointTG)
     - [meshrcnn](./projects/meshrcnn)
