@@ -2,14 +2,11 @@
 
 - Setup Router DDNS
 
-  - Go `http://mwlogin.net/`
-  - Setup Dynamic DNS
-    ![mercusysRouter](./mercusysRouter.png)
+  - Go `192.168.0.1`
   - Setup NO-IP Service Provider
-    ![NOIP](./NOIP.png)  
-  - check IP by command `ping {dns}`, replace `{dns}` to NO-IP hostname and check ip is the same as yours.
-    ![checkipCMD](./checkip.png)
-    ![myip](./myip.png)
-
+    ![NOIP](./NOIP.png)
+  - Setup Dynamic DDNS, DMZ
+    ![mercusysRouter](./mercusysRouter.png)
+    ![mercusyDMZ](./mercusyDMZ.png)
 
 
