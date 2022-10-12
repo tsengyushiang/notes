@@ -33,7 +33,7 @@
     - [widgets](./python/widgets)
 
 - [front-end](./front-end)
-    - [React](./front-end/react)
+    - [React+Redux](./front-end/React_Redux)
     - [Threejs](./front-end/three)
     - [Vanilla Js](./front-end/VanillaJs)
     - [CSS](./front-end/CSS)
