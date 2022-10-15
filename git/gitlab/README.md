@@ -3,7 +3,7 @@
 ## Template
 
 - named `Default.md` (case insensitive) will auto fill when issue and MR created
-- `merge_request_templates/Default.md`
+- `.gitlab/merge_request_templates/Default.md`
 
     ```
     # ui
@@ -22,7 +22,7 @@
     * end
     ```
 
-- `/issue_templates/Default.md`
+- `.gitlab/issue_templates/Default.md`
 
     ```
     * descript issue
@@ -34,7 +34,7 @@
 
     # related
 
-    * external tick link id from mantis,Redmine
+    * external ticket link,id from mantis,Redmine
 
     *end
     ```
