@@ -2,7 +2,8 @@
 
 ## Template
 
-- `merge_request_templates/MRDescription.md`
+- named `Default.md` (case insensitive) will auto fill when issue and MR created
+- `merge_request_templates/Default.md`
 ```
 # ui
 
@@ -21,7 +22,7 @@
 
 ```
 
-- `/issue_templates/IssueDescription.md`
+- `/issue_templates/Default.md`
 ```
 * descript issue
 
