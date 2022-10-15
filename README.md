@@ -10,6 +10,7 @@
 - [nodejs](./nodejs)
 - [git](./git/)
     - [Github](./git/github/)
+    - [GitLab](./git/gitlab/)
 - project setup
     - [CenterNet](./projects/CenterNet)
     - [DONerf](./projects/DONerf)
