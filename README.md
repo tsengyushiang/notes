@@ -8,7 +8,8 @@
 - [electron](./electron)
 - [monitor](./monitor)
 - [nodejs](./nodejs)
-- [Github](./github)
+- [git](./git/)
+    - [Github](./git/github/)
 - project setup
     - [CenterNet](./projects/CenterNet)
     - [DONerf](./projects/DONerf)
