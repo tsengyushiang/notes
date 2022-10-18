@@ -36,8 +36,10 @@
 
 - [front-end](./front-end)
     - [React+Redux](./front-end/React_Redux)
+        - [styled-componets](./front-end/React_Redux/styled-components/)
         - components
             - [onClickOutsideAlerter](./front-end/React_Redux/components/onClickOutsideAlerter.md)
+            - [DropDownConatiner](./front-end/React_Redux/components/DropDownContainer.md)
     - [Threejs](./front-end/three)
     - [Vanilla Js](./front-end/VanillaJs)
     - [CSS](./front-end/CSS)
