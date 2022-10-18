@@ -34,10 +34,11 @@
         ```
         git diff-tree -r --no-commit-id --name-status --indent-heuristic --text <source> <target> | sed -e 's/\t/|/' -e '1i|State|File|Description|' -e '1i|:---:|:---|:---|' -e 's/^/|/' -e 's/$/||/'
         ```
-        
-        - `sed -e 's/\t/|/'` : replace tab to "|".
-        - `sed -e '1i|State|File|Description|' -e '1i|---|---|---|'` : add table title.
-        - `-e 's/^/|/' -e 's/$/||/'` : add "|" to begin and end. 
+        ```
+        sed -e 's/\t/|/' : replace tab to "|".
+        sed -e '1i|State|File|Description| -e '1i|---|---|---|'` : add table title to first line.
+        sed -e 's/^/|/' -e 's/$/||/' : add "|" to begin and end. 
+        ```
          
 - output
 
