@@ -41,9 +41,26 @@ const Button = styled.button`
 const Container = styled.div`
   text-align: center;
 `
+//pseudo-elements
+const InputColor = styled.input.attrs({ 
+  type: 'color',
+})`
+    -webkit-appearance: none;
+    border: none;
+
+    &:-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    &:-webkit-color-swatch {
+      border: none;
+    }
+  }
+`
 
 render(
   <Container>
+    <InputColor/>
     <Button>Normal Button</Button>
     <Button primary>Primary Button</Button>
   </Container>
