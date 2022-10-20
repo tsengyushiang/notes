@@ -31,14 +31,26 @@
 - parse output to markdown table format by `sed`
 
     - Git bash
-        ```
-        git diff-tree -r --no-commit-id --name-status --indent-heuristic --text <source> <target> | sed -e 's/\t/|/' -e '1i|State|File|Description|' -e '1i|:---:|:---|:---|' -e 's/^/|/' -e 's/$/||/'
-        ```
-        ```
-        sed -e 's/\t/|/' : replace tab to "|".
-        sed -e '1i|State|File|Description| -e '1i|---|---|---|'` : add table title to first line.
-        sed -e 's/^/|/' -e 's/$/||/' : add "|" to begin and end. 
-        ```
+        
+        - command
+
+            ```
+            git diff-tree -r --no-commit-id --name-status --indent-heuristic --text <source> <target> | sed -e 's/\t/|/' -e '1i|State|File|Description|' -e '1i|:---:|:---|:---|' -e 's/^/|/' -e 's/$/||/'
+            ```
+
+        - supplementary Instructions
+
+            ```
+            sed -e 's/\t/|/' : replace tab to "|".
+            sed -e '1i|State|File|Description| -e '1i|---|---|---|'` : add table title to first line.
+            sed -e 's/^/|/' -e 's/$/||/' : add "|" to begin and end. 
+            ```
+            
+            - In macOS
+            ```
+            brew install gnu-sed
+            alias sed=gsed //set everytime open a new bash
+            ```
          
 - output
 
