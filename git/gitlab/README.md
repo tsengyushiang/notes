@@ -53,4 +53,9 @@
 
     only:
         - merge_requests
+
+    # run pipeline when MR is ready and changed
+    except:
+        variables:
+            - $CI_MERGE_REQUEST_TITLE =~ /^WIP:.*/ || $CI_MERGE_REQUEST_TITLE =~ /^Draft:.*/
     ```
