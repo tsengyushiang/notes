@@ -38,3 +38,19 @@
 
     *end
     ```
+
+# CI/CD
+
+## MR Pipeline
+
+- `.gitlab-ci.yml` for difference table of MR can be used in description.
+
+    ```
+    LogDifferenceTable:
+    script:
+        - git fetch
+        - git diff-tree -r --no-commit-id --name-status origin/${CI_MERGE_REQUEST_TARGET_BRANCH_NAME} origin/${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME} | sed -e 's/\t/|/' -e '1i|State|File|Description|' -e '1i|:---:|:---|:---|' -e 's/^/|/' -e 's/$/||/'
+
+    only:
+        - merge_requests
+    ```
