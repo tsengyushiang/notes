@@ -54,6 +54,9 @@
     only:
         - merge_requests
 
+    # run when manually click button on web interface
+    when: manual
+
     # run pipeline when MR is ready and changed
     except:
         variables:
