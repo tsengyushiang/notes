@@ -40,6 +40,7 @@
         - components
             - [onClickOutsideAlerter](./front-end/React_Redux/components/onClickOutsideAlerter.md)
             - [DropDownConatiner](./front-end/React_Redux/components/DropDownContainer.md)
+            - [ModalBox](./front-end/React_Redux/components/ModalBox.md)
     - [Threejs](./front-end/three)
     - [Vanilla Js](./front-end/VanillaJs)
     - [CSS](./front-end/CSS)
