@@ -8,6 +8,8 @@
 * [React+Redux](./React_Redux)
 
     * [styled-componets](./React_Redux/styled-components/)
+
+    * [next-i18next](./React_Redux/next-i18next)
     
     * components
 
