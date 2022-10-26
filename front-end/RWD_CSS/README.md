@@ -22,21 +22,29 @@
     ```
     /* widht smaller than 400px*/
     body {
-    background-color: lightblue;
+        background-color: lightblue;
     }
 
      /* width between 400px and 800px*/
     @media screen and (min-width: 400px) {
-    body {
-        background-color: lightgreen;
-    }
+        body {
+            background-color: lightgreen;
+        }
     }
 
      /* width bigger than 800px*/
     @media screen and (min-width: 800px) {
-    body {
-        background-color: lavender;
+        body {
+            background-color: lavender;
+        }
     }
+    ```
+
+- before/after
+
+    ```
+    div:before {
+        content: "+";
     }
     ```
 
@@ -52,4 +60,13 @@
 
     // avoid zoom in/out
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    // iPhone X
+    <meta name="viewport" content="viewport-fit=cover">
+    body {
+        padding-top: constant(safe-area-inset-top);
+        padding-right: constant(safe-area-inset-right);
+        padding-bottom: constant(safe-area-inset-bottom);
+        padding-left: constant(safe-area-inset-left);
+    }
     ```
