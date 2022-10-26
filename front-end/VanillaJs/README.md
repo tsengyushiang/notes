@@ -90,3 +90,13 @@
         }
     }
     ```
+
+- undefined
+
+    ```
+    undefined && true // undefined
+    undefined && false // undefined
+    !!undefined // false
+    !undefined // true
+    Boolean(undefined) // false
+    ```
