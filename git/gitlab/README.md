@@ -1,6 +1,42 @@
 # GitLab
 
-## Template
+## Fork
+
+```
+//check cuurent remote setting
+$ git remote -v
+origin  https://gitlab.com/tsengyushiang/basic-custum-2.git (fetch)
+origin  https://gitlab.com/tsengyushiang/basic-custum-2.git (push)
+
+// add upstream repo to remote
+$ git remote add upstream https://gitlab.com/testing1078/basic.git
+$ git remote -v
+origin  https://gitlab.com/tsengyushiang/basic-custum-2.git (fetch)
+origin  https://gitlab.com/tsengyushiang/basic-custum-2.git (push)
+upstream        https://gitlab.com/testing1078/basic.git (fetch)
+upstream        https://gitlab.com/testing1078/basic.git (push)
+
+// fetch upstream state
+$ git fetch upstream
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 1), reused 2 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), 419 bytes | 34.00 KiB/s, done.
+From https://gitlab.com/testing1078/basic
+ * [new branch]      main       -> upstream/main
+
+// merge upstream main to our branch
+$ git merge upstream/main
+Updating f576df4..30eb41b
+Fast-forward
+ foo | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 foo
+```
+
+
+## Templates
 
 - named `Default.md` (case insensitive) will auto fill when issue and MR created
 - `.gitlab/merge_request_templates/Default.md`
