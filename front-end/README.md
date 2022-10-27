@@ -5,21 +5,25 @@
 
 * [package & config](./package_setup/)
 
-* [React+Redux](./React_Redux)
+* [Nextjs React](https://github.com/tsengyushiang/Nextjs-ghpages-CICD-template)
 
-    * [styled-componets](./React_Redux/styled-components/)
+    * [Redux & Context](./Nextjs_React/Redux_Context/)
 
-    * [next-i18next](./React_Redux/next-i18next)
+    * [redux-saga](./Nextjs_React/redux-saga/)
+
+    * [styled-componets](./Nextjs_React/styled-components/)
+
+    * [next-i18next](./Nextjs_React/next-i18next)
     
     * components
 
-        * [onClickOutsideAlerter](./React_Redux/components/onClickOutsideAlerter.md)
+        * [onClickOutsideAlerter](./Nextjs_React/components/onClickOutsideAlerter.md)
         
-        * [DropDownConatiner](./React_Redux/components/DropDownContainer.md)
+        * [DropDownConatiner](./Nextjs_React/components/DropDownContainer.md)
 
-        * [ModalBox](./React_Redux/components/ModalBox.md)
+        * [ModalBox](./Nextjs_React/components/ModalBox.md)
 
-* [RWD&CSS](./RWD_CSS/)
+* [RWD & CSS](./RWD_CSS/)
 
 * [Threejs](./three)
 
