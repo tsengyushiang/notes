@@ -1,6 +1,8 @@
 
 # Front-end
 
+* [vscode](./vscode/)
+
 * [electron](./electron)
 
 * [package & config](./package_setup/)
