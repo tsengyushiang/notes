@@ -1,5 +1,26 @@
 # Git
 
+## Develop
+
+- stage all files
+
+    ```
+    git add .
+    ```
+- commit 
+    ```
+    git commit -m "write your commit message here"
+    ```
+- find remote
+    ```
+    git remote -v
+    ```
+- get remote branches
+
+    ```
+    git remote update origin --prune
+    ```
+
 ## Log difference
 
 - input
