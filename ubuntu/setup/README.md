@@ -93,13 +93,6 @@ wsl --set-default-version 2
 
    `sudo apt install ibus-chewing`
 
-## System Command
-
-* add file  `touch  <fileName>`
-* search file `find <dir> -name <fileName>`
-* set lib path `export LD_LIBRARY_PATH=~/JointTG-master/lib:/usr/local/lib/:$LD_LIBRARY_PATH`
-* [ssh-tutorial](./ssh-tutorial.html)
-
 ## System Error 
 
 * Ubuntu 18.04 LTS _Bionic Beaver_ - Release amd64 (20180426)' in the drive
