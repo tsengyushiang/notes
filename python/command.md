@@ -1,4 +1,4 @@
-## Command Line Tool
+# Command Line Tool
 
 - `args.py`
 

@@ -1,4 +1,4 @@
-## issue
+# Issues
 
 - Set ubuntu to UTF-8 for Python 3, need to set every time open terminal
 

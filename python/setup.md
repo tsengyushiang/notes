@@ -1,4 +1,4 @@
-## Setup
+# Setup
 
 - GitBash on window10
 
