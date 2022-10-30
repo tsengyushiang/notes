@@ -8,7 +8,7 @@
 * [nodejs](./nodejs)
 * [git](./git/)
 * [projects](./projects/)
-* [Premiere](./Premiere/)
+* [premiere](./adobe_premiere/)
 * [python](./python/)
 * [front-end](./front-end/)
 * [unity](./unity)
