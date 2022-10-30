@@ -2,20 +2,9 @@
 
 ## CSS
 
-- interaction : 
-
-    - mouse click :
-        ```
-        // disabel mouse event
-        pointer-event : none;
-
-        //default
-        pointer-event : auto;
-        ```
-
 - layout :
 
-    - flex
+    - [flex](https://www.casper.tw/css/2017/07/21/css-flex/)
 
 - @media Rule :
 
@@ -39,14 +28,6 @@
         body {
             background-color: lavender;
         }
-    }
-    ```
-
-- before/after
-
-    ```
-    div:before {
-        content: "+";
     }
     ```
 
