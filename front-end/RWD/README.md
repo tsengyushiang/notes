@@ -1,4 +1,6 @@
-# CSS
+# Responsive Web Design(RWD)
+
+## CSS
 
 - interaction : 
 
@@ -48,7 +50,7 @@
     }
     ```
 
-# Responsive Web Design(RWD)
+## HTML settings
 
 * device viewport
 

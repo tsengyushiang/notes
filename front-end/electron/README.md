@@ -1,4 +1,6 @@
-## Build Desktop App with ReactJs & Electron
+# Electron
+
+## Build Desktop App with ReactJs
 
 - `yarn global add electron`
 - `yarn create react-app my-app`

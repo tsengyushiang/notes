@@ -1,5 +1,7 @@
 # next-i18next
 
+## Setup
+
 - install package
 
     ```
@@ -82,7 +84,7 @@
     export default appWithTranslation(MyApp);
     ```
 
-- test with component :
+## Testing
 
     ```
     import { useRef, useEffect, useState } from 'react'

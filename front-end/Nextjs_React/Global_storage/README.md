@@ -1,4 +1,6 @@
-# Redux 
+# Global storage 
+
+## Redux
 
 - reference : https://chentsulin.github.io/redux/docs/basics/Reducers.html
 - create `action`
@@ -83,7 +85,8 @@
   unsubscribe()
   ```
 
-# React Redux & Hooks
+## React Redux with Hooks
+
 - `npm install --save react-redux`
 - Redux component: parse store to props `todos` and `onTodoClick` in following example.
   ```
@@ -146,7 +149,7 @@
   }
   ```
 
-# React Hook Context
+## React Context Hook
 
 - variable to update components
     -  `useContext` cross components

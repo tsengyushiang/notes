@@ -1,4 +1,6 @@
-# Eslint for Nextjs
+# Eslint, Prettier, Husky, Lint-staged
+
+##  Eslint
 
 - packages
 
@@ -94,7 +96,7 @@
   }
   ```
   
-# Prettier
+## Prettier
 
 - packages
 
@@ -110,7 +112,7 @@
   }
   ```
 
-# Husky + Lint-staged
+## Husky + Lint-staged
 
 - Husky runs some script before git commit in following case we run prettier and check eslint, if eslint has error commit will not continue.
 - Lint-staged filter files for command.
