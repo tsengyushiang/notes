@@ -1,5 +1,5 @@
 # Git
 
-* [command](./command/)
-* [Github](./github/)
-* [GitLab](./gitlab/)
+* [command](./commands.md)
+* [Github](./github.md)
+* [GitLab](./gitlab.md)
