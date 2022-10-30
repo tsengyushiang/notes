@@ -35,7 +35,7 @@
 
 * device viewport
 
-    * [reference](./meta-viewport.html)
+    * [reference](./references/meta-viewport.html)
     
     ```
     // initial size 100%

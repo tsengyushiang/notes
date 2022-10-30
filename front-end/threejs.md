@@ -100,4 +100,4 @@
 
 ## Reference
 
-- [OpenGL Projection Matrix and ndc_depth](./projectionMatrix.html)
+- [OpenGL Projection Matrix and ndc_depth](./references/projectionMatrix.html)

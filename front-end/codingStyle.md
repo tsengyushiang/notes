@@ -1,4 +1,4 @@
-# Coding style
+# Coding Style
 
 * Eslint : check coding style.
 * Prettier : format code
