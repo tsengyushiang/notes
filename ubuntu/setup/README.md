@@ -1,4 +1,4 @@
-## WSL(windows subsystem linux)
+## windows subsystem linux(WSL)
 
 - 系統管理員執行`powershell`, 執行以下指令後重新開機
 

@@ -1,3 +1,5 @@
+# GPUInspector
+
 ## Ubuntu
 
 - `watch -n <time> <command>`
