@@ -1,4 +1,9 @@
-# Eslint, Prettier, Husky, Lint-staged
+# Coding style
+
+* Eslint : check coding style.
+* Prettier : format code
+* Husky : run command when git commit.
+* Lint-staged : run command with specific files.
 
 ##  Eslint
 

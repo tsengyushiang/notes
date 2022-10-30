@@ -1,4 +1,4 @@
-# vscode setup
+# Vscode
 
 ## Git Graph
 
