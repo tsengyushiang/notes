@@ -1,4 +1,4 @@
-## C++ Libraries with vs2019 setting
+## C++ Libraries
 
 - [opencv + realsense](./OpenCV-Realsesne.md)
 - [imgui + opengl3](./Imgui-OpenGL3.md)

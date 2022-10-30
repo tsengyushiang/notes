@@ -1,10 +1,10 @@
 ## Category
 
 * [anaconda](./anaconda)
-* [backend/network](./backend_network/)
 * [c++](./c++)
 * [docker](./docker)
 * [monitor](./monitor)
+* [network](./network/)
 * [nodejs](./nodejs)
 * [git](./git/)
 * [projects](./projects/)

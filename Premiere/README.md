@@ -1,3 +1,3 @@
 # Premiere
 
-*  [Green Background Remove](./backgroundRemove/)
+*  [Green Background Remove](./chromakeying.md)
