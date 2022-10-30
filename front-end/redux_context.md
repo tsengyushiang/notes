@@ -1,4 +1,4 @@
-# Global storage 
+# Redux & Context Hook 
 
 ## Redux
 
