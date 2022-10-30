@@ -2,6 +2,7 @@
 # Front-end
 
 * [Eslint](./Eslint/)
+* [Coding Style](./codingStyle.md)
 * [vscode](./vscode/)
 * [electron](./electron)
 * [package & config](./package_setup/)
