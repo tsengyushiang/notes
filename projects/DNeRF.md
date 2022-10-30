@@ -1,4 +1,4 @@
-## D-Nerf
+# D-Nerf
 
 ### Reference
 
@@ -35,7 +35,7 @@ dgx_user1@DGX-Station:/raid/dgx_user1/st-nerf$ conda info
     ...
 ```
 
-### Conda Env
+### Anaconda
 
 ```
 apt-get install libglib2.0-0

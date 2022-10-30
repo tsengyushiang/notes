@@ -1,4 +1,4 @@
-## Joint Texture and Geometry Optimization for RGB-D Reconstruction
+# Joint Texture and Geometry Optimization for RGB-D Reconstruction
 
 ### Reference
 

@@ -1,4 +1,4 @@
-## Texture Mapping for 3D Reconstruction with RGB-D Sensor
+# Texture Mapping for 3D Reconstruction with RGB-D Sensor
 
 ### Reference
 

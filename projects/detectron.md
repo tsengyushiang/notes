@@ -1,11 +1,11 @@
-## Detectron2
+# Detectron2
 
 ### Reference
 
 - [Detectron2](https://github.com/facebookresearch/detectron2)
 - [tutorial video](https://www.youtube.com/watch?v=Pb3opEFP94U)
 
-### Windows demo installation instuction 
+### Win10 setup 
 
 ```
 conda create -n detectron python=3.8

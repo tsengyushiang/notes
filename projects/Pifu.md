@@ -1,11 +1,11 @@
-## Pifu/PifuHD
+# Pifu/PifuHD
 
 ### Reference
 
 - [Pifu](https://shunsukesaito.github.io/PIFu/)
 - [PifuHD](https://shunsukesaito.github.io/PIFuHD/)
 
-### Windows demo installation instuction 
+### Win10 setup 
 
 - Install [Anaconda](https://www.anaconda.com/products/individual) and add to PATH
     
