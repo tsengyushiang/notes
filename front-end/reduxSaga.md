@@ -210,19 +210,21 @@
 sequenceDiagram
     
     par Call Reducer
-        UI->>REDUCER: ACTION_LOAD_DATA
-        REDUCER->>UI: loading=true
-    and Call Saga
-        UI->>SAGA: ACTION_LOAD_DATA
+        UI->>Reducer: ACTION_LOAD_DATA
+        Reducer->>UI: loading=true
+    and Call Redux-saga
+        UI->>Redux-saga: ACTION_LOAD_DATA
     end
 
-    Note right of SAGA: Call API
-    alt Call Reducer
-        SAGA->>REDUCER: ACTION_LOAD_DATA_SUCCESS
-        REDUCER->>UI: loading=false, data={...} 
-    else Call Reducer
-        SAGA->>REDUCER: ACTION_LOAD_DATA_FAILED
-        REDUCER->>UI: loading=false 
+    Redux-saga->>Server: api
+    Server-->>Redux-saga: response
+    
+    alt SUCCESS
+        Redux-saga->>Reducer: ACTION_LOAD_DATA_SUCCESS
+        Reducer->>UI: loading=false, data
+    else FAIL
+        Redux-saga->>Reducer: ACTION_LOAD_DATA_FAIL
+        Reducer->>UI: loading=false, error message 
     end
 
 ```
