@@ -2,21 +2,19 @@
 
 - Object :
 
-    - merge object to another, usefull when inherent getter
+    - spread operator
 
         ```
-        public get targetInfo(): RaycastInfo
-        {
-            return {
-                type: RaycastType.SHOWMODAL | RaycastType.MOVE,
-                id: EObjectType.MODEL,
-                url: this.openLink,
-                ...super[ 'targetInfo' ]
-            }
-        }
+        [...Array(2)].map((_,idx)=>idx) //[0,1]
+        
+        const arr = ['a','b','c']
+        [...arr,'d','e'] //['a','b','c','d','e']
+
+        {...arr} //{0: 'a', 1: 'b', 2: 'c'}
         ```
+
     
-    - beatify JSON : `JSON.stringify(jsObj, null, 4);`
+    - object to JSON string : `JSON.stringify(jsObj, null, 4);`
 
 - [Request](https://developer.mozilla.org/zh-TW/docs/Web/API/Fetch_API/Using_Fetch)
 

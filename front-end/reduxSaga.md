@@ -48,18 +48,19 @@
     `./redux/sagas/todo.js` : watch saga dispacth.
     
     ```javascript
-    import { takeEvery, put } from "redux-saga/effects";
+    import { takeEvery, put, select } from "redux-saga/effects";
     import { LIST_ACTION_ADD, LIST_ACTION_ADD_SUCCESS } from "../../constants/todo";
 
     let counter = 0;
 
     function* add({ text }) {
+        const { todos } = yield select(state => state.todo)
         yield put({
             type: LIST_ACTION_ADD_SUCCESS,
-            payload: {
+            payload: [...todos, {
                 text,
                 id: counter++
-            }
+            }]
         })
     }
 
@@ -93,7 +94,7 @@
     const todo = (state = initialState, action) => produce(state, draft => {
         switch (action.type) {
             case LIST_ACTION_ADD_SUCCESS:
-                draft.todos = [...state.todos, action.payload];
+                draft.todos = action.payload;
                 break
             default:
                 break
