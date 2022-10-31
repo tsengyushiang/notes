@@ -15,6 +15,7 @@
 ## Examples
 
 * file-saver
+
 ```
 import { saveAs } from 'file-saver';
 const blob = new Blob( [ JSON.stringify( json ) ], { type: "application/json" } );
@@ -22,6 +23,7 @@ saveAs( blob, "media.json" );
 ```
 
 * DOMPurify
+
 ```
 import DOMPurify from 'dompurify'
 
