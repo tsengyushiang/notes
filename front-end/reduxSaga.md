@@ -1,5 +1,7 @@
 # redux-saga
 
+## Setup
+
 - install packages
 
     ```
@@ -201,3 +203,26 @@
 
     export default TextInput
     ```
+
+## Flow chart of Load data
+
+```mermaid
+sequenceDiagram
+    
+    par Call Reducer
+        UI->>REDUCER: ACTION_LOAD_DATA
+        REDUCER->>UI: loading=true
+    and Call Saga
+        UI->>SAGA: ACTION_LOAD_DATA
+    end
+
+    Note right of SAGA: Call API
+    alt Call Reducer
+        SAGA->>REDUCER: ACTION_LOAD_DATA_SUCCESS
+        REDUCER->>UI: loading=false, data={...} 
+    else Call Reducer
+        SAGA->>REDUCER: ACTION_LOAD_DATA_FAILED
+        REDUCER->>UI: loading=false 
+    end
+
+```
