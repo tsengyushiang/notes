@@ -1,8 +1,9 @@
 # Web Tools
 
-## Notes
+## Chrome plugins
     
 - [Save Page WE](https://chrome.google.com/webstore/detail/save-page-we/dhhpefjklgkmgeafimnjhojgjamoafof) : download web-page to single html.
+- [Save All Resources](https://chrome.google.com/webstore/detail/save-all-resources/abpdnfjocnmdomablahdcfnoggeeiedb) : download web-page resource including data from reqeuest
 
 ## Deep Learning
 
