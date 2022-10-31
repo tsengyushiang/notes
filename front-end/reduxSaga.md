@@ -208,22 +208,25 @@
 
 ```mermaid
 sequenceDiagram
-    
+       
+    Note left of UI: onClick
     par Call Reducer
-        UI->>Reducer: ACTION_LOAD_DATA
+        UI->>Reducer: dispatch(ACTION_LOAD_DATA)
         Reducer->>UI: loading=true
     and Call Redux-saga
-        UI->>Redux-saga: ACTION_LOAD_DATA
+        UI->>Redux-saga: dispatch(ACTION_LOAD_DATA)
     end
+    
+    Reducer-->>Redux-saga: yield select(state=>state)
 
-    Redux-saga->>Server: api
+    Redux-saga->>Server: yield call(api)
     Server-->>Redux-saga: response
     
     alt SUCCESS
-        Redux-saga->>Reducer: ACTION_LOAD_DATA_SUCCESS
+        Redux-saga->>Reducer: yield put(ACTION_LOAD_DATA_SUCCESS)
         Reducer->>UI: loading=false, data
     else FAIL
-        Redux-saga->>Reducer: ACTION_LOAD_DATA_FAIL
+        Redux-saga->>Reducer: yield put(ACTION_LOAD_DATA_FAIL)
         Reducer->>UI: loading=false, error message 
     end
 
