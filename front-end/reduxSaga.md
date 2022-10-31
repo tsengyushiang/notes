@@ -212,22 +212,26 @@ sequenceDiagram
     Note left of UI: onClick
     par Call Reducer
         UI->>Reducer: 1.dispatch(ACTION_LOAD_DATA)
-        Reducer->>UI: 2.loading=true
     and Call Redux-saga
         UI->>Redux-saga: 1.dispatch(ACTION_LOAD_DATA)
     end
     
-    Reducer-->>Redux-saga: 3.yield select(state=>state)
-
-    Redux-saga->>Server: 4.yield call(api)
-    Server-->>Redux-saga: 5.response
+    Reducer->>UI: 2.loading=true
+    
+    opt Need Current State
+        Redux-saga-->>+Reducer: 3.yield select(state=>state)
+        Reducer-->>-Redux-saga: 4.data
+    end
+    
+    Redux-saga->>+Server: 5.yield call(api)
+    Server-->>-Redux-saga: 6.response
     
     alt SUCCESS
-        Redux-saga->>Reducer: 6.yield put(ACTION_LOAD_DATA_SUCCESS)
-        Reducer->>UI: 7.loading=false, data
+        Redux-saga->>Reducer: 7.yield put(ACTION_LOAD_DATA_SUCCESS)
+        Reducer->>UI: 8.loading=false, data
     else FAIL
-        Redux-saga->>Reducer: 6.yield put(ACTION_LOAD_DATA_FAIL)
-        Reducer->>UI: 7.loading=false, error message 
+        Redux-saga->>Reducer: 7.yield put(ACTION_LOAD_DATA_FAIL)
+        Reducer->>UI: 8.loading=false, error message 
     end
 
 ```
