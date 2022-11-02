@@ -18,6 +18,25 @@
         content: "+";
     }
     ```
+## Grid
+
+- fixed size items
+
+    ```css
+    .grid-container {
+      display: grid;
+      grid-template-columns: auto auto auto;    /*display 3column*/
+      justify-content:center;                   /*make items close to each others*/
+      padding-left:50%;                         /*control grid position*/
+    }
+    .grid-item {
+       /* sort fixed size item with grid*/
+      width:100px;
+      height:100px;
+      word-wrap: break-word /*handle text overflow*/
+    }
+    ```
+
 ## Animations
 
 - isLoading
