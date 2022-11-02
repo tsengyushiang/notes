@@ -18,6 +18,30 @@
         content: "+";
     }
     ```
+## Flex
+
+- RWD from 2 column to 1 column
+
+    ```css
+    .item {
+      width: 50%;
+      height: 300px; /* Should be removed. Only for demonstration */
+    }
+
+    .container{
+      display:flex;
+      flex-direction:row;
+      flex-wrap:wrap;
+    }
+
+    /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+      .item {
+        width: 100%;
+      }
+    }
+    ```
+
 ## Grid
 
 - fixed size items
