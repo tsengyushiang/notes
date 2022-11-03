@@ -18,6 +18,7 @@
         content: "+";
     }
     ```
+
 ## Flex
 
 - RWD from 2 column to 1 column
@@ -50,14 +51,33 @@
     .grid-container {
       display: grid;
       grid-template-columns: auto auto auto;    /*display 3column*/
-      justify-content:center;                   /*make items close to each others*/
-      padding-left:50%;                         /*control grid position*/
+      justify-content:center;                   /*make items close to each others and align center*/
+      justify-content:left;                    /*make items close to each others and align left*/
     }
     .grid-item {
        /* sort fixed size item with grid*/
       width:100px;
       height:100px;
       word-wrap: break-word /*handle text overflow*/
+    }
+    ```
+
+- items fit Grid
+
+    ```css
+    .grid-container {
+      width:500px;
+      height:300px;
+      display: grid;
+      grid-template-columns: auto auto auto;    /*display 3column*/
+      margin: auto;                             /* align center*/
+    }
+    .grid-item {
+       /* sort fixed size item with grid*/
+      width: 100%;
+      height: 100%;
+      background-size: 100% 100%;               /* make background image fit elemnt*/
+      background-image: url('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png');
     }
     ```
 
@@ -79,5 +99,35 @@
         100% {
             background-position: 100% 0%;
         }
+    }
+    ```
+
+
+## Others
+
+- keep div ratio when size change
+
+    ```css
+    .container{
+      position: relative;
+      width: 100%;
+      padding-top: 24%; / 1024width:250height Aspect Ratio, >100% also works /
+    }
+    .div{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    ```
+    
+- align text to center
+    
+    - [refernece](https://shinyu0430.github.io/2021/09/21/maxwidthminwidthfitcontent/)
+    ```css
+    .wrapper {
+      width: fit-content;
+      margin: auto;
     }
     ```
