@@ -11,37 +11,55 @@
     ```
 - [search by something](https://docs.github.com/en/free-pro-team@latest/github/searching-for-information-on-github/searching-for-repositories)
 
-## Submodule :
 
-- create repo `subModule`
-- create repo `application1`
-- extend normal repo to subeModule repo 
-    - clone normal repo `application1`
-    - import another repo as submodule, after command `.gitmodules` and folder will be added 
+## Workflows
+
+- auto deploy gh-page `.github/workflows/AutoDeployGihubPage.yml`
+
+
+    ```
+    name: AutoDeployGihubPage
+
+    on:
+    push:
+        branches: [ main ]
+
+    jobs:
+    build:
+
+        runs-on: ubuntu-latest
+
+        strategy:
+        matrix:
+            node-version: [16.x]
+            
+        steps:
+        - uses: actions/checkout@v3
+        with:
+            token: ${{ secrets.PAT }}
+        - run: |
+            echo "NEXT_PUBLIC_REPO=${{ github.repository }}" > .env
+            npm install
+            npm run export
+            touch ./out/.nojekyll
+            git config --global user.email "github@example.com"
+            git config --global user.name "git workflows"
+            git add out/ -f
+            git commit -m "Deploy gh-pages"          
+            #git subtree push --prefix out origin gh-pages
+            git subtree split --prefix out -b gh-pages
+            git push -f origin gh-pages:gh-pages
+            git branch -D gh-pages
+    ```
+
+    - Set Personal Access Token to repo secret `PAT`.
+
+        * right top icon > settings >  Developer settings > Personal access tokens (classic)
+            - check repo
+            - check workflow
+            - copy token string
+
+        * repo > settings > Secrets > Actions > New repository secret
         
-        `git submodule add {cloneUrl of subModule repo}`
-    - push the repo
-
-- develope app repo with submodule work independently so,
-
-    - add submodule code : push to `subModule`
-    - add app code : push to `application1`
-
-- clone app repo with submodule 
-    - clone `application1`
-    - cd `subModule` folder and `git submodule init`
-    - `git submodule update`
-
-- update submodule at parent
-    - `git submodule update --remote`
-
-- remove submodule
-    - `git rm subModule`
-    - `rm .git/modules/subModule`
-    -  open `config` file, and remove following lines
-        
-        ```
-        [submodule = "subModule"]
-            acitvate = true
-            url = https://~.git
-        ```
+            - named `PAT`
+            - paste token string

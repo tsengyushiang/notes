@@ -84,3 +84,38 @@
     |M|package.json||
     |A|pages/isomorphic-git/index.tsx||
     |M|yarn.lock||
+
+## Submodule
+
+- create repo `subModule`
+- create repo `application1`
+- extend normal repo to subeModule repo 
+    - clone normal repo `application1`
+    - import another repo as submodule, after command `.gitmodules` and folder will be added 
+        
+        `git submodule add {cloneUrl of subModule repo}`
+    - push the repo
+
+- develope app repo with submodule work independently so,
+
+    - add submodule code : push to `subModule`
+    - add app code : push to `application1`
+
+- clone app repo with submodule 
+    - clone `application1`
+    - cd `subModule` folder and `git submodule init`
+    - `git submodule update`
+
+- update submodule at parent
+    - `git submodule update --remote`
+
+- remove submodule
+    - `git rm subModule`
+    - `rm .git/modules/subModule`
+    -  open `config` file, and remove following lines
+        
+        ```
+        [submodule = "subModule"]
+            acitvate = true
+            url = https://~.git
+        ```
