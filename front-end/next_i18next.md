@@ -2,6 +2,8 @@
 
 ## Setup
 
+- [files changed](https://github.com/tsengyushiang/next.js/pull/2/files)
+
 - install package
 
     ```
@@ -10,25 +12,25 @@
 
 - setup `next-i18next.config.js`
 
-    ```
+    ```javascript
     module.exports = {
-    i18n: {
-        defaultLocale: 'en',
-        locales: ['en', 'zh', 'zh-tw'], // folders in ./public/locales
-    },
-    interpolation: {
-        escapeValue: false,
-    },
-    lowerCaseLng: true, //support zh-tw
+        i18n: {
+            defaultLocale: 'en',
+            locales: ['en', 'zh', 'zh-tw'], // folders in ./public/locales
+        },
+        interpolation: {
+            escapeValue: false,
+        },
+        lowerCaseLng: true, //support zh-tw
     };
     ```
 
 - setup `next.config.js`
-    ```
-    const { i18n } = require('./next-i18next.config');  <------ add this
+    ```javascript
+    const { i18n } = require('./next-i18next.config');
 
     const nextConfig = {
-            i18n,　　　　　　　　　　　　                 <------ add this
+            i18n,
             reactStrictMode: true,
         }
 
@@ -49,32 +51,32 @@
                 └── common.json
     ```
     `common.json`
-    ```
+    ```json
     {
         "title":"i18n 中文(zh-tw)"
     }
     ```
     
 
-- load languages from server side
+- load languages from server side on your page
 
-    ```
+    ```javascript
     import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
     export async function getStaticProps({ locale }) {
-    return {
-        props: {
-        ...(await serverSideTranslations(locale, ['common'])),  
-        // namespace "common" from common.json in ./public/locales/{language}/{namespace}.json format
-        // Will be passed to the page component as props
-        },
-    };
+        return {
+            props: {
+            ...(await serverSideTranslations(locale, ['common'])),  
+            // namespace "common" from common.json in ./public/locales/{language}/{namespace}.json format
+            // Will be passed to the page component as props
+            },
+        };
     }
     ```
 
 - apply translation to `pages/_app.js`
 
-    ```
+    ```javascript
     import { appWithTranslation } from 'next-i18next';
 
     function MyApp({ Component, pageProps }) {
@@ -85,16 +87,20 @@
     ```
 
 ## Testing
+    
+- add page `demo-next-i18next.js` and visit http://localhost:3000/demo-next-i18next
+    
+    ```javascript
+    import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-    ```
     import { useRef, useEffect, useState } from 'react'
     import { useTranslation } from 'next-i18next'
     import { useRouter } from 'next/router';
 
-    const LanguageSwitch = () => {
+    export default function LanguageSwitch() {
         const select = useRef(null);
         const router = useRouter();
-        const { t } = useTranslation();
+        const { t } = useTranslation('common');
 
         useEffect(() => {
             const activeLanguage = router?.locales?.find((el) => el === router.locale);
@@ -110,7 +116,7 @@
 
         return (
             <>
-                <p>{t('common:title')}</p>
+                <p>{t('title')}</p>
 
                 <select onChange={handleChange} ref={select}>
                     {router?.locales?.map((language, index) => (
@@ -122,5 +128,14 @@
             </>
         );
     };
-    export default LanguageSwitch;
+
+    export async function getStaticProps({ locale }) {
+        return {
+            props: {
+                ...(await serverSideTranslations(locale, ['common'])),
+                // namespace "common" from common.json in ./public/locales/{language}/{namespace}.json format
+                // Will be passed to the page component as props
+            },
+        };
+    }
     ```
