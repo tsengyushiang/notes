@@ -2,6 +2,9 @@
 
 ## Setup
 
+
+- [files changes example](https://github.com/tsengyushiang/next.js/pull/1/files)
+
 - install packages
 
     ```
@@ -19,47 +22,48 @@
     └── config
     |   └── configureStore.js
     └── constants
-    |   └── todo.js
+    |   └── demo.js
     └── pages
     |   └── _app.js
+    |   └── demo-redux-saga.js (optional it's for demo)
     └── redux
         ├── actions
-        |   └── todo.js
+        |   └── demo.js
         └── reducers
-        |   └── index.js
+        |   └── demo.js
         |   └── todo.js
         └── sagas
-            └── index.js
+            └── demo.js
             └── todo.js
     ```
 
 - constant
 
-    `./constants/todo.js`
+    `./constants/demo.js`
     
     ```javascript
     // dispatch to saga from hook
-    export const LIST_ACTION_ADD = "LIST_ACTION_ADD"; 
+    export const ACTION_DEMO_ADD = "ACTION_DEMO_ADD";
 
     // dispatch to redux from saga 'put' effect
-    export const LIST_ACTION_ADD_SUCCESS = "LIST_ACTION_ADD_SUCCESS";
+    export const ACTION_DEMO_ADD_SUC = "ACTION_DEMO_ADD_SUC";
     ```
 
 - redux-saga
 
-    `./redux/sagas/todo.js` : watch saga dispacth.
+    `./redux/sagas/demo.js` : watch saga dispacth.
     
     ```javascript
     import { takeEvery, put, select } from "redux-saga/effects";
-    import { LIST_ACTION_ADD, LIST_ACTION_ADD_SUCCESS } from "../../constants/todo";
+    import { ACTION_DEMO_ADD, ACTION_DEMO_ADD_SUC } from "../../constants/demo";
 
     let counter = 0;
 
     function* add({ text }) {
-        const { todos } = yield select(state => state.todo)
+        const { items } = yield select(state => state.demo)
         yield put({
-            type: LIST_ACTION_ADD_SUCCESS,
-            payload: [...todos, {
+            type: ACTION_DEMO_ADD_SUC,
+            payload: [...items, {
                 text,
                 id: counter++
             }]
@@ -67,7 +71,7 @@
     }
 
     export default [
-        takeEvery(LIST_ACTION_ADD, add)
+        takeEvery(ACTION_DEMO_ADD, add)
     ]
     ```
 
@@ -75,34 +79,33 @@
     
     ```javascript
     import { all } from "redux-saga/effects"
-    import todo from "./todo"
+    import demo from "./demo" // remove this in your app
 
     export default function* rootSaga() {
-        yield all([...todo])
+        yield all([...demo])
     }
     ```
 
 - reducer
 
-    `./redux/reducers/todos.js` : watch saga's 'put' effect to call reducer with preprocessed data
+    `./redux/reducers/demo.js` : watch saga's 'put' effect to call reducer with preprocessed data
     
     ```javascript
     import produce from "immer";
-    import { LIST_ACTION_ADD_SUCCESS } from "../../constants/todo";
+    import { ACTION_DEMO_ADD_SUC } from "../../constants/demo";
     const initialState = {
-        todos: []
+        items: []
     }
 
     const todo = (state = initialState, action) => produce(state, draft => {
         switch (action.type) {
-            case LIST_ACTION_ADD_SUCCESS:
-                draft.todos = action.payload;
+            case ACTION_DEMO_ADD_SUC:
+                draft.items = action.payload;
                 break
             default:
                 break
         }
     })
-
 
     export default todo;
     ```
@@ -111,10 +114,10 @@
     
     ```javascript
     import { combineReducers } from "redux";
-    import todo from "./todo"
+    import demo from "./demo"
 
     const rootReducer = combineReducers({
-        todo
+        demo
     })
 
     export default rootReducer;
@@ -122,14 +125,14 @@
 
 - action
 
-    `./redux/actions/todos.js` :  funtion use to dispatch saga or redux depends on  `type`
+    `./redux/actions/demo.js` :  funtion use to dispatch saga or redux depends on  `type`
     
     ```javascript
-    import { LIST_ACTION_ADD } from "../../constants/todo";
+    import { ACTION_DEMO_ADD } from "../../constants/demo";
 
-    export const add = (text) => {
+    export const demo = (text) => {
         return {
-            type: LIST_ACTION_ADD,
+            type: ACTION_DEMO_ADD,
             text
         }
     }
@@ -158,31 +161,30 @@
     `./pages/_app.js` : use provider with store
 
     ```javascript
-    import '../styles/globals.css'
-    import type { AppProps } from 'next/app'
     import { Provider } from "react-redux";
     import store from "../config/configureStore";
 
-    function MyApp({ Component, pageProps }: AppProps) {
-    return <Provider store={store}>
-        <Component {...pageProps} />
-    </Provider>
+    function MyApp({ Component, pageProps }) {
+      return (
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
+      )
     }
-
+    
     export default MyApp
-
     ```
 
-- component for testing
+- add page for testing `pages/demo-redux-saga.js` and visit http://localhost:3000/demo-redux-saga
 
     ```javascript
     import { useState } from "react"
     import { useSelector, useDispatch } from "react-redux"
-    import { add } from "../../redux/actions/todo"
+    import { demo } from "../redux/actions/demo"
 
     const TextInput = () => {
         const [text, setText] = useState("")
-        const todo = useSelector(state => state.todo)
+        const items = useSelector(state => state.demo)
         const dispatch = useDispatch()
 
         const onChange = (e) => {
@@ -190,18 +192,20 @@
         }
 
         const onClick = () => {
-            dispatch(add(text))
+            dispatch(demo(text))
             setText("")
         }
 
         return <>
-            <pre>{JSON.stringify(todo, null, 4)}</pre>
+            <pre>{JSON.stringify(items, null, 4)}</pre>
             <input type="text" value={text} onChange={onChange} />
             <button onClick={onClick}>add</button>
         </>
     }
 
-    export default TextInput
+    export default function App(){
+        return <TextInput/>
+    }
     ```
 
 ## Flow chart of Load data
