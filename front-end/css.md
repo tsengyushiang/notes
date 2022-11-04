@@ -1,24 +1,5 @@
 # CSS
 
-- interaction : 
-
-    - mouse click :
-        ```
-        // disabel mouse event
-        pointer-event : none;
-
-        //default
-        pointer-event : auto;
-        ```
-
-- before/after : add something before or after element
-
-    ```
-    div:before {
-        content: "+";
-    }
-    ```
-
 ## Flex
 
 - RWD from 2 column to 1 column
@@ -102,8 +83,23 @@
     }
     ```
 
+## Input 
 
-## Others
+- disable  outline
+
+    ```
+    input[type=text] {
+      background-color: transparent;
+      border: none;
+    }
+
+    input[type=text]:focus {
+        outline: none;
+    }
+    ```
+
+
+## Div
 
 - keep div ratio when size change
 
@@ -121,13 +117,39 @@
       height: 100%;
     }
     ```
-    
+
+## Text
+
 - align text to center
     
     - [refernece](https://shinyu0430.github.io/2021/09/21/maxwidthminwidthfitcontent/)
+
     ```css
     .wrapper {
       width: fit-content;
       margin: auto;
+    }
+    ```
+
+## Mouse
+
+- disabel mouse event
+
+    ```css
+    pointer-event : none;
+
+    /*default*/
+    pointer-event : auto;
+    ```
+
+## Before/After
+
+- content 
+    
+    - [reference](https://ithelp.ithome.com.tw/articles/10197087)
+    ```Ccs
+    div:before {
+        content: "+";
+        content: url(w3css.gif);
     }
     ```
