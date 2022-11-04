@@ -1,5 +1,6 @@
 # Coding Style
 
+* [files changed](https://github.com/tsengyushiang/next.js/pull/3/files)
 * Eslint : check coding style.
 * Prettier : format code
 * Husky : run command when git commit.
@@ -97,7 +98,7 @@
 
   ```json
   "scripts": {
-      "lint": "eslint --ignore-path .gitignore \"**/*.+(ts|js|tsx)\"",
+      "eslint": "eslint \"./**/*.+(ts|js|tsx)\" --fix",
   }
   ```
   
@@ -113,7 +114,7 @@
 
   ```json
   "scripts": {
-      "format": "prettier --ignore-path .gitignore \"**/*.+(ts|js|tsx)\" --write",
+      "format": "prettier \"./**/*.+(ts|js|tsx)\" --write",
   }
   ```
 
@@ -127,20 +128,14 @@
   yarn add -D husky lint-staged
   ```
 
-- install husky and will create `.husky`
+- install husky and will create `.husky` and add script
 
   ```
-  npm set-script prepare "husky install"
-  npm run prepare
-  ```
-
-- add script to run before commit
-
-  ```
+  yarn husky install
   yarn husky add .husky/pre-commit "yarn lint-staged"
   ```
 
-- add script ot `package.json`
+- add above "lint-staged" script ot `package.json`
 
   ```
   "lint-staged": {
