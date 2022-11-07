@@ -6,7 +6,7 @@
 * [vscode](./vscode.md)
 * [electron](./electron.md)
 * [package & config](./package_setup.md)
-* [Responsive Web Design(RWD)](./RWD.md)
+* [HTML Meta](./meta.md)
 * [CSS](./css.md)
 * [Threejs](./threejs.md)
 * [Vanilla Js](./vanillaJs.md)

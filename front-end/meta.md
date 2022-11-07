@@ -1,37 +1,19 @@
-# Responsive Web Design(RWD)
+# Meta
 
-## CSS
+## Search Engine Optimization(SEO)
 
-- layout :
+- Open Graph Tag
 
-    - [flex](https://www.casper.tw/css/2017/07/21/css-flex/)
-
-- @media Rule :
-
-    - [source](https://www.w3schools.com/cssref/css3_pr_mediaquery.php)
+    - [reference](https://www.tpisoftware.com/tpu/articleDetails/1989)
 
     ```
-    /* widht smaller than 400px*/
-    body {
-        background-color: lightblue;
-    }
-
-     /* width between 400px and 800px*/
-    @media screen and (min-width: 400px) {
-        body {
-            background-color: lightgreen;
-        }
-    }
-
-     /* width bigger than 800px*/
-    @media screen and (min-width: 800px) {
-        body {
-            background-color: lavender;
-        }
-    }
+    <meta property="og:title" content="title" />
+    <meta property="og:image" content="abosolute URL" />
+    <meta property="og:description" content="description" />
     ```
 
-## HTML settings
+
+## Responsive Web Design(RWD)
 
 * device viewport
 

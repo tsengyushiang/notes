@@ -1,6 +1,33 @@
 # CSS
 
+## @media
+
+- [reference](https://www.w3schools.com/cssref/css3_pr_mediaquery.php)
+
+    ```
+    /* widht smaller than 400px*/
+    body {
+        background-color: lightblue;
+    }
+
+     /* width between 400px and 800px*/
+    @media screen and (min-width: 400px) {
+        body {
+            background-color: lightgreen;
+        }
+    }
+
+     /* width bigger than 800px*/
+    @media screen and (min-width: 800px) {
+        body {
+            background-color: lavender;
+        }
+    }
+    ```
+
 ## Flex
+
+- [reference](https://www.casper.tw/css/2017/07/21/css-flex/)
 
 - RWD from 2 column to 1 column
 

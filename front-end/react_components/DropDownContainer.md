@@ -2,7 +2,7 @@
 
 - [source](https://www.w3schools.com/tags/tag_select.asp)
 
-```
+```javascript
 import PropTypes from "prop-types";
 import styled from "styled-components";
 

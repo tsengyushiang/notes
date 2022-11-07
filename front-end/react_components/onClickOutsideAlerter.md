@@ -3,7 +3,7 @@
 - [source](https://stackoverflow.com/questions/32553158/detect-click-outside-react-component)
 - [code sandbox](https://codesandbox.io/s/outside-alerter-hooks-lmr2y?module=/src/OutsideAlerter.js&file=/src/OutsideAlerter.js)
 
-```
+```javascript
 import React, { useRef, useEffect } from "react";
 
 /**
