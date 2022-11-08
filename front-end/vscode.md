@@ -1,8 +1,9 @@
 # Vscode
 
-## Git Graph
 
-- package
+## Git 
+
+- Graph
 
     ```
     Name: Git Graph
@@ -11,6 +12,17 @@
     Version: 1.30.0
     Publisher: mhutchie
     VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
+    ```
+
+- Changes
+
+    ```
+    Name: GitLens — Git supercharged
+    Id: eamodio.gitlens
+    Description: Supercharge Git within VS Code — Visualize code authorship at a glance via Git blame annotations and CodeLens, seamlessly navigate and explore Git repositories, gain valuable insights via rich visualizations and powerful comparison commands, and so much more
+    Version: 13.0.4
+    Publisher: GitKraken
+    VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens
     ```
 
 ## Prettier
