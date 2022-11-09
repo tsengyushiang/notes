@@ -180,3 +180,82 @@
         content: url(w3css.gif);
     }
     ```
+
+
+## Pure CSS DropDown Menu
+
+```
+<head>
+<style>
+#menuButtos{
+  position:relative;
+  width:24px;
+  height:24px;
+}
+.menuButton{
+  position:absolute;
+  width:100%;
+  text-align: center;
+}
+.menuButton:after{
+  content: '\276F';
+}
+#focusDetector:focus-within .menuButton{
+  transform: rotate(90deg);
+}
+.close{
+  display:none;
+}
+#focusDetector:focus-within .close{
+  display:block;
+}
+
+#closeButton{
+  width:24px;
+  height:24px;
+  background:red;
+  text-align: center;
+  width:100%;
+}
+#closeButton:after{
+  content: "\00d7";
+}
+
+#focusDetector:focus-within #dropDownMenu{
+  display:flex;
+}
+#dropDownMenu{
+  display:none;
+  flex-direction:column;
+  width: fit-content;
+  background:gray;
+}
+
+#itemsWrapper{
+  background:yellow;
+}
+
+.item{
+  padding:10px
+}
+</style>
+</head>
+<body>
+
+<div id="focusDetector">
+  <div id="menuButtos">
+      <div class="open menuButton" tabIndex="0"></div>
+      <div class="close menuButton"></div>
+  </div>
+  <div id="dropDownMenu">
+    <div id="closeButton"></div>
+    <div id=itemsWrapper tabIndex="0">
+      <div class="item">Home</div>
+      <div class="item">Blog</div>
+      <div class="item">FAQ</div>
+      <div class="item">Login</div>
+    </div>
+  </div>
+</div>
+</body>
+```
