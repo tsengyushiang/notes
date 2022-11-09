@@ -7,6 +7,7 @@
 * [electron](./electron.md)
 * [package & config](./package_setup.md)
 * [HTML Meta](./meta.md)
+* [helpers](./helpers.md)
 * [CSS](./css.md)
 * [Threejs](./threejs.md)
 * [Vanilla Js](./vanillaJs.md)

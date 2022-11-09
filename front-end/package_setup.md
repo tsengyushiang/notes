@@ -11,7 +11,7 @@
 - [react-intersection-observer](https://github.com/researchgate/react-intersection-observer)
 - [DOMPurify](https://github.com/cure53/DOMPurify)
 - [js-cookie](https://github.com/js-cookie/js-cookie)
-
+- [immer](https://github.com/immerjs/immer)
 
 ## Examples
 
