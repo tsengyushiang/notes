@@ -107,7 +107,7 @@
 - packages
 
   ```
-  yarn add -D prettier
+  yarn add -D prettier @trivago/prettier-plugin-sort-imports
   ```
 
 - add `package.json` script
@@ -117,6 +117,37 @@
       "format": "prettier \"./**/*.+(ts|js|tsx)\" --write",
   }
   ```
+
+- `.prettierignore`
+
+    ```
+    **/.next
+    **/public
+    **/static
+    **/node_modules
+    **/dist
+    **/package.json
+    **/yarn.lock
+    **/package-lock.json
+    **/.eslintrc
+    **/tsconfig.json
+    ```
+
+- `.prettierrc`
+
+    ```
+    {
+        "trailingComma": "all",
+        "tabWidth": 2,
+        "semi": true,
+        "trailingComma": "all",
+        "tabWidth": 2,
+        "semi": true,
+        "importOrder": ["^components/(.*)$", "^[./]"],
+        "importOrderSeparation": true,
+        "importOrderSortSpecifiers": true
+    }
+    ```
 
 ## Husky + Lint-staged
 
