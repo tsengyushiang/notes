@@ -184,30 +184,22 @@
 
 ## Pure CSS DropDown Menu
 
+- [Demo](https://codepen.io/tsengyushiang-the-typescripter/pen/jOKymaR)
+- css
+
 ```
-<head>
-<style>
-#menuButtos{
-  position:relative;
+.open{
   width:24px;
   height:24px;
-}
-.menuButton{
-  position:absolute;
-  width:100%;
   text-align: center;
+  border:black 1px solid;
 }
-.menuButton:after{
+.open:after{
   content: '\276F';
 }
-#focusDetector:focus-within .menuButton{
+#focusDetector:focus-within .open{
   transform: rotate(90deg);
-}
-.close{
-  display:none;
-}
-#focusDetector:focus-within .close{
-  display:block;
+  pointer-events:none;
 }
 
 #closeButton{
@@ -238,15 +230,12 @@
 .item{
   padding:10px
 }
-</style>
-</head>
-<body>
+```
+- HTML
 
+```
 <div id="focusDetector">
-  <div id="menuButtos">
-      <div class="open menuButton" tabIndex="0"></div>
-      <div class="close menuButton"></div>
-  </div>
+  <div class="open" tabIndex="0"></div>
   <div id="dropDownMenu">
     <div id="closeButton"></div>
     <div id=itemsWrapper tabIndex="0">
@@ -257,5 +246,4 @@
     </div>
   </div>
 </div>
-</body>
 ```
