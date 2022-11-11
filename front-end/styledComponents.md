@@ -23,41 +23,34 @@
 
 ## Usage
 
-```
-const Button = styled.button`
-  background: transparent;
-  border-radius: 3px;
-  border: 2px solid palevioletred;
-  color: palevioletred;
-  margin: 0.5em 1em;
-  padding: 0.25em 1em;
+- with arguments
 
+```
+import styled, { css } from "styled-components";
+
+const Button = styled.button`
+  border-radius: 3px;
+  
   ${props => props.primary && css`
     background: palevioletred;
     color: white;
   `}
 `;
+```
 
-const Container = styled.div`
-  text-align: center;
-`
-//pseudo-elements
+- element with attribute
+
+```
 const InputColor = styled.input.attrs({ 
   type: 'color',
 })`
-    -webkit-appearance: none;
-    border: none;
+  border-radius: 3px;
+`;
+```
 
-    &:-webkit-color-swatch-wrapper {
-      padding: 0;
-    }
+- usage in `.js`
 
-    &:-webkit-color-swatch {
-      border: none;
-    }
-  }
-`
-
+```
 render(
   <Container>
     <InputColor/>
@@ -65,4 +58,54 @@ render(
     <Button primary>Primary Button</Button>
   </Container>
 );
+```
+
+## Server side rendering Styled-Components with NextJS
+
+- [official doc](https://nextjs.org/docs/advanced-features/custom-document), [reference](https://medium.com/swlh/server-side-rendering-styled-components-with-nextjs-1db1353e915e)
+- `/pages/_document.js`
+
+```
+import Document, { Head, Html, Main, NextScript } from "next/document";
+import { ServerStyleSheet } from "styled-components";
+
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(<App {...props} />),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
+  }
+
+  render() {
+    return (
+      <Html>
+        <Head />
+        <body style={{ margin: "0px" }}>
+          <Main />
+          <NextScript />
+        </body>
+      </Html>
+    );
+  }
+}
 ```
