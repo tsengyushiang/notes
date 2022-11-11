@@ -60,6 +60,25 @@ render(
 );
 ```
 
+- keyframes
+
+```
+import styled, { css, keyframes } from "styled-components";
+
+const sizeChangingAnimation = keyframes`
+  0% { transform: scale(1.0);}
+  50% { transform: scale(0.7);}
+  100% { transform: scale(1.0);}
+`;
+export const IconMusic = styled.div`
+  ${(props) =>
+    props.isPlaying &&
+    css`
+      animation: ${sizeChangingAnimation} 1s infinite;
+    `}
+`;
+```
+
 ## Server side rendering Styled-Components with NextJS
 
 - [official doc](https://nextjs.org/docs/advanced-features/custom-document), [reference](https://medium.com/swlh/server-side-rendering-styled-components-with-nextjs-1db1353e915e)
