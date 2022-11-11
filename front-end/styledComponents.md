@@ -64,7 +64,7 @@ render(
 
 - [official doc](https://nextjs.org/docs/advanced-features/custom-document), [reference](https://medium.com/swlh/server-side-rendering-styled-components-with-nextjs-1db1353e915e)
 - `/pages/_document.js`
-
+- disable JavaScript on the browser (e.g in Chrome: Settings / Site settings / JavaScript / Blocked) to check setting works
 ```
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
