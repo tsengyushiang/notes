@@ -1,5 +1,11 @@
 # CSS
 
+## Debug
+
+- pseudo-class styles
+  - [reference](https://stackoverflow.com/questions/6767278/how-can-i-see-the-styles-attached-to-hover-and-other-pseudo-classes-in-firebug)
+  - right click `Force state` of the elemnt in `F12 elements tab`
+
 ## @media
 
 - [reference](https://www.w3schools.com/cssref/css3_pr_mediaquery.php)
