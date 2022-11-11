@@ -23,6 +23,15 @@
 
 ## Usage
 
+- Extended Styled Components
+   
+    - [reference](https://betterprogramming.pub/7-ways-to-inherit-styles-using-styled-components-69debaad97e3)
+
+```
+import { Icon } from "../../../../styles/Icon";
+export const IconMusic = styled(Icon)``;
+```
+
 - with arguments
 
 ```
