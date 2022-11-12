@@ -30,6 +30,10 @@
         }
     }
     ```
+## Clip-path
+
+- [web editor](https://bennettfeely.com/clippy/)
+- [reference](https://segmentfault.com/a/1190000023301221)
 
 ## Flex
 
