@@ -2,23 +2,18 @@
 
 ## Fetch and Push
 
-- stage all files
+- update remote branches
+
+    ```
+    git remote update --prune
+    ```
+
+- stage all files and push to remote
 
     ```
     git add .
-    ```
-- commit 
-    ```
     git commit -m "write your commit message here"
-    ```
-- find remote
-    ```
-    git remote -v
-    ```
-- get remote branches
-
-    ```
-    git remote update origin --prune
+    git push
     ```
 
 ## Log difference
