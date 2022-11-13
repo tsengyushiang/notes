@@ -24,7 +24,7 @@ export default async function handler(req, res) {
 ```javascript
 import * as cookies from "./cookies";
 
-export const invokeApi = async (params) => {
+export const invokeApi = async ({url}) => {
   const token = cookies.getToken();
   const option = {
     headers: {
@@ -46,7 +46,7 @@ export const invokeApi = async (params) => {
       });
   };
 
-  return fetch(...params, option)
+  return fetch(url, option)
     .then((response) => response.json())
     .then((response) => {
       if (!response.error) return response;
