@@ -1,3 +1,0 @@
-# Network
-
-- [NOIP](./noip.md)
