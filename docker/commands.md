@@ -80,21 +80,27 @@
             build:
                 context: ./nodedocker_app
             container_name: nodejsserver
+            hostname: nodejsserver
             volumes:
                 - <host/filePath>:<container/filePath>
             command: npm start
+            networks:
+                - example-net
 
         serviceName2:
             image: nginx
-            container_name: nginx
             ports:
                 - "80:80"
+            networks:
+                - example-net
 
     networks:
-        default:
-            name: <network name>
+        example-net:
             external: true
     ```
 
     - `build: context: <path/to/dockerfile>`: build image from dockerfile
+    - `hostname: <host alias>`: communicate between containers with this name
     - `external`: join a pre-existing network
+        - `false`: create new if not found
+        - `true`: throw error if not found
