@@ -17,6 +17,7 @@
 ```
 
 - `docker-compose.yml`
+
 ```
 version: '3'
 
@@ -39,11 +40,14 @@ networks:
 ```
 
 - `nginx/dockerfile` : copy setting to container
+
 ```
 FROM nginx
 COPY ./default.conf /etc/nginx/conf.d/
 ```
+
 - `nginx/default.conf`: redriect `/` to `nodejsserver:8888` which is defined in `docker-compose.yml`
+
 ```
 server {
   location / {
@@ -57,6 +61,7 @@ server {
 ```
 
 - `nodedocker_app/app.js`
+
 ```
 const http = require('http');
 const requestListener = function (req, res) {
@@ -68,6 +73,7 @@ server.listen(8888);
 ```
 
 - `nodedocker_app/dockerfile`
+
 ```
 FROM node:14
 WORKDIR /usr/src/app
@@ -76,8 +82,7 @@ EXPOSE 8888
 CMD [ "node", "app.js" ]
 ```
 
-## Qucik start
+## Run Demo
 
-```
-docker-compose up
-```
+- run `docker-compose up` to start server and nginx 
+- visit `http://127.0.0.1/` on your browser

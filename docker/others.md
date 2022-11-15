@@ -1,4 +1,4 @@
-## Others
+# Others
 
 ## Text Editor - Vim
 

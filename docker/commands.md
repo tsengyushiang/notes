@@ -1,4 +1,4 @@
-# Docker Commands
+# Commands
 
 - [online play ground](https://labs.play-with-docker.com/)
 
