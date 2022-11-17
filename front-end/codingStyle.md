@@ -140,7 +140,7 @@
         "trailingComma": "all",
         "tabWidth": 2,
         "semi": true,
-        "importOrder": ["^components/(.*)$", "^[./]"],
+        "importOrder": ["^[./]"],
         "importOrderSeparation": true,
         "importOrderSortSpecifiers": true
     }
