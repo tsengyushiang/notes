@@ -5,8 +5,7 @@
 - [dat.gui](https://github.com/dataarts/dat.gui)
 - [file-saver](https://github.com/eligrey/FileSaver.js)
 - [stats.js](https://github.com/mrdoob/stats.js/)
-- [react-beautiful-dnd
-](https://github.com/atlassian/react-beautiful-dnd)
+- [react-beautiful-dnd](https://github.com/atlassian/react-beautiful-dnd): [example](https://codesandbox.io/s/zh2wy)
 - [react-pdf](https://github.com/diegomura/react-pdf)
 - [react-intersection-observer](https://github.com/researchgate/react-intersection-observer)
 - [DOMPurify](https://github.com/cure53/DOMPurify)
