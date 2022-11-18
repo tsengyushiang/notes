@@ -13,3 +13,18 @@
 
  - `scp -r <soure/path> <dst/path>`
     - `<soure/path>`, `<dst/path>` : `username@IP:path`
+
+
+## Run in background - Screen
+
+- `apt-get update`
+- `apt-get install screen`
+- `screen`,type command,`ctrl`+`a` then `d`
+- `screen -ls`: list all process
+- `screen -r <process id>`: enter running process
+
+## Port - lsof
+
+- `apt-get update`
+- `apt-get install lsof`
+- `lsof -i -P -n` : print using ports
