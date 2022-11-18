@@ -1,5 +1,15 @@
 # Web Tools
 
+## Chrome DevTools
+
+- network throttling
+
+![network-throttling](./images/network-throttling.png)
+
+- force css Pseudo classes
+
+![Pseudo-classes](./images/Pseudo-classes.png)
+
 ## Visualize
 
 - [JSON](https://jsoncrack.com/editor)
