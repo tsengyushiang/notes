@@ -69,7 +69,7 @@
 
 ## Docker-compose
 
-- alternative way of execute `docker run` many times
+- alternative way of execute multiple `docker run`
 - `docker-compose.yml`
 
     ```
