@@ -173,3 +173,20 @@
     ]
   },
   ```
+  
+## Import Alias For Next.js
+  
+- `jsconfig.json`
+
+```
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/components/*": ["components/*"],
+      }
+    }
+  }
+```
+- Then import components with `import * from "@/components/.."` instead of `"../../components"`.
+
