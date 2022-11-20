@@ -1,6 +1,8 @@
 # Others
 
-## Text Editor - Vim
+## Linux Commands
+
+### Text Editor - Vim
 
 - `apt-get update`
 - `apt-get install vim`
@@ -9,21 +11,21 @@
 - `Esc`, type `:x` then `Enter` : exit vim
 
 
-## File Transmit
+### File Transmit
 
  - `scp -r <soure/path> <dst/path>`
     - `<soure/path>`, `<dst/path>` : `username@IP:path`
 
 
-## Run in background - Screen
+### Run in background - Screen
 
 - `apt-get update`
 - `apt-get install screen`
-- `screen`,type command,`ctrl`+`a` then `d`
+- `screen`, type command, `ctrl`+`a` then `d` to exit
 - `screen -ls`: list all process
 - `screen -r <process id>`: enter running process
 
-## Port - lsof
+### Port - lsof
 
 - `apt-get update`
 - `apt-get install lsof`
