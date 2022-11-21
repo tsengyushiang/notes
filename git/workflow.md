@@ -1,22 +1,28 @@
 # Fork Workflow
 
-- develope new feature one fork project 
+- develop on base repo 
+
+
+- develop on fork repo 
 
 ```mermaid
 
 gitGraph
     commit
     commit
+    branch feature
     branch client1/main
-    commit tag:"repo for new client1"
+    commit tag:"repo for client1"
     branch client1/feature
     commit
     checkout client1/main
-    merge client1/feature
+    commit id:"other feature"
+    checkout client1/feature
     branch client1/feature-customize
     commit
+    merge client1/main
     checkout client1/main
-    merge client1/feature-customize tag:"new feature"
+    merge client1/feature-customize tag:"new feature MR"
     checkout client1/feature
     branch client1/fix-feature
     commit
@@ -27,7 +33,10 @@ gitGraph
     commit
     merge client1/feature
     checkout client1/main
-    merge client1/fix-feature-customize tag:"solve issue"
+    merge client1/fix-feature-customize tag:"solve issue MR"
     checkout main
-    merge client1/feature tag:"client1 feature"
+    checkout feature
+    merge client1/feature tag:"client1 feature MR"
+    checkout main
+    merge feature
 ```
