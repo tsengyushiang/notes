@@ -45,9 +45,9 @@ gitGraph
     commit
     branch feature
     branch client1/base
-    commit
-    branch client1/main
     commit tag:"repo for client1"
+    branch client1/main
+    commit tag:"develop branch"
     branch client1/feature
     commit
     checkout client1/main
