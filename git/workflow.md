@@ -1,9 +1,11 @@
 # Fork Workflow
 
-- develop on base repo 
+- [view on github](https://github.com/tsengyushiang/notes/blob/master/git/workflow.md)
+
+- develop on base repo, denote fork repo as `client1`.
 
 
-- develop on fork repo 
+- develop on fork repo, denote fork repo as `client1`.
 
 ```mermaid
 
@@ -21,6 +23,11 @@ gitGraph
     branch client1/feature-customize
     commit
     merge client1/main
+    checkout client1/feature
+    commit
+    checkout client1/feature-customize
+    commit
+    merge client1/feature
     checkout client1/main
     merge client1/feature-customize tag:"new feature MR"
     checkout client1/feature
