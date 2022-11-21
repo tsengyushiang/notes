@@ -1,9 +1,8 @@
+# Fork Workflow
 
 - develope new feature one fork project 
 
 ```mermaid
-
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showCommitLabel': false}} }%%
 
 gitGraph
     commit
