@@ -12,7 +12,7 @@ gitGraph
     commit
     branch feature
     branch client1/main
-    commit tag:"repo for client1"
+    commit tag:"repo for client1" type: HIGHLIGHT
     checkout feature
     commit
     checkout client1/main
@@ -45,9 +45,10 @@ gitGraph
     commit
     branch feature
     branch client1/base
-    commit tag:"repo for client1"
+    commit tag:"repo for client1" type: HIGHLIGHT
     branch client1/main
     commit tag:"develop branch"
+    checkout client1/base
     branch client1/feature
     commit
     checkout client1/main
