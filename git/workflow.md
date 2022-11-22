@@ -67,6 +67,9 @@ gitGraph
     merge client1/feature-customize tag:"new feature MR"
     checkout feature
     merge client1/feature tag:"client1 feature MR"
+    checkout client1/feature-customize
+    branch client1/fix-feature-customize
+    commit
     checkout client1/feature
     branch client1/fix-feature
     commit
@@ -74,7 +77,7 @@ gitGraph
     merge client1/fix-feature
     checkout client1/feature-customize
     merge client1/feature
-    branch client1/fix-feature-customize
+    checkout client1/fix-feature-customize
     commit
     checkout client1/feature-customize
     merge client1/fix-feature-customize
