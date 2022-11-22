@@ -53,16 +53,19 @@ gitGraph
     checkout client1/dev
     merge client1/feature-customize tag:"solve issue MR"
     checkout client1/main
-    branch client1/feature2 order:10
+    branch client1/fix-base-issue order:10
     commit
+    checkout client1/main
+    merge client1/fix-base-issue
     checkout main
+    merge client1/main tag:"solve issue from fork"
     commit
     checkout client1/main
     merge main tag:"sync base"
     checkout client1/dev
     merge client1/main tag:"sync base"
     checkout client1/main
-    branch client1/feature3 order:11
+    branch client1/feature2 order:11
     commit
 
 ```
