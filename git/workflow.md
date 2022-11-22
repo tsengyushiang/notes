@@ -52,16 +52,17 @@ gitGraph
     branch client1/feature
     commit
     checkout client1/dev
-    commit id:"other feature"
-    checkout client1/feature
     branch client1/feature-customize
+    merge client1/feature
+    checkout client1/dev
+    commit id:"other feature"
+    checkout client1/feature-customize
     commit
-    merge client1/dev
     checkout client1/feature
     commit
     checkout client1/feature-customize
-    commit
     merge client1/feature
+    merge client1/dev
     checkout client1/dev
     merge client1/feature-customize tag:"new feature MR"
     checkout feature
@@ -72,11 +73,13 @@ gitGraph
     checkout client1/feature
     merge client1/fix-feature
     checkout client1/feature-customize
+    merge client1/feature
     branch client1/fix-feature-customize
     commit
-    merge client1/feature
+    checkout client1/feature-customize
+    merge client1/fix-feature-customize
     checkout client1/dev
-    merge client1/fix-feature-customize tag:"solve issue MR"
+    merge client1/feature-customize  tag:"solve issue MR"
     checkout main
     checkout feature
     merge client1/feature tag:"client1 fix MR"
