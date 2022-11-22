@@ -3,7 +3,7 @@
 - [view on github](https://github.com/tsengyushiang/notes/blob/master/git/workflow.md)
 
 
-## Develop on base repo, then sync to fork repo
+## Develop feature on base repo
 
 ```mermaid 
 %%{init: { 'gitGraph': {'showCommitLabel': false}} }%%
@@ -60,140 +60,60 @@ gitGraph
     commit
 ```
 
-## Deprecated
+## Develop feature on fork repo
 
-- develop on base repo, denote fork repo as `client1`.
 
-```mermaid
+```mermaid 
 %%{init: { 'gitGraph': {'showCommitLabel': false}} }%%
 
 gitGraph
     commit
     commit
-    branch feature order: 1
-    branch client1/main order: 5
+    branch client1/main order: 2
     commit tag:"repo for client1" type: HIGHLIGHT
-    branch client1/dev order: 6
+    branch client1/feature order: 4
+    branch client1/dev order: 3
     commit tag:"develop branch"
-    checkout feature
-    commit
-    checkout client1/main
-    branch client1/feature-customize order: 7
-    merge feature tag:"sync MR1"
-    checkout client1/dev
-    commit
-    checkout client1/feature-customize
-    commit
-    merge client1/dev
-    commit
-    checkout feature
-    commit
-    checkout client1/feature-customize
-    merge feature tag:"sync MR2"
-    checkout client1/dev
-    merge client1/feature-customize tag:"new feature MR"
-    checkout main
-    merge feature tag:"new feature MR"
-    checkout client1/feature-customize
-    branch client1/fix-feature-customize order: 8
-    commit
-    checkout feature
-    branch fix-feature order: 2
-    commit
-    checkout feature
-    merge fix-feature
-    checkout client1/feature-customize
-    merge feature tag:"sync MR3"
-    checkout main
-    merge feature tag:"solve issue MR"
-    checkout client1/fix-feature-customize
-    commit
-    checkout client1/feature-customize
-    merge client1/fix-feature-customize
-    checkout client1/dev
-    merge client1/feature-customize tag:"solve issue MR"
-    checkout client1/main
-    branch client1/fix-base-issue order:10
-    commit
-    checkout main
-    branch fix-base-issue order:3
-    merge client1/fix-base-issue tag:"solve issue from fork"
-    checkout main
-    merge fix-base-issue tag:"solve issue MR"
-    commit
-    checkout client1/main
-    merge main tag:"sync base"
-    checkout client1/dev
-    merge client1/main tag:"sync base"
-    checkout client1/main
-    branch client1/feature2 order:11
-    commit
-
-```
-
-- develop on fork repo, denote fork repo as `client1`.
-
-```mermaid
-%%{init: { 'gitGraph': {'showCommitLabel': false}} }%%
-
-gitGraph
-    commit
-    commit
-    branch feature
-    branch client1/main
-    commit tag:"repo for client1" type: HIGHLIGHT
-    branch client1/dev
-    commit tag:"develop branch"
-    checkout client1/main
-    branch client1/feature
-    commit
-    checkout client1/dev
-    branch client1/feature-customize
-    merge client1/feature
-    checkout client1/dev
-    commit id:"other feature"
-    checkout client1/feature-customize
-    commit
     checkout client1/feature
     commit
-    checkout client1/feature-customize
-    merge client1/feature
-    merge client1/dev
-    checkout client1/dev
-    merge client1/feature-customize tag:"new feature MR"
-    checkout feature
+    checkout client1/main
     merge client1/feature tag:"new feature MR"
-    checkout client1/feature-customize
-    branch client1/fix-feature-customize
-    commit
-    checkout client1/feature
-    branch client1/fix-feature
-    commit
-    checkout client1/feature
-    merge client1/fix-feature
-    checkout client1/feature-customize
-    merge client1/feature
-    checkout client1/fix-feature-customize
-    commit
-    checkout client1/feature-customize
-    merge client1/fix-feature-customize
+    checkout main
+    merge client1/main tag:"new feature MR"
     checkout client1/dev
-    merge client1/feature-customize  tag:"solve issue MR"
-    checkout main
-    checkout feature
-    merge client1/feature tag:"solve issue MR"
-    checkout main
-    merge feature
-    checkout client1/main
-    branch client1/feature2
+    merge client1/main
+    branch client1/feature-customize order: 5
     commit
+    checkout client1/feature-customize
+    checkout client1/dev
+    merge client1/feature-customize tag:"new feature MR"
+    checkout client1/main
+    branch client1/fix-feature order: 6
+    commit
+    checkout client1/main
+    merge client1/fix-feature tag:"solve issue MR"
+    checkout main
+    merge client1/main tag:"solve issue MR"
+    checkout client1/dev
+    merge client1/main
+    branch client1/fix-feature-customize order: 7
+    commit
+    checkout client1/dev
+    merge client1/fix-feature-customize tag:"solve issue MR"
+    checkout client1/main
+    branch client1/fix-base-issue order:8
+    commit
+    checkout client1/main
+    merge client1/fix-base-issue tag:"solve base issue"
+    checkout main
+    merge client1/main tag:"solve issue from fork"
     checkout main
     commit
     checkout client1/main
     merge main tag:"sync base"
     checkout client1/dev
     merge client1/main tag:"sync base"
-    checkout client1/main
-    branch client1/feature3
+    checkout client1/dev
+    branch client1/feature2 order:11
     commit
 ```
