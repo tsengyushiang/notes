@@ -55,11 +55,9 @@ gitGraph
     checkout client1/main
     branch client1/fix-base-issue order:10
     commit
-    checkout client1/main
-    merge client1/fix-base-issue
     checkout main
     branch fix-base-issue order:3
-    merge client1/main tag:"solve issue from fork"
+    merge client1/fix-base-issue tag:"solve issue from fork"
     checkout main
     merge fix-base-issue tag:"solve issue MR"
     commit
