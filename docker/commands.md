@@ -104,3 +104,6 @@
     - `external`: join a pre-existing network
         - `false`: create new if not found
         - `true`: throw error if not found
+ 
+- `docker-compose -f {where/is/.yml} up -d` : run conatiners
+- `docker-compose -f {where/is/.yml} down` : stop conatiners
