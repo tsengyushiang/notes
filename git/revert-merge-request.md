@@ -62,8 +62,7 @@ gitGraph
 
 ```
 git checkout dev
-git branch revert_feature2
-git checkout revert_feature2
+git checkout -b revert_feature2
 git revert ${merge commit id} -m 1
 :q
 git checkout dev
@@ -74,9 +73,8 @@ git push
 ### Reopen Feature2
 
 ```
-git checkout feature2
-git push
-git merge dev
+git checkout dev
+git checkout -b feature2_Reopen
 git revert ${revert commit id} -m 1
 :q
 git push
@@ -98,13 +96,11 @@ git push
 
   ```
   git clone ${repo/on/gitlab}
-  git branch dev
-  git checkout dev
+  git checkout -b dev
   touch dev1
   git add .
   git commit -m "dev1"
-  git branch feature1
-  git checkout feature1
+  git checkout -b feature1
   touch feature1
   git add .
   git commit -m "feature1"
@@ -112,8 +108,7 @@ git push
   touch dev2
   git add .
   git commit -m "dev2"
-  git branch feature2
-  git checkout feature2
+  git checkout -b feature2
   touch feature2
   git add .
   git commit -m "feature2"
