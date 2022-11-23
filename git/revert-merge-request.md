@@ -27,8 +27,9 @@ gitGraph
 ## Merge without code review accidentally
 
 - what happened:
-  - `feature2`'s author accidentally click the merge button on MR
+  - `feature2`'s author accidentally click the merge button on gitlab merge request ui.
   - Then, gitlab automatically merge `feature2` and `feature1` into `dev`, and both MR is mark as merged.
+  - `feature1` and `feature2` can no longer merge to `dev`, becase they already exist in history.
 
 ```mermaid
 gitGraph
