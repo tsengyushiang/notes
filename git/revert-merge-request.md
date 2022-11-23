@@ -9,17 +9,17 @@ gitGraph
   commit id:"init project"
   branch dev
   commit id:"dev1"
-  branch feature1
+  branch feature1 order:2
   commit id:"feature1"
   checkout dev
   commit id:"dev2"
-  branch feature2
+  branch feature2 order:1
   commit id:"feature2"
   checkout feature1
-  commit id:"feature1.1" tag:"MR : feature1 to main"
+  commit id:"feature1.1" tag:"MR : feature1 to dev"
   checkout feature2
   merge feature1
-  commit id:"feature2.1" tag:"MR : feature2 to main"
+  commit id:"feature2.1" tag:"MR : feature2 to dev"
   checkout dev
   commit id:"dev3"
 ```
@@ -35,11 +35,11 @@ gitGraph
   commit id:"init project"
   branch dev
   commit id:"dev1"
-  branch feature1
+  branch feature1 order:2
   commit id:"feature1"
   checkout dev
   commit id:"dev2"
-  branch feature2
+  branch feature2 order:1
   commit id:"feature2"
   checkout feature1
   commit id:"feature1.1"
@@ -47,25 +47,22 @@ gitGraph
   merge feature1
   commit id:"feature2.1"
   checkout dev
-  commit id:"dev3"
-  merge feature2 tag:"${merge commit id}"
+  merge feature2 tag:"${merge}"
   commit id:"dev4"
-  commit id:"dev5"
-  commit id:"revert-feature2" tag:"${revert commit id}"
-  checkout feature2
-  commit id:"feature2.2"
-  merge dev
-  commit id:"rever-revert-feature2" tag:"MR : feature1 to main"
-  checkout feature1
-  commit id:"feature1.2"
+  branch revert_feature2
+  commit id:"revert-feature2" tag:"${revert}"
+  checkout dev
+  merge revert_feature2
+  branch feature2_Reopen order:3
+  commit id:"rever-revert-feature2"
 ```
 
 ### Revert merge
 
 ```
 git checkout dev
-git branch revert-feature2
-git checkout revert-feature2
+git branch revert_feature2
+git checkout revert_feature2
 git revert ${merge commit id} -m 1
 :q
 git checkout dev
@@ -73,7 +70,7 @@ git merge revert-feature2
 git push
 ```
 
-### Reopen Feature2 MR
+### Reopen Feature2
 
 ```
 git checkout feature2
@@ -82,8 +79,17 @@ git merge dev
 git revert ${revert commit id} -m 1
 :q
 git push
-
 ```
+
+### Problem
+
+- Can't recover `feature1` with `git revert`.
+- Some code of `feature1` stuck in `feature2`, such as commits `feature1`,`feature1.1` in above case.
+
+### Conclusion
+
+- Don't merge any feature branch to any other branch, only merge with `base branch`, or one the them is deprecated.
+- Uses `rebase` to move whole branch to the other branch for some functions.
 
 ## Reproduce scenario with gitlab
 
@@ -117,6 +123,7 @@ git push
   git checkout feature2
   git merge feature1
   touch feature2.1
+  echo "change feature1.1" > feature1.1
   git add .
   git commit -m "feature2.1" 
   git checkout dev
