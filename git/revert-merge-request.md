@@ -1,5 +1,7 @@
 # Revert Merge Request
 
+- [view graph on github](https://github.com/tsengyushiang/notes/blob/master/git/revert-merge-request.md)
+
 ## Scenario
 
 - `feature2`'s MR and `feature1`'s MR are waiting code review
