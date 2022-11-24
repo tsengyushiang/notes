@@ -67,6 +67,18 @@ gitGraph
     commit
 ```
 
+### Merge Requests
+
+|develop actions|branch's base|MR from|MR to|
+|:---|:---:|:---:|:---:|
+|base feature|`main`|`feature`|`main`|
+|fix base feature|`main`|`fix`|`main`|
+|customize feature|`fork/dev`|`fork/feature`|`fork/dev`|
+|fix customize feature|`fork/dev`|`fork/fix`|`fork/dev`|
+|fix base issue in frok|`fork/main`|`fork/fix-base`|`fork/main`|
+|sync base|-|`main`|`fork/main`|
+|update fix to base|-|`fork/main`|`main`|
+
 ## Develop feature on fork repo
 
 
