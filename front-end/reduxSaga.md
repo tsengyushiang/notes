@@ -239,3 +239,7 @@ sequenceDiagram
     end
 
 ```
+
+## Tips
+
+- dispatch another saga event in saga, use `yield call(eventFunction)` instead of `yield put({type:EVENT_CONSTANT})`
