@@ -3,7 +3,6 @@
 
 * [apollo client](./references/apollo.html)
 * [Coding Style](./codingStyle.md)
-* [vscode](./vscode.md)
 * [electron](./electron.md)
 * [package & config](./package_setup.md)
 * [HTML Meta](./meta.md)

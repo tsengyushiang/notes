@@ -169,7 +169,7 @@ gitGraph
   merge feature1_Rebase
 ```
 
-## Reproduce scenario with gitlab
+## Reproduce scenario on gitlab
 
 - init repo
 
