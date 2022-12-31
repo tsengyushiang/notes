@@ -1,5 +1,6 @@
 ## Category
 
+* [Deploy](./deploy)
 * [Docker](./docker)
 * [Git](./git/)
 * [Front-end](./front-end/)
