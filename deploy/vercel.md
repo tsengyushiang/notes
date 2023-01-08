@@ -48,40 +48,83 @@ $ npx create-next-app@latest
 
 ## GitLab CI/CD
 
-###  Add Vercel Token to CI/CD variables
+1. Add Vercel Token to CI/CD variables
 
-- visit `https://gitlab.com/${user}/${project}/-/settings/ci_cd`
+    - visit `https://gitlab.com/${user}/${project}/-/settings/ci_cd`
 
-    - add vercel token with key `$VERCEL_TOKEN` and unchecked `protect variable`
+        - add vercel token with key `$VERCEL_TOKEN` and unchecked `protect variable`
 
-###  Add Script
+2.  Add Script
 
-- add `.gitlab-ci.yml` to main branch
+    - add `.gitlab-ci.yml` to main branch
+
+    ```
+    default:
+      image: node:16.16.0
+
+    deploy_preview:
+      stage: deploy
+      only:
+        - preparing
+      script:
+        - npm install --global vercel
+        - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
+        - vercel build --token=$VERCEL_TOKEN
+        - vercel deploy --prebuilt --token=$VERCEL_TOKEN
+
+    deploy_production:
+      stage: deploy
+      only:
+        - main
+      script:
+        - npm install --global vercel
+        - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+        - vercel build --prod --token=$VERCEL_TOKEN
+        - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+    ```
+
+## Github CICD
+
+
+1. Create PAT at [Personal access tokens (classic) page](https://github.com/settings/tokens)
+     - Check `repo`, `workflow` and copy token.
+
+2. Create token at [Vercel Perconal Account Setting page](https://vercel.com/account/tokens)
+
+3. Add PAT at `Repo > settings > Secrets > Actions > New repository secret`
+      - Named `PAT` and paste token from step 1.
+      - Named `VERCEL_TOEKN` and paste token from step 2.
+      - If you can't find the setting page, try https://github.com/${username}/${reponame}/settings/secrets/actions.
+
+3. add CI/CD script `.github/workflows/vercel.yml` to main branch
 
 ```
-default:
-  image: node:16.16.0
+name: vercel
 
-deploy_preview:
-  stage: deploy
-  only:
-    - preparing
-  script:
-    - npm install --global vercel
-    - vercel pull --yes --environment=preview --token=$VERCEL_TOKEN
-    - vercel build --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --token=$VERCEL_TOKEN
+on:
+  push:
+    branches: [ preparing ]
 
-deploy_production:
-  stage: deploy
-  only:
-    - main
-  script:
-    - npm install --global vercel
-    - vercel pull --yes --environment=production --token=$VERCEL_TOKEN
-    - vercel build --prod --token=$VERCEL_TOKEN
-    - vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+        
+    steps:
+    - uses: actions/checkout@v3
+      with:
+          token: ${{ secrets.PAT }}
+    - run: |
+          npm install --global vercel
+          vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOEKN }}
+          vercel deploy --token=${{ secrets.VERCEL_TOEKN }}
 ```
+
+3. Finally, push your code to branch `preparing`.
 
 # Reference
 
