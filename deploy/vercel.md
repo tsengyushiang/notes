@@ -54,9 +54,7 @@ $ npx create-next-app@latest
 
         - add vercel token with key `$VERCEL_TOKEN` and unchecked `protect variable`
 
-2.  Add Script
-
-    - add `.gitlab-ci.yml` to main branch
+2.  Add script `.gitlab-ci.yml` to main branch
 
     ```
     default:
@@ -85,18 +83,13 @@ $ npx create-next-app@latest
 
 ## Github CICD
 
-
-1. Create PAT at [Personal access tokens (classic) page](https://github.com/settings/tokens)
-     - Check `repo`, `workflow` and copy token.
-
-2. Create token at [Vercel Perconal Account Setting page](https://vercel.com/account/tokens)
+1. Create token at [Vercel Perconal Account Setting page](https://vercel.com/account/tokens)
 
 3. Add PAT at `Repo > settings > Secrets > Actions > New repository secret`
-      - Named `PAT` and paste token from step 1.
-      - Named `VERCEL_TOEKN` and paste token from step 2.
+      - Add token from step 1. as `VERCEL_TOEKN`.
       - If you can't find the setting page, try https://github.com/${username}/${reponame}/settings/secrets/actions.
 
-3. add CI/CD script `.github/workflows/vercel.yml` to main branch
+3. add CI/CD script `.github/workflows/vercel.yml` to `main` branch
 
 ```
 name: vercel
@@ -116,15 +109,13 @@ jobs:
         
     steps:
     - uses: actions/checkout@v3
-      with:
-          token: ${{ secrets.PAT }}
     - run: |
           npm install --global vercel
           vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOEKN }}
           vercel deploy --token=${{ secrets.VERCEL_TOEKN }}
 ```
 
-3. Finally, push your code to branch `preparing`.
+4. push your code to branch `preparing` and check vercel dashborad.
 
 # Reference
 
