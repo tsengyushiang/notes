@@ -3,7 +3,8 @@
 
 * [apollo client](./references/apollo.html)
 * [Coding Style](./codingStyle.md)
-* [package & config](./package_setup.md)
+* [package manager](./package_manager.md)
+* [packages](./packages.md)
 * [HTML Meta](./meta.md)
 * [helpers](./helpers.md)
 * [CSS](./css.md)
