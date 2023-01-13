@@ -18,6 +18,7 @@
   - [dat.gui](https://github.com/dataarts/dat.gui)
   - [file-saver](https://github.com/eligrey/FileSaver.js)
   - [Resoucre Monitor : stats.js](https://github.com/mrdoob/stats.js/)
+  - [Code Compare Editor: ace-editor](https://github.com/ace-diff/ace-diff)
 
 ## Examples
 
