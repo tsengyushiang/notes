@@ -14,9 +14,10 @@
   - [Graph Editor : react-flow](https://github.com/wbkd/react-flow)
 
 - Others
-  - [animejs](https://animejs.com/)
-  - [dat.gui](https://github.com/dataarts/dat.gui)
-  - [file-saver](https://github.com/eligrey/FileSaver.js)
+  - [Timeline : animejs](https://animejs.com/)
+  - [Debug GUI : dat.gui](https://github.com/dataarts/dat.gui)
+  - [Download File : file-saver](https://github.com/eligrey/FileSaver.js)
+  - [Image Affine Transform : homography](https://github.com/Eric-Canas/Homography.js)
   - [Resoucre Monitor : stats.js](https://github.com/mrdoob/stats.js/)
   - [Code Compare Editor: ace-editor](https://github.com/ace-diff/ace-diff)
 
