@@ -3,14 +3,14 @@
 
 ## Setup develop project
 
-- create a react app
+- Create a react app.
 
 ```
 npx create-react-app package-dev
 yarn add styled-components
 ```
 
-- develope components in `src/components` and export from `components/index.js`
+- Develop components in `src/components` and export from `components/index.js`.
 
 ```javascript
 import Button  from "./Button";
@@ -18,13 +18,13 @@ import Button  from "./Button";
 export { Button };
 ```
 
-- install `@babel/preset-env`(JSX Compiler), `@bable/preset-react`(ES5 parser) and other plugins such as styled-components
+- Install `@babel/preset-env`(JSX Compiler), `@bable/preset-react`(ES5 parser) and other plugins such as styled-components.
 
 ```
 yarn add -D @babel/cli @babel/preset-env @babel/preset-react cross-env babel-plugin-styled-components
 ```
 
-- add compile script in `package.json`
+- Add compile script in `package.json`.
 
 ```json
 "scripts": {
@@ -33,7 +33,7 @@ yarn add -D @babel/cli @babel/preset-env @babel/preset-react cross-env babel-plu
 }
 ```
 
-- add babel setting `babel.config.js`
+- Add babel setting `babel.config.js`.
 
 ```javascript
 module.exports = function (api) {
@@ -50,29 +50,31 @@ module.exports = function (api) {
 
 ```
 
-- config publish setting in `package.json`, 
+- Config publish setting in `package.json` :
 
-    - `dist` is  where babel compiled files 
+    - Babel will compile files to `dist`.
     - `registry: ...@tsengyushiang` is your github username.
-    - `name: @tsengyushiang/react-ui` must match username and repository on github
+    - `name: @tsengyushiang/react-ui` must match username and repository on github.
+    - Update version `"version": "0.1.1"` if old version number is used.
 
 ```json
 {   
     "name": "@tsengyushiang/react-ui",
+    "version": "0.1.1",
     ...
     "main": "dist/index.js",
     "private": false,
     "files": [
-    "dist",
-    "README.md"
+      "dist",
+      "README.md"
     ],
     "publishConfig": {
-    "registry": "https://npm.pkg.github.com/@tsengyushiang"
+      "registry": "https://npm.pkg.github.com/@tsengyushiang"
     }
 }
 ```
 
-- finally, push your code to github
+- finally, push your code to github.
 
 ## Config Github CI/CD
 
@@ -107,16 +109,14 @@ jobs:
 ## Install package in other project
 
 
-- add a `.npmrc` file and replace following info with yours.
-    - `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` is access_token with `read:packages` permission.
-    - `@tsengyushiang` is username of my github.
+- Add a `.npmrc` file and replace following info with yours.
 
 ```
 //npm.pkg.github.com/:_authToken=${TOKEN}
 ${USER_NAME}:registry=https://npm.pkg.github.com
 ```
 
-- install package with environment variables
+- Install package with environment variables
 
 ```
 TOKEN=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 USER_NAME=@tsengyushiang npm install  @tsengyushiang/react-ui@0.1.0
