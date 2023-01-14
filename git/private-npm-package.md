@@ -112,6 +112,12 @@ jobs:
     - `@tsengyushiang` is username of my github.
 
 ```
-//npm.pkg.github.com/:_authToken=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
-@tsengyushiang:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${TOKEN}
+${USER_NAME}:registry=https://npm.pkg.github.com
+```
+
+- install package with environment variables
+
+```
+TOKEN=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 USER_NAME=@tsengyushiang npm install  @tsengyushiang/react-ui@0.1.0
 ```
