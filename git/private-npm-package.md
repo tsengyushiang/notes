@@ -21,8 +21,8 @@ export { Button };
 - Install `@babel/preset-env`(JSX Compiler), `@bable/preset-react`(ES5 parser) and other plugins such as styled-components.
 
 ```
-yarn add -D @babel/cli @babel/preset-env @babel/preset-react cross-env babel-plugin-styled-components
-```
+yarn add -D @babel/cli @babel/preset-env @babel/preset-react cross-env babel-plugin-styled-components babel-preset-minify
+``` 
 
 - Add compile script in `package.json`.
 
@@ -39,15 +39,15 @@ yarn add -D @babel/cli @babel/preset-env @babel/preset-react cross-env babel-plu
 module.exports = function (api) {
   api.cache(true);
 
-  const presets = ["@babel/preset-env", "@babel/preset-react"];
+  const presets = ["@babel/preset-env", "@babel/preset-react", "minify"];
+
   const plugins = [["styled-components"]];
 
   return {
     presets,
-    plugins
+    plugins,
   };
 };
-
 ```
 
 - Config publish setting in `package.json` :
