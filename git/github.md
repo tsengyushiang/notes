@@ -5,40 +5,39 @@
 - auto deploy gh-page `.github/workflows/AutoDeployGihubPage.yml`
 
 
-    ```
-    name: AutoDeployGihubPage
+```
+name: DeployGihubPage
 
-    on:
-    push:
-        branches: [ main ]
+on:
+  push:
+    branches: [ main ]
 
-    jobs:
-    build:
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-        runs-on: ubuntu-latest
+    strategy:
+      matrix:
+          node-version: [16.x]
 
-        strategy:
-        matrix:
-            node-version: [16.x]
-            
-        steps:
-        - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
         with:
-            token: ${{ secrets.PAT }}
-        - run: |
-            echo "NEXT_PUBLIC_REPO=${{ github.repository }}" > .env
-            npm install
-            npm run export
-            touch ./out/.nojekyll
-            git config --global user.email "github@example.com"
-            git config --global user.name "git workflows"
-            git add out/ -f
-            git commit -m "Deploy gh-pages"          
-            #git subtree push --prefix out origin gh-pages
-            git subtree split --prefix out -b gh-pages
-            git push -f origin gh-pages:gh-pages
-            git branch -D gh-pages
-    ```
+          token: ${{ secrets.PAT }}
+      - run: |
+          echo "NEXT_PUBLIC_REPO=${{ github.repository }}" > .env
+          npm install
+          npm run export
+          touch ./out/.nojekyll
+          git config --global user.email "github@example.com"
+          git config --global user.name "git workflows"
+          git add out/ -f
+          git commit -m "Deploy gh-pages"          
+          #git subtree push --prefix out origin gh-pages
+          git subtree split --prefix out -b gh-pages
+          git push -f origin gh-pages:gh-pages
+          git branch -D gh-pages
+```
 
     - Set Personal Access Token to repo secret `PAT`.
 
