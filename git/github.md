@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
           echo "NEXT_PUBLIC_REPO=${{ github.repository }}" > .env
           npm install
