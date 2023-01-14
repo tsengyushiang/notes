@@ -1,8 +1,8 @@
 # GitHub
 
-## CI/CD
+## Github page
 
-- auto deploy gh-page `.github/workflows/DeployGihubPage.yml`
+- add a ci script `.github/workflows/DeployGihubPage.yml`
 
 ```
 name: DeployGihubPage
@@ -37,6 +37,10 @@ jobs:
           git push -f origin gh-pages:gh-pages
           git branch -D gh-pages
 ```
+- make sure your web pages load resocure from `'/${repo-name}/${resources...}'` instead of `'/${resource}'`
+  
+  - Option1 : add `"homepage":"https://${username}.github.io/${repo name}/",` to `package.json`.
+  - Option2 : set `assetPrefix`, `basePath` of `next.config.js` or `webpack.config.js`..
 
 ## Backup
 
