@@ -2,8 +2,7 @@
 
 ## CI/CD
 
-- auto deploy gh-page `.github/workflows/AutoDeployGihubPage.yml`
-
+- auto deploy gh-page `.github/workflows/DeployGihubPage.yml`
 
 ```
 name: DeployGihubPage
@@ -38,18 +37,6 @@ jobs:
           git push -f origin gh-pages:gh-pages
           git branch -D gh-pages
 ```
-
-    - Set Personal Access Token to repo secret `PAT`.
-
-        * right top icon > settings >  Developer settings > Personal access tokens (classic)
-            - check repo
-            - check workflow
-            - copy token string
-
-        * repo > settings > Secrets > Actions > New repository secret
-        
-            - named `PAT`
-            - paste token string
 
 ## Backup
 
