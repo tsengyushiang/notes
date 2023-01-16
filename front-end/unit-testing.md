@@ -14,7 +14,7 @@
 "devDependencies": {
   "@testing-library/jest-dom": "^5.8.0",
   "@testing-library/react": "^10.0.4",
-  "jest": "24.9.0",
+  "jest": "25.4.0",
 }
 ```
 
@@ -110,18 +110,12 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
 - `TypeError: MutationObserver is not a constructor ... await waitFor(()=>...`
 
-  - Install pacakge `jest-environment-jsdom-sixteen`
+  - [upgrate jest to v25.4.0](https://github.com/testing-library/dom-testing-library/issues/477#issuecomment-617652033)
 
-    `yarn add -D jest-environment-jsdom-sixteen`
-
-  - Change script `package.json`
-
-    ```json
-    "scripts": {
-      ...
-      "test": "jest --env=jest-environment-jsdom-sixteen"
-    },
-    ```
+  ```
+  yarn remove jest
+  yarn add -D jest@v25.4.0
+  ```
 
 ## Advaned
 
