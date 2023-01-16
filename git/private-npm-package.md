@@ -55,12 +55,11 @@ module.exports = function (api) {
     - Babel will compile files to `dist`.
     - `registry: ...@tsengyushiang` is your github username.
     - `name: @tsengyushiang/react-ui` must match username and repository on github.
-    - Update version `"version": "0.1.1"` if old version number is used.
+    -  remove `"version": "0.1.1"` and let CD run `npm version ${{  github.ref_name }} --no-git-tag-version` for you to avoid version conflict.
 
 ```json
 {   
     "name": "@tsengyushiang/react-ui",
-    "version": "0.1.1",
     ...
     "main": "dist/index.js",
     "private": false,
@@ -88,8 +87,8 @@ module.exports = function (api) {
 name: Publish package to GitHub Packages
 on:
   push:
-    branches:
-      - master
+    tags:
+      - '*'
 jobs:
   publish-package:
     runs-on: ubuntu-latest
@@ -100,10 +99,12 @@ jobs:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
       - run: npm install
+      - run: npm version ${{  github.ref_name }} --no-git-tag-version
       - run: npm run compile
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 ```
 
 ## Install package in other project
