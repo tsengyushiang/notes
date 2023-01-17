@@ -1,7 +1,7 @@
 # Google Apps Script
 
 
-## Read Public Google Sheet
+## SpreadSheet
 
 - [Document](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app)
 
@@ -20,12 +20,12 @@ function ReadSpreadSheetById(id) {
 }
 ```
 
-## Send Email
+## Email
 
 - [Document](https://developers.google.com/apps-script/reference/mail/mail-app)
 
-```
-// find thread by subject from my gmail if exists reply it, otherwise send a new mail.
+- find thread by subject from my gmail if exists reply it, otherwise send a new mail.
+
 function CheckReplyThenSend(subject,htmlBody){
   var thread = GmailApp.search(`in:anywhere subject:"${subject}" `)[0];
 
@@ -40,7 +40,11 @@ function CheckReplyThenSend(subject,htmlBody){
   var emailQuotaRemaining = MailApp.getRemainingDailyQuota();
   Logger.log("Remaining email quota: " + emailQuotaRemaining);
 }
+```
 
+- send email
+
+```
 function SendEmailToMe(title,htmlBody){
     const myEmail = Session.getActiveUser().getEmail();
     MailApp.sendEmail({
@@ -48,5 +52,16 @@ function SendEmailToMe(title,htmlBody){
         subject: title,
         htmlBody
     });
+}
+```
+## calendar
+
+- Get subscribed calendar by Id
+
+```
+function GetHoliday(){
+  // go your calendar and check 'Holidays in Taiwan' is subscribed and copy id from 'Holidays in Taiwan'->setting
+  var calendar = CalendarApp.getCalendarById('en.taiwan#holiday@group.v.calendar.google.com');
+  Logger.log(calendar);
 }
 ```
