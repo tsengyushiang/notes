@@ -5,7 +5,7 @@
 
 - [Document](https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet-app)
 
-```
+```javascript
 function ReadSpreadSheetById(id) {
   var ss = SpreadsheetApp.openById(id);
   var sheet = ss.getSheets()[0]
@@ -26,6 +26,7 @@ function ReadSpreadSheetById(id) {
 
 - find thread by subject from my gmail if exists reply it, otherwise send a new mail.
 
+```javascript
 function CheckReplyThenSend(subject,htmlBody){
   var thread = GmailApp.search(`in:anywhere subject:"${subject}" `)[0];
 
@@ -44,7 +45,7 @@ function CheckReplyThenSend(subject,htmlBody){
 
 - send email
 
-```
+```javascript
 function SendEmailToMe(title,htmlBody){
     const myEmail = Session.getActiveUser().getEmail();
     MailApp.sendEmail({
@@ -58,7 +59,7 @@ function SendEmailToMe(title,htmlBody){
 
 - Get subscribed calendar by Id
 
-```
+```javascript
 function GetHoliday(){
   // go your calendar and check 'Holidays in Taiwan' is subscribed and copy id from 'Holidays in Taiwan'->setting
   var calendar = CalendarApp.getCalendarById('en.taiwan#holiday@group.v.calendar.google.com');
