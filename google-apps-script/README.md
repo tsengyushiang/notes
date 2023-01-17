@@ -25,6 +25,22 @@ function ReadSpreadSheetById(id) {
 - [Document](https://developers.google.com/apps-script/reference/mail/mail-app)
 
 ```
+// find thread by subject from my gmail if exists reply it, otherwise send a new mail.
+function CheckReplyThenSend(subject,htmlBody){
+  var thread = GmailApp.search(`in:anywhere subject:"${subject}" `)[0];
+
+  if (thread){
+    thread.reply("", {
+      htmlBody: htmlBody,
+    });
+  }else{
+    SendEmailToMe(subject,htmlBody)
+  }
+
+  var emailQuotaRemaining = MailApp.getRemainingDailyQuota();
+  Logger.log("Remaining email quota: " + emailQuotaRemaining);
+}
+
 function SendEmailToMe(title,htmlBody){
     const myEmail = Session.getActiveUser().getEmail();
     MailApp.sendEmail({
