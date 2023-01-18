@@ -122,9 +122,9 @@
 
 ## Input 
 
-- disable  outline
+- no outline
 
-    ```
+    ```css
     input[type=text] {
       background-color: transparent;
       border: none;
@@ -135,6 +135,18 @@
     }
     ```
 
+- no typing line
+
+  ```css
+  input[type=text] {
+    color: transparent;
+    text-shadow: 0 0 0 #2196f3;
+
+    &:focus {
+        outline: none;
+    }
+  }
+  ```
 
 ## Div
 
