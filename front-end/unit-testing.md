@@ -27,7 +27,7 @@
   ```javascript
   import "@testing-library/jest-dom";
   import * as React from "react";
-  import { render, fireEvent } from "@testing-library/react";
+  import { render, fireEvent, screen } from "@testing-library/react";
   ```
 
 ### Write Test
@@ -35,10 +35,10 @@
   ```javascript
   describe("Task Descript", () => {
     test("test1", () => {
-      // testing code here...
-      // const { container, getByText } = render(
-      //   <Button onClick={mockFunction}/>,
-      // );
+      // render(<Button onClick={mockFunction}/>);
+      // screen.logTestingPlaygroundURL(); // this will help you get query syntex
+      // const target=screen.getBy...
+      // expect(...).toBe...
     });
 
     test("test2", () => {
@@ -56,7 +56,7 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
 ```
 
-### Testing
+### Fire Events
 
 
 - Check onBlur
@@ -75,14 +75,14 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
   ```javascript
   const onClick = jest.fn();
-  const { container } = render(
-    <Button onClick={onClick}/>,
-  );
-  fireEvent.click(container.firstChild);
+  render(<Button onClick={onClick}/>);
+  fireEvent.click(screen.getByRole("button"));
   expect(mockCallBack).toHaveBeenCalledTimes(1);
   ```
-  
-- Chekc Value : 
+
+###   
+
+- Check Value : 
   
   - `expect(container.firstChild.textContent).toEqual("✓");`
   
@@ -94,7 +94,7 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
 ## Errors
 
-- `warning: An update to Icon inside a test was not wrapped in act(...).`
+### `warning: An update to Icon inside a test was not wrapped in act(...).`
 
   ```javascript
   import { waitFor } from "@testing-library/react";
@@ -108,7 +108,7 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
   })
   ```
 
-- `TypeError: MutationObserver is not a constructor ... await waitFor(()=>...`
+### `TypeError: MutationObserver is not a constructor ... await waitFor(()=>...`
 
   - [upgrate jest to v25.4.0](https://github.com/testing-library/dom-testing-library/issues/477#issuecomment-617652033)
 
@@ -117,7 +117,23 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
   yarn add -D jest@v25.4.0
   ```
 
-## Advaned
+### `TypeError: Cannot set property ‘fillStyle’ of null` firing on the Phaser import
+
+- [Reference](https://tnodes.medium.com/setting-up-jest-with-react-and-phaser-422b174ec87e)
+
+- Install package
+
+```
+yarn add -D jest-canvas-mock
+```
+
+- Add config to `jest.config.js`
+
+  ```javascript
+  module.exports = {
+    setupFiles: ["jest-canvas-mock"],
+  };
+  ```
 
 ### Static Assets SVG  
 
