@@ -2,13 +2,11 @@
 
 ## Chrome DevTools
 
-- network throttling
+- [mobile console](https://developer.chrome.com/docs/devtools/remote-debugging/)
 
-![network-throttling](./images/network-throttling.png)
+- network throttling : `F12 -> Network -> No throttling` to choose network speed
 
-- force css Pseudo classes
-
-![Pseudo-classes](./images/Pseudo-classes.png)
+- force css Pseudo classes : `F12 -> elements -> right click a element -> force state`
 
 ## Visualize
 
@@ -22,6 +20,7 @@
 
 - [CSS HTML5 Support tables](https://caniuse.com/)
 - [WebGL Report](https://webglreport.com/)
+- [keyboard events and codes](https://www.w3.org/2002/09/tests/keys.html)
 
 ## Chrome plugins
     
