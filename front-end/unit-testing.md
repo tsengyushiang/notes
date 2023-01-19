@@ -82,10 +82,11 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
   user.click(target);
   ```
 
-- Type Input
+- [Type Input](https://testing-library.com/docs/user-event/keyboard/)
 
   ```javscript
-  user.type(target, "some text...");
+  input.focus();
+  await user.keyboard("123456");
   ```
 
 ### Assertion
