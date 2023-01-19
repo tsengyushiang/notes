@@ -14,7 +14,8 @@
 "devDependencies": {
   "@testing-library/jest-dom": "^5.8.0",
   "@testing-library/react": "^10.0.4",
-  "jest": "25.4.0",
+  "@testing-library/user-event": "^14.4.3",
+  "jest": "26.0.0",
 }
 ```
 
@@ -28,21 +29,30 @@
   import "@testing-library/jest-dom";
   import * as React from "react";
   import { render, fireEvent, screen } from "@testing-library/react";
+  import userEvent from "@testing-library/user-event";
   ```
 
 ### Write Test
 
   ```javascript
+
+  function setup(jsx) {
+    return {
+      user: userEvent.setup(),
+      ...render(jsx),
+    }
+  }
+  
   describe("Task Descript", () => {
     test("test1", () => {
-      // render(<Button onClick={mockFunction}/>);
+      // const {user} = setup(<MyComponent />)
       // screen.logTestingPlaygroundURL(); // this will help you get query syntex
       // const target=screen.getBy...
       // expect(...).toBe...
     });
 
     test("test2", () => {
-     // testing code here...
+     // second testing code here...
     });
   });
   ```
@@ -112,10 +122,9 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
   - [upgrate jest to v25.4.0](https://github.com/testing-library/dom-testing-library/issues/477#issuecomment-617652033)
 
-  ```
-  yarn remove jest
-  yarn add -D jest@v25.4.0
-  ```
+### `target.ownerDocument.createRange is not a function`
+
+  - [upgrate jest to v26.0.0](https://github.com/mui/material-ui/issues/15726#issuecomment-493124813)
 
 ### `TypeError: Cannot set property ‘fillStyle’ of null` firing on the Phaser import
 
