@@ -69,28 +69,26 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 ### Fire Events
 
 
-- Check onBlur
+- onBlur
 
   ```javascript
-  const onBlur = jest.fn();
-  const { container } = render(
-    <div onBlur={onBlur}/>,
-  );
-  container.firstChild.focus();
-  container.firstChild.blur();
-  expect(onBlur).toHaveBeenCalledTimes(1);
+  target.focus();
+  target.blur();
   ```
 
-- Check onClick
+- onClick
 
   ```javascript
-  const onClick = jest.fn();
-  render(<Button onClick={onClick}/>);
-  fireEvent.click(screen.getByRole("button"));
-  expect(mockCallBack).toHaveBeenCalledTimes(1);
+  user.click(target);
   ```
 
-###   
+- Type Input
+
+  ```javscript
+  user.type(target, "some text...");
+  ```
+
+### Assertion
 
 - Check Value : 
   
