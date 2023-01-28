@@ -81,7 +81,7 @@ module.exports = function (api) {
     - Go `https://github.com/${username}/${repo_name}/settings/actions`
     - In `Workflow permissions` section, use `Read and Write permissions`
 
-- Add script `.github\workflows`
+- Add script `.github\workflows\package.yml`
 
 ```
 name: Publish package to GitHub Packages
