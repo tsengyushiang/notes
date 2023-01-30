@@ -252,6 +252,9 @@ sequenceDiagram
 - [Reference](https://medium.com/@pierremaoui/using-websockets-with-redux-sagas-a2bf26467cab)
 
 ```javascript
+import { take, call, race } from "redux-saga/effects";
+import { eventChannel, END } from "redux-saga";
+
 function initWebsocketChannel(socketUrl) {
 
   return eventChannel((emitter) => {
