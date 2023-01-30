@@ -243,3 +243,54 @@ sequenceDiagram
 ## Tips
 
 - dispatch another saga event in saga, use `yield call(eventFunction)` instead of `yield put({type:EVENT_CONSTANT})`
+
+
+## Advanced
+
+### WebSocket
+
+- [Reference](https://medium.com/@pierremaoui/using-websockets-with-redux-sagas-a2bf26467cab)
+
+```javascript
+function initWebsocketChannel(socketUrl) {
+
+  return eventChannel((emitter) => {
+    const socket = new WebSocket(socketUrl);
+
+    socket.onopen = () => {
+        emitter({type:SOCKET_CONNECTED,payload:{}});
+    };
+
+    socket.onclose = () => {
+        emitter({type:SOCKET_CLOSED,payload:{}});
+        emitter(END);
+    };
+
+    socket.onmessage = (payload) => {
+        emitter({type:SOCKET_MSG,payload});
+    };
+
+    return () => socket.close();
+  });
+}
+
+function* initWebSocket() {
+    const socketUrl="wss://..."
+    const channel = yield call(initWebsocketChannel, socketUrl);
+
+    while (true) {
+        const action = yield race([take(channel), take([CLOSE_SOCKET])]);
+
+        const socketAction = action[0];
+        if (socketAction) {
+            yield put(socketAction);
+        }
+
+        const closeAction = action[1];
+        if (closeAction) {
+            channel.close();
+            break;
+        }
+    }
+}
+```
