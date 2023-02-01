@@ -1,5 +1,8 @@
 # Vscode
 
+## Setting
+
+- add `.vscode/settings.json` in working directory
 
 ## Git 
 
@@ -13,6 +16,12 @@ Version: 1.30.0
 Publisher: mhutchie
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph
 ```
+
+- commitOrdering
+
+    - `"git-graph.commitOrdering":"date"` (default)
+
+    - `"git-graph.commitOrdering":"topo"`
 
 ### Changes
 

@@ -1,6 +1,5 @@
 # Coding Style
 
-* [files changed](https://github.com/tsengyushiang/next.js/pull/3/files)
 * Eslint : check coding style.
 * Prettier : format code
 * Husky : run command when git commit.

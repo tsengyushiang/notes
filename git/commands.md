@@ -16,14 +16,41 @@
     git push
     ```
 
-## Log difference
+## Merge and Rebase
 
-- input
+- exit merge
+
+    ```
+    git merge -abort
+    ```
+
+## Debug
+
+### History and Graph
+
+- show graph in topological ordering
+
+    ```sh
+    git log --pretty="format:%h %ar %s" --graph
+    ```
+
+- show commit message without other branch
+
+    ```sh
+    git log --pretty="format:%h %ar %s" --first-parent
+    ```
+
+### Log difference
+
+- command
+
     ```
     git diff-tree -r --no-commit-id --name-status --text <source> <target>
     ```
     - `<source>`,`<target>` can be branch name, commit id
+
 - output
+
     ```
     M       .github/workflows/GithubCICD.yml
     M       .gitignore
