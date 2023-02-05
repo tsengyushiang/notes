@@ -1,5 +1,5 @@
 
-# Front-end
+# Frontend
 
 * [apollo client](./references/apollo.html)
 * [Coding Style](./codingStyle.md)

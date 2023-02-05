@@ -16,7 +16,7 @@
 
 - [Online Flowchart Drawer](https://mermaid-js.github.io/docs/mermaid-live-editor-beta)
 
-## Front-end
+## Frontend
 
 - [CSS HTML5 Support tables](https://caniuse.com/)
 - [WebGL Report](https://webglreport.com/)

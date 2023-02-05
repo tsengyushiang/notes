@@ -4,6 +4,7 @@
 * [Docker](./docker)
 * [Git](./git/)
 * [Google App Script](./google-apps-script/)
-* [Front-end](./front-end/)
+* [Backend](./backend/)
+* [Frontend](./frontend/)
 * [Online Tools](./online-tools)
 * [vscode](./vscode/)

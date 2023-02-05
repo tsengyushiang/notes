@@ -38,20 +38,20 @@ $ npx create-next-app@latest
 
     app.prepare()
     .then(() => {
-    const server = express()
-    
-    // learn more express routing from nodejs document
-    server.get('/custom/:id', (req, res) => {
-        res.send(req.params)
-    })
+        const server = express()
+        
+        // learn more express routing from nodejs document
+        server.get('/custom/:id', (req, res) => {
+            res.send(req.params)
+        })
 
-    server.get('/*', (req, res) => {
-        return handle(req, res)
-    })
+        server.get('/*', (req, res) => {
+            return handle(req, res)
+        })
 
-    server.listen(port, (err) => {
-        if (err) throw err
-        console.log(`> Ready on http://localhost:${port}`)
-    })
+        server.listen(port, (err) => {
+            if (err) throw err
+            console.log(`> Ready on http://localhost:${port}`)
+        })
     })
     ```
