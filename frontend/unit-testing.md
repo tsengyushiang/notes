@@ -104,18 +104,10 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 ## Errors
 
 ### `warning: An update to Icon inside a test was not wrapped in act(...).`
-
-  ```javascript
-  import { waitFor } from "@testing-library/react";
-
-  test("test1", async () => {
-    // render component...
-    await waitFor(() => {
-      // trigger events
-      // expect something
-    });
-  })
-  ```
+  
+  - This warning is caused by state update in the component.
+  - Issue can be fixed by wrapping update function with act.
+  - [Some examples](https://kentcdodds.com/blog/fix-the-not-wrapped-in-act-warning)
 
 ### `TypeError: MutationObserver is not a constructor ... await waitFor(()=>...`
 
