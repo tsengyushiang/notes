@@ -57,13 +57,37 @@
   });
   ```
   
-### Mock Function
+### Mock 
+
+- Function
     
 ```javascript
-
 const mockCallBack = jest.fn();
-expect(mockCallBack).toHaveBeenCalledTimes(1);
+```
 
+- Component
+
+```javascript
+jest.mock("../../components/Icon", () => () => "Icon");
+```
+
+```javascript
+const icon = screen.getByText(/icon/i); // then get element like this
+```
+
+- Package
+
+```javascript
+jest.mock("react-i18next", () => ({
+  useTranslation: () => {
+    return {
+      t: (t) => t,
+      i18n: {
+        changeLanguage: () => new Promise(() => {}),
+      },
+    };
+  },
+}));
 ```
 
 ### Fire Events
@@ -91,15 +115,17 @@ expect(mockCallBack).toHaveBeenCalledTimes(1);
 
 ### Assertion
 
-- Check Value : 
-  
-  - `expect(container.firstChild.textContent).toEqual("✓");`
-  
-  - `expect(container.firstChild.textContent).not.toEqual("✓");`
+- Element 
 
-- Check Attribute : `expect(getByText(TEXT)).toHaveAttribute("href", link);`
+  - Attribute : `expect(...).toHaveAttribute("href", link);`
+ 
+  - Visible : `expect(...).toBeVisible();`, `expect(...).toBeInTheDocument()`
 
-- Check Visible : `expect(getByText(TEXT)).toBeVisible();`
+- Callback value `expect(func.mock.calls.pop()[0])`
+
+  - String : `expect(...).toEqual("✓");`, `expect(...).not.toEqual("✓");`
+  
+  - Object : `expect(...).toMatchObject({...});`
 
 ## Errors
 
