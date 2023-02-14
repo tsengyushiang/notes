@@ -68,11 +68,13 @@ const mockCallBack = jest.fn();
 - Component
 
 ```javascript
-jest.mock("../../components/Icon", () => () => "Icon");
+jest.mock("../../components/Icon", () => ({ type }) => type); // Parse type from Icon to text
 ```
 
 ```javascript
-const icon = screen.getByText(/icon/i); // then get element like this
+// If test component is <Icon type="cancel"/>
+// Then we can get element like following code
+const cancel = screen.getByText(/cancel/i);
 ```
 
 - Package
