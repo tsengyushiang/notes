@@ -25,37 +25,37 @@
 
 ### Import Packages
 
-  ```javascript
-  import "@testing-library/jest-dom";
-  import * as React from "react";
-  import { render, fireEvent, screen } from "@testing-library/react";
-  import userEvent from "@testing-library/user-event";
-  ```
+```javascript
+import "@testing-library/jest-dom";
+import * as React from "react";
+import { render, fireEvent, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+```
 
-### Write Test
+### Write a Test
 
-  ```javascript
+```javascript
 
-  function setup(jsx) {
-    return {
-      user: userEvent.setup(),
-      ...render(jsx),
-    }
+function setup(jsx) {
+  return {
+    user: userEvent.setup(),
+    ...render(jsx),
   }
-  
-  describe("Task Descript", () => {
-    test("test1", () => {
-      // const {user} = setup(<MyComponent />)
-      // screen.logTestingPlaygroundURL(); // this will help you get query syntex
-      // const target=screen.getBy...
-      // expect(...).toBe...
-    });
+}
 
-    test("test2", () => {
-     // second testing code here...
-    });
+describe("Task Descript", () => {
+  test("test1", () => {
+    // const {user} = setup(<MyComponent />)
+    // screen.logTestingPlaygroundURL(); // this will help you get query syntex
+    // const target=screen.getBy...
+    // expect(...).toBe...
   });
-  ```
+
+  test("test2", () => {
+   // second testing code here...
+  });
+});
+```
   
 ### Mock 
 
@@ -90,6 +90,15 @@ jest.mock("react-i18next", () => ({
     };
   },
 }));
+```
+### Query Element
+
+- Find suggested query in browser with URL from `screen.logTestingPlaygroundURL();`
+
+- Find a element not present in DOM with `queryBy` instead of `getBy`
+
+```javascript
+expect(screen.queryByText(/text/i)).not.toBeInTheDocument();
 ```
 
 ### Fire Events
