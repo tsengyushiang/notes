@@ -99,7 +99,8 @@ jest.mock("react-i18next", () => ({
 
 ```javascript
 expect(screen.queryByText(/text/i)).not.toBeInTheDocument(); // find by text
-expect(document.querySelector("#reminderOptions_off")).toBeInTheDocument(); // find by element Id
+expect(screen.queryByDisplayValue("123")).not.toBeInTheDocument(); // find by text for <Input/>
+expect(document.querySelector("#reminderOptions_off")).not.toBeInTheDocument(); // find by element Id
 ```
 
 ### Fire Events
@@ -125,7 +126,8 @@ expect(document.querySelector("#reminderOptions_off")).toBeInTheDocument(); // f
 
   ```javascript
   const input = screen.getByPlaceholderText(/password/i)
-  // const input = screen.getByDisplayValue('00000000')
+  // const input = screen.getByDisplayValue('123') 
+
   input.focus();
   await user.keyboard("123456"); //type
   await user.keyboard("{Control>}A{Delete}{/Control}8a867"); //type delete all and type
