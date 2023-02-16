@@ -125,6 +125,7 @@ expect(document.querySelector("#reminderOptions_off")).toBeInTheDocument(); // f
 
   ```javascript
   const input = screen.getByPlaceholderText(/password/i)
+  // const input = screen.getByDisplayValue('00000000')
   input.focus();
   await user.keyboard("123456"); //type
   await user.keyboard("{Control>}A{Delete}{/Control}8a867"); //type delete all and type
