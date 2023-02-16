@@ -98,7 +98,8 @@ jest.mock("react-i18next", () => ({
 - Find a element not present in DOM with `queryBy` instead of `getBy`
 
 ```javascript
-expect(screen.queryByText(/text/i)).not.toBeInTheDocument();
+expect(screen.queryByText(/text/i)).not.toBeInTheDocument(); // find by text
+expect(document.querySelector("#reminderOptions_off")).toBeInTheDocument(); // find by element Id
 ```
 
 ### Fire Events
@@ -118,10 +119,15 @@ expect(screen.queryByText(/text/i)).not.toBeInTheDocument();
   ```
 
 - [Type Input](https://testing-library.com/docs/user-event/keyboard/)
+  
+  - Find non-character `key` in [source code](https://github.com/testing-library/user-event/blob/main/src/keyboard/keyMap.ts)
+  - Use [key combination](https://testing-library.com/docs/user-event/keyboard/)
 
-  ```javscript
+  ```javascript
+  const input = screen.getByPlaceholderText(/password/i)
   input.focus();
-  await user.keyboard("123456");
+  await user.keyboard("123456"); //type
+  await user.keyboard("{Control>}A{Delete}{/Control}8a867"); //type delete all and type
   ```
 
 ### Assertion
