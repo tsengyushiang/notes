@@ -47,6 +47,18 @@ Publisher: Street Side Software
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 ```
 
+### File Dependency Graph
+
+```
+Name: Dependency Cruiser Extension
+Id: juanallo.vscode-dependency-cruiser
+Description: Visual Studio Code Extension to build dependency graphs using dependency-cruiser. Visualize module dependencies from any file
+Version: 0.0.1
+Publisher: juanallo
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=juanallo.vscode-dependency-cruiser
+```
+- Right click file to get dependency graph.
+
 ### Prettier
 
 - package
