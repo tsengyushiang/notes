@@ -3,7 +3,10 @@
 * Eslint : check coding style.
 * Prettier : format code
 * Husky : run command when git commit.
+* Dependency-cruiser : check architecture with rule and export graph.
 * Lint-staged : run command with specific files.
+* Others :
+  * Nextjs import alias 
 
 ##  Eslint
 
@@ -172,7 +175,19 @@
     ]
   },
   ```
-  
+## [Dependency-cruiser](https://github.com/sverweij/dependency-cruiser)
+
+
+- Install package `yarn add -D dependency-cruiser`
+
+- Add empty rule config `.dependency-cruiser.js`
+
+- Export graph `npx depcruise ${target component} --exclude node_modules --config --output-type dot | dot -T svg > dependency-graph.svg`
+
+- Fix : `zsh: command not found: dot`
+  - [github issue](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
+  - Caused by graphize missing. On Mac use `brew install graphviz` to install.
+
 ## Import Alias For Next.js
   
 - `jsconfig.json`
