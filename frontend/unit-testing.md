@@ -138,7 +138,9 @@ expect(document.querySelector("#reminderOptions_off")).not.toBeInTheDocument(); 
 - Element 
 
   - Attribute : `expect(...).toHaveAttribute("href", link);`
- 
+  
+  - Value : `expect(...).toHaveValue(text)`
+  
   - Visible : `expect(...).toBeVisible();`, `expect(...).toBeInTheDocument()`
 
 - Callback value `expect(func.mock.calls.pop()[0])`
