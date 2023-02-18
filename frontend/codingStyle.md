@@ -180,11 +180,29 @@
 
 - Install package `yarn add -D dependency-cruiser`
 
-- Add empty rule config `.dependency-cruiser.js`
+- Add rule config `.dependency-cruiser.json`, [find or rule example in documents](https://github.com/sverweij/dependency-cruiser/blob/develop/doc/rules-tutorial.md)
 
-- Export graph `npx depcruise ${target component} --exclude node_modules --config --output-type dot | dot -T svg > dependency-graph.svg`
+```json
+{
+  "forbidden": [
+    {
+      "name": "Bad Import",
+      "comment": "Import container from component folder make components more complex.",
+      "severity": "error",
+      "from": { "path": "^components" },
+      "to": {
+        "path": "^containers"
+      }
+    }
+  ]
+}
+```
 
-- Fix : `zsh: command not found: dot`
+- Export graph `npx depcruise ${target file/folder} --exclude node_modules --config .dependency-cruiser.json --output-type dot | dot -T svg > dependency-graph.svg`
+
+- Run validation `npx depcruise --validate .dependency-cruiser.json ${target file/folder}`
+
+- Fix error: `zsh: command not found: dot`
   - [github issue](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
   - Caused by graphize missing. On Mac use `brew install graphviz` to install.
 
