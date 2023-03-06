@@ -25,13 +25,21 @@
 
 ## Image 
 
-- from Dockerfile :
+- from Dockerfile
 
     - `docker build -t <imagename> --no-cache <Dockerfile path>`
 
 - from [dockerhub](https://hub.docker.com/)
 
     - `docker pull <imagename>`
+
+- build to `.tar`
+
+    - `docker save -o <filename>.tar <imagename>`
+
+- from `.tar`
+
+    - `docker load -i <filename>.tar`
 
 ## Container
 
