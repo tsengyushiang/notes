@@ -135,19 +135,39 @@ expect(document.querySelector("#reminderOptions_off")).not.toBeInTheDocument(); 
 
 ### Assertion
 
-- Element 
+- Element
 
-  - Attribute : `expect(...).toHaveAttribute("href", link);`
-  
-  - Value : `expect(...).toHaveValue(text)`
-  
-  - Visible : `expect(...).toBeVisible();`, `expect(...).toBeInTheDocument()`
+```javascript
+const target = screen.getByRole(...)
 
-- Callback value `expect(func.mock.calls.pop()[0])`
+// Attribute
+expect(target).toHaveAttribute("href", link);
 
-  - String : `expect(...).toEqual("✓");`, `expect(...).not.toEqual("✓");`
-  
-  - Object : `expect(...).toMatchObject({...});`
+// Value
+expect(target).toHaveValue(text);
+
+// Visible
+expect(target).toBeVisible();
+expect(target).toBeInTheDocument();
+
+// isFocused
+expect(document.activeElement).toBe(target);
+```
+
+- Callback value
+
+```javascript
+const mockCallBack = jest.fn();
+const target = expect(mockCallBack.mock.calls.pop()[0])
+
+// String
+expect(target).toEqual("✓");
+expect(target).not.toEqual("✓");
+
+// Object
+expect(target).toMatchObject({ key : value });
+
+```
 
 ## Errors
 
