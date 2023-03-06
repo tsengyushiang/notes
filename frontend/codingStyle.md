@@ -206,6 +206,16 @@
   - [github issue](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
   - Caused by graphize missing. On Mac use `brew install graphviz` to install.
 
+## Node & Npm version
+
+- specify npm and node version in `package.json`
+```json
+"engines" : { 
+  "npm" : ">=8.0.0 <9.0.0",
+  "node" : ">=16.0.0 <17.0.0"
+},
+```
+
 ## Import Alias For Next.js
   
 - `jsconfig.json`
