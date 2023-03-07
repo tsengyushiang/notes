@@ -47,6 +47,17 @@ Publisher: Street Side Software
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=streetsidesoftware.code-spell-checker
 ```
 
+### CodeMetrics
+
+```
+Name: CodeMetrics
+Id: kisstkondoros.vscode-codemetrics
+Description: Computes complexity in TypeScript / JavaScript files.
+Version: 1.26.1
+Publisher: Kiss Tamás
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-codemetrics
+```
+
 ### File Dependency Graph
 
 ```
