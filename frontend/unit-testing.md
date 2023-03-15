@@ -79,18 +79,44 @@ const cancel = screen.getByText(/cancel/i);
 
 - Package
 
-```javascript
-jest.mock("react-i18next", () => ({
-  useTranslation: () => {
+  - mock in `__test__`
+  
+  ```javascript
+  // __test__/components/test.js
+  jest.mock("react-i18next", () => ({
+    useTranslation: () => {
+      return {
+        t: (t) => t,
+        i18n: {
+          changeLanguage: () => new Promise(() => {}),
+        },
+      };
+    },
+  }));
+  ```
+
+  - mock in `__mocks__` and use in `__test__` without second parameter.
+
+  ```javascript
+  // __mocks__/react-i18next.js
+  const i18n = jest.createMockFromModule("react-i18next");
+
+  i18n.useTranslation = () => {
     return {
       t: (t) => t,
       i18n: {
         changeLanguage: () => new Promise(() => {}),
       },
     };
-  },
-}));
-```
+  };
+
+  module.exports = i18n;
+  ```
+  ```javascript
+  // __test__/components/test.js
+  jest.mock("react-i18next");
+  ```
+
 ### Query Element
 
 - Find suggested query in browser with URL from `screen.logTestingPlaygroundURL();`
