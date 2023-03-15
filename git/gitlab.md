@@ -23,8 +23,10 @@ test_codes:
   script:
     - yarn
     - yarn test
+    - yarn eslint
     - yarn build
 ```
+- Go setting to block merge request merging when pipline failed.
 
 ### Log difference table.
 
