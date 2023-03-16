@@ -35,3 +35,10 @@
         padding-left: constant(safe-area-inset-left);
     }
     ```
+
+## Content-Security-Policy(CSP)
+
+- [reference](https://hackmd.io/@Eotones/BkOX6u5kX)
+```html
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:;">
+```
