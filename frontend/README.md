@@ -11,7 +11,6 @@
 * [Threejs](./threejs.md)
 * [Vanilla Js](./vanillaJs.md)
 * [Nextjs](./nextjs.md)
-* [issues](./issues.md)
 * [Nextjs github-page template](https://github.com/tsengyushiang/Nextjs-ghpages-CICD-template)
 * [Redux & Context Hook](./redux_context.md)
 * [redux-saga](./reduxSaga.md)
