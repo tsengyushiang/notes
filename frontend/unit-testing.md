@@ -116,6 +116,35 @@ const cancel = screen.getByText(/cancel/i);
   // __test__/components/test.js
   jest.mock("react-i18next");
   ```
+- Redux and Redux-saga
+
+  - add a `helper/redux.js`
+  
+  ```javascript
+  import configureMockStore from "redux-mock-store";
+  import createSagaMiddleware from "redux-saga";
+  import { Provider } from "react-redux";
+
+  const mockStore = (initialState) => {
+    const sagaMiddleware = createSagaMiddleware();
+    const mockStore = configureMockStore([sagaMiddleware]);
+    const store = mockStore(initialState);
+    return store;
+  };
+
+  const MockProvider = ({ children, initialState }) => {
+    return <Provider store={mockStore(initialState)}>{children}</Provider>;
+  };
+
+  export default MockProvider;
+  ```
+   - Use above `MockProvider` as a wrapper of your component in test script and give an `initialState`.
+
+  ```javascript
+  <MockProvider initialState={{ data:{} }}>
+    // your testing component
+  </MockProvider>
+  ```
 
 ### Query Element
 
