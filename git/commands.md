@@ -141,3 +141,11 @@
             acitvate = true
             url = https://~.git
         ```
+
+- add dependencies to main project's `package.json`, where `./my-submodule/package.json` define submodule's dependencies.
+
+    ```json
+    "dependencies": {
+        "my-submodule": "file:./my-submodule/"
+    }
+    ```
