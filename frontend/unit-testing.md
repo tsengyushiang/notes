@@ -141,7 +141,7 @@ const cancel = screen.getByText(/cancel/i);
    - Use above `MockProvider` as a wrapper of your component in test script and give an `initialState`.
 
   ```javascript
-  <MockProvider initialState={{ data:{} }}>
+  <MockProvider initialState={initialState}>
     // your testing component
   </MockProvider>
   ```
