@@ -20,6 +20,7 @@
   - [Image Affine Transform : homography](https://github.com/Eric-Canas/Homography.js)
   - [Resoucre Monitor : stats.js](https://github.com/mrdoob/stats.js/)
   - [Code Compare Editor: ace-editor](https://github.com/ace-diff/ace-diff)
+  - [Unused File Scanner: unimported](https://github.com/smeijer/unimported#example)
 
 ## Examples
 
