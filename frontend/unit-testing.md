@@ -121,29 +121,44 @@ const cancel = screen.getByText(/cancel/i);
   - add a `helper/redux.js`
   
   ```javascript
-  import configureMockStore from "redux-mock-store";
-  import createSagaMiddleware from "redux-saga";
-  import { Provider } from "react-redux";
+  import { useDispatch, useSelector } from "react-redux";
 
-  const mockStore = (initialState) => {
-    const sagaMiddleware = createSagaMiddleware();
-    const mockStore = configureMockStore([sagaMiddleware]);
-    const store = mockStore(initialState);
-    return store;
+  export const mockReduxBeforeAll = () => {
+    beforeEach(() => {
+      useDispatch.mockClear();
+      useSelector.mockClear();
+    });
   };
 
-  const MockProvider = ({ children, initialState }) => {
-    return <Provider store={mockStore(initialState)}>{children}</Provider>;
-  };
+  export const mockRedux = (mockState) => {
+    const dispatchMock = jest.fn();
+    useDispatch.mockReturnValue(dispatchMock);
 
-  export default MockProvider;
+    useSelector.mockImplementation((callback) => {
+      return callback(mockState);
+    });
+
+    return dispatchMock;
+  };
   ```
+  
    - Use above `MockProvider` as a wrapper of your component in test script and give an `initialState`.
 
   ```javascript
-  <MockProvider initialState={initialState}>
-    // your testing component
-  </MockProvider>
+  import { mockReduxBeforeAll, mockRedux } from "../../../helpers/redux";
+  jest.mock("react-redux");
+
+  describe("test description", () => {
+    mockReduxBeforeAll();
+
+    test("test.", async () => {
+      const dispatchMock = mockRedux(initialState);
+
+      // fire some user events
+
+      expect(dispatchMock).toHaveBeenCalledWith(expectedResult);
+    });
+  });
   ```
 
 ### Query Element
