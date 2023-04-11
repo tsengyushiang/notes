@@ -224,19 +224,16 @@ expect(target).toBeInTheDocument();
 expect(document.activeElement).toBe(target);
 ```
 
-- Callback value
+- Callback arguments
 
 ```javascript
 const mockCallBack = jest.fn();
-const target = expect(mockCallBack.mock.calls.pop()[0])
 
-// String
-expect(target).toEqual("✓");
-expect(target).not.toEqual("✓");
+// check exactly equal
+expect(mockCallBack).toHaveBeenCalledWith({ key : value });
 
-// Object
-expect(target).toMatchObject({ key : value });
-
+// check at least some properties
+expect(mockCallBack).toHaveBeenCalledWith(expect.objectContaining({ key : value }));
 ```
 
 ## Errors
