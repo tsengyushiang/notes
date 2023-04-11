@@ -116,7 +116,7 @@ const cancel = screen.getByText(/cancel/i);
   // __test__/components/test.js
   jest.mock("react-i18next");
   ```
-- Redux and Redux-saga
+- Redux hooks
 
   - add a `helper/redux.js`
   
