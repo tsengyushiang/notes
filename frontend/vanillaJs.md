@@ -1,6 +1,6 @@
 # Vanilla Js
 
-## Object :
+## Object
 
 ### object to JSON string 
 
@@ -84,7 +84,7 @@ function redirect(url) {
 
 ```javascript
 function openInNewTab(url) {
-    var win = window.open(url, '_blank');
+    const win = window.open(url, '_blank');
     win.focus();
 }
 ```
@@ -123,4 +123,10 @@ function updateMouse(event, mouse: THREE.Vector2) {
 const isNumber = (key) => {
     return /^[0-9]$/i.test(key);
 };
+```
+
+- `ctrl+c` (only support `https` webpage, failed in `http`)
+
+```javascript
+navigator.clipboard.writeText("text to copy")
 ```
