@@ -5,3 +5,4 @@
 * [DropDownConatiner](./react_components/DropDownContainer.md)
 * [ModalBox](./react_components//ModalBox.md)
 * [Image](./react_components/Image.md)
+* [ResponsiveText](./react_components/ResponsiveText.md)
