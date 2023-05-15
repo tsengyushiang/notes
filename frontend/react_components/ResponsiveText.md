@@ -1,3 +1,7 @@
+# ResponsiveText
+
+- Implementation of text component which is able to fill parent container.
+
 ```javascript
 import { useRef, useEffect } from "react";
 import styled from "styled-components";
