@@ -103,6 +103,15 @@
       "eslint": "eslint \"./**/*.+(ts|js|tsx)\" --fix",
   }
   ```
+- run eslint checking
+
+  ```bash
+  // warning is ok
+  yarn eslint
+
+  // all warning should be resolved 
+  yarn eslint --max-warnings=0
+  ```
   
 ## Prettier
 
