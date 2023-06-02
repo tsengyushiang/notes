@@ -99,6 +99,17 @@ console.log('%c color', css)
 
 ## Events Helpers
 
+### Document
+
+- Triggering `onBlur` in JavaScript is useful when implementing the `fouc-within` CSS style
+
+```javascript
+const focusedElement = document.activeElement;
+if (focusedElement) {
+    focusedElement.blur();
+}
+```
+
 ### Mouse
 
 - get cursor position
