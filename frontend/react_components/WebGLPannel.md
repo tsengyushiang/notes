@@ -217,8 +217,18 @@ export default WebGLPannel;
 
 ```
 
+## Notes
 
-### Reference
+- enable `preserveDrawingBuffer` for `toDataURL`
+
+```
+const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
+// some render code
+const dataURL = canvas.toDataURL();
+```
+
+
+## Reference
 
 - [Stencil buffer](https://webglfundamentals.org/webgl/lessons/webgl-qna-how-to-use-the-stencil-buffer.html)
 - [Texture](https://codesandbox.io/s/8psig)
