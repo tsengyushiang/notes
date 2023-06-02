@@ -221,9 +221,9 @@ export default WebGLPannel;
 
 - enable `preserveDrawingBuffer` for `toDataURL`
 
-```
+```javascript
 const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
-// some render code
+// some rendering...
 const dataURL = canvas.toDataURL();
 ```
 
