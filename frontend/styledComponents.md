@@ -27,14 +27,14 @@
    
     - [reference](https://betterprogramming.pub/7-ways-to-inherit-styles-using-styled-components-69debaad97e3)
 
-```
+```javascript
 import { Icon } from "../../../../styles/Icon";
 export const IconMusic = styled(Icon)``;
 ```
 
 - with arguments
 
-```
+```javascript
 import styled, { css } from "styled-components";
 
 const Button = styled.button`
@@ -49,7 +49,7 @@ const Button = styled.button`
 
 - element with attribute
 
-```
+```javascript
 const InputColor = styled.input.attrs({ 
   type: 'color',
 })`
@@ -59,7 +59,7 @@ const InputColor = styled.input.attrs({
 
 - usage in `.js`
 
-```
+```javascript
 render(
   <Container>
     <InputColor/>
@@ -71,7 +71,7 @@ render(
 
 - keyframes
 
-```
+```javascript
 import styled, { css, keyframes } from "styled-components";
 
 const sizeChangingAnimation = keyframes`
@@ -88,7 +88,31 @@ export const IconMusic = styled.div`
 `;
 ```
 
-## Server side rendering Styled-Components with NextJS
+## Advanced
+
+
+### Frequently changed styles.
+
+- If styles change frequently use following syntax.
+
+```diff
++ const Component = styled.div.attrs((props) => ({
++  style: {
++    backgroundColor: props.color,
++  },
++ }))`
+-  background-color: ${(props) => props.color};
+   /* Other static styles here */
+`;
+```
+
+- This change make component appends a inline-style instead of creating a new class during every update.
+
+```html
+<div color="#877d7d" class="styled__Component-sc-16v9z3c-4 jYllQ" style="background-color: rgb(135, 125, 125);"></div>
+```
+
+### Server side rendering Styled-Components with NextJS
 
 - [official doc](https://nextjs.org/docs/advanced-features/custom-document), [reference](https://medium.com/swlh/server-side-rendering-styled-components-with-nextjs-1db1353e915e)
 
