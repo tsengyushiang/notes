@@ -54,8 +54,8 @@
 - Features :
   - Erase and restore image by moving mouse.
 
-- [Demo Link](https://codesandbox.io/s/webgl-image-eraser-dwhjrl)
-- [Soruce code](https://github.com/tsengyushiang/WebGL-Image-Eraser)
+- [Demo Link](https://image-eraser.vercel.app/)
+- [Soruce code](https://github.com/yushiang-demo/WebGL-Image-Eraser)
 - packages and techniques :
   - WebGL, GLSL
 
