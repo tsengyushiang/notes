@@ -49,6 +49,16 @@
   - [Threejs](https://threejs.org/), GLSL
   - Background removal
 
+## WebGL Image Eraser
+
+- Features :
+  - Erase and restore image by moving mouse.
+
+- [Demo Link](https://codesandbox.io/s/webgl-image-eraser-dwhjrl)
+- [Soruce code](https://codesandbox.io/s/webgl-image-eraser-dwhjrl)
+- packages and techniques :
+  - WebGL, GLSL
+
 ## To-do List
 
 - Features :
