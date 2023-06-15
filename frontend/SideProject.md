@@ -55,7 +55,7 @@
   - Erase and restore image by moving mouse.
 
 - [Demo Link](https://codesandbox.io/s/webgl-image-eraser-dwhjrl)
-- [Soruce code](https://codesandbox.io/s/webgl-image-eraser-dwhjrl)
+- [Soruce code](https://github.com/tsengyushiang/WebGL-Image-Eraser)
 - packages and techniques :
   - WebGL, GLSL
 
