@@ -147,13 +147,31 @@ navigator.clipboard.writeText("text to copy")
 - Render content only in mask, and circle brush for cleaning mask. 
 
 ```javascript
-const eraseCircle = (ctx, x, y, radius) => {
-  ctx.globalCompositeOperation = "destination-out";
 
-  ctx.strokeStyle = "#000";
-  ctx.beginPath();
-  ctx.arc(x, y, radius, 0, Math.PI * 2);
-  ctx.fill();
+const drawCircle = (ctx, x, y, radius) => {
+    ctx.beginPath();
+    ctx.arc(x, y, radius, 0, Math.PI * 2);
+    ctx.fill();
+};
+
+const drawLine = (ctx, x1, y1, x2, y2 lineWidth) => {
+    ctx.lineWidth = lineWidth;
+    ctx.beginPath();
+    ctx.moveTo(x1, y1);
+    ctx.lineTo(x2, y2);
+    ctx.stroke();
+
+    const radius = lineWidth / 2;
+    drawCircle(ctx, x1, y1, radius);
+    drawCircle(ctx, x2, y2, radius);
+};
+
+const drawMask = (ctx, x, y, isErasing, radius) => {
+ ctx.globalCompositeOperation = isErasing
+      ? "destination-out"
+      : "source-over";
+      
+  // drawCircle(...) or drawLine(...)
 
   ctx.globalCompositeOperation = "source-over";
 };
