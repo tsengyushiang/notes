@@ -141,3 +141,34 @@ const isNumber = (key) => {
 ```javascript
 navigator.clipboard.writeText("text to copy")
 ```
+
+### Canvas
+
+- Render content only in mask, and circle brush for cleaning mask. 
+
+```javascript
+const eraseCircle = (ctx, x, y, radius) => {
+  ctx.globalCompositeOperation = "destination-out";
+
+  ctx.strokeStyle = "#000";
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.globalCompositeOperation = "source-over";
+};
+
+const applyMask = (mask, canvas, result) => {
+  const ctx = result.getContext("2d");
+
+  ctx.clearRect(0, 0, result.width, result.height);
+
+  ctx.globalCompositeOperation = "source-over";
+  ctx.drawImage(mask, 0, 0);
+
+  ctx.globalCompositeOperation = "source-in";
+  ctx.drawImage(canvas, 0, 0);
+
+  ctx.globalCompositeOperation = "source-over";
+};
+```
