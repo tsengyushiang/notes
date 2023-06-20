@@ -227,6 +227,12 @@ const gl = canvas.getContext("webgl", { preserveDrawingBuffer: true });
 const dataURL = canvas.toDataURL();
 ```
 
+- disable `premultipliedAlpha` to blend canvas with page, [reference](https://webglfundamentals.org/webgl/lessons/webgl-and-alpha.html)
+
+```javascript
+const gl = canvas.getContext("webgl", { premultipliedAlpha: false });
+// some rendering...
+```
 
 ## Reference
 
