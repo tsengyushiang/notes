@@ -2,7 +2,8 @@
 
 ## Yarn
 
-- start with local network to debug on mobile : `yarn start --host 0.0.0.0`
+- Start on local network `yarn start --host 0.0.0.0`
+- Check vulnerability by `yarn audit` and upgrade related packages to fix them. 
 
 ## NVM
 
