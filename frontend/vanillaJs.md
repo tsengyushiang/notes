@@ -126,6 +126,31 @@ function updateMouse(event, mouse: THREE.Vector2) {
 }
 ```
 
+### Input/Textarea
+
+- judge next character will make element overflow
+
+```javascript
+export function isInputOverflow(element, text) {
+  const tempSpan = document.createElement("span");
+  tempSpan.style.visibility = "hidden";
+  tempSpan.style.whiteSpace = "nowrap";
+  tempSpan.style.font = window.getComputedStyle(element).font;
+  tempSpan.textContent = text;
+  document.body.appendChild(tempSpan);
+
+  const isOverflow = tempSpan.offsetWidth > element.offsetWidth;
+
+  document.body.removeChild(tempSpan);
+
+  return isOverflow;
+}
+
+export function isTextareaOverflow(element) {
+  return element.scrollHeight > element.clientHeight;
+}
+```
+
 ### Keyboard
 
 - check number
