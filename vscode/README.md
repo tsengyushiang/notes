@@ -85,16 +85,22 @@ VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=juanall
 
 - `.vscode/settings.json`
 
-    ```
-    {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.codeActionsOnSave": {
-        "source.fixAll": true
-        },
-        "editor.formatOnSave": true,
-        "editor.formatOnPaste": true
-    }
-    ```
+```json
+{
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+    "source.fixAll": true
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true
+}
+```
+
+```bash
+mkdir .vscode
+curl https://raw.githubusercontent.com/tsengyushiang/notes/master/vscode/settings.json --output ./.vscode/settings.json
+echo .vscode >> .gitignore
+```
 
 - `.prettierignore`
 
