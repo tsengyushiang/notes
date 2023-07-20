@@ -218,7 +218,7 @@ const applyMask = (mask, canvas, result) => {
 
 ### Media
 
-- Recoder camera, screen helpers:
+- Stream recoder foor camera, share screen.
 
 ```javascript
 const Recorder = (() => {
