@@ -215,3 +215,75 @@ const applyMask = (mask, canvas, result) => {
   ctx.globalCompositeOperation = "source-over";
 };
 ```
+
+### Media
+
+- Recoder camera, screen helpers:
+
+```javascript
+const Recorder = (() => {
+  const setStreamToVideoElement = (stream, element) => {
+    const { width, height } = stream.getVideoTracks()[0].getSettings();
+    element.width = width;
+    element.height = height;
+    element.autoplay = true;
+    element.srcObject = new MediaStream(stream.getTracks());
+  };
+
+  const openStream = (starter) => {
+    return async (video) => {
+      const stream = await starter();
+      if (stream && video) {
+        setStreamToVideoElement(stream, video);
+      }
+      if (stream) {
+        const close = () => stream.getTracks().forEach((track) => track.stop());
+
+        const record = (onRecordDone) => {
+          const encoderOptions = { mimeType: "video/webm; codecs=vp9" };
+          const mediaRecorder = new MediaRecorder(stream, encoderOptions);
+
+          const handleDataAvailable = (event) => {
+            if (event.data.size > 0) {
+              const blob = new Blob([event.data], {
+                type: "video/webm",
+              });
+              const url = URL.createObjectURL(blob);
+              onRecordDone(url);
+            } else {
+              console.warn("stream data not available");
+              onRecordDone();
+            }
+          };
+
+          mediaRecorder.ondataavailable = handleDataAvailable;
+          mediaRecorder.start();
+          return () => mediaRecorder.stop();
+        };
+
+        return { close, record };
+      }
+    };
+  };
+
+  const openCamera = openStream(() =>
+    navigator.mediaDevices.getUserMedia({
+      video: true,
+      audio: { deviceId: { ideal: "communications" } },
+    })
+  );
+
+  const shareScreen = openStream(() =>
+    navigator.mediaDevices.getDisplayMedia({
+      video: true,
+      audio: true,
+      preferCurrentTab: true,
+    })
+  );
+
+  return { openCamera, shareScreen };
+})();
+
+export default Recorder;
+```
+
