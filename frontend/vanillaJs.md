@@ -221,6 +221,8 @@ const applyMask = (mask, canvas, result) => {
 - Stream recoder foor camera, share screen.
 
 ```javascript
+import { v4 as uuid } from "uuid";
+
 const Recorder = (() => {
   const setStreamToVideoElement = (stream, element) => {
     const { width, height } = stream.getVideoTracks()[0].getSettings();
@@ -232,6 +234,28 @@ const Recorder = (() => {
 
   const openStream = (starter) => {
     return async (video) => {
+      const streamIsCurrentTab = (() => {
+        try {
+          const id = uuid();
+          navigator.mediaDevices.setCaptureHandleConfig({
+            handle: id,
+            permittedOrigins: ["*"],
+          });
+          return (stream) => {
+            const [track] = stream.getVideoTracks();
+
+            return (
+              track.getCaptureHandle &&
+              track.getCaptureHandle() &&
+              track.getCaptureHandle().handle === id
+            );
+          };
+        } catch (e) {
+          console.warn("setCaptureHandleConfig is not supported:", e);
+          return () => true;
+        }
+      })();
+
       const stream = await starter();
       if (stream && video) {
         setStreamToVideoElement(stream, video);
@@ -240,19 +264,26 @@ const Recorder = (() => {
         const close = () => stream.getTracks().forEach((track) => track.stop());
 
         const record = (onRecordDone) => {
-          const encoderOptions = { mimeType: "video/webm; codecs=vp9" };
+          const supportType = ["video/mp4", "video/webm; codecs=vp9"].find(
+            (type) => MediaRecorder.isTypeSupported(type)
+          );
+          if (!supportType) {
+            console.warn("recorder cant found support type.");
+            return;
+          }
+
+          const encoderOptions = { mimeType: supportType };
           const mediaRecorder = new MediaRecorder(stream, encoderOptions);
 
           const handleDataAvailable = (event) => {
             if (event.data.size > 0) {
               const blob = new Blob([event.data], {
-                type: "video/webm",
+                type: supportType,
               });
-              const url = URL.createObjectURL(blob);
-              onRecordDone(url);
+              onRecordDone(blob);
             } else {
               console.warn("stream data not available");
-              onRecordDone();
+              onRecordDone(null);
             }
           };
 
@@ -261,7 +292,9 @@ const Recorder = (() => {
           return () => mediaRecorder.stop();
         };
 
-        return { close, record };
+        const isCapturingCurrent = () => streamIsCurrentTab(stream);
+
+        return { close, record, isCapturingCurrent };
       }
     };
   };
