@@ -7,3 +7,4 @@
 * [Image](./react_components/Image.md)
 * [ResponsiveText](./react_components/ResponsiveText.md)
 * [WebGLPannel](./react_components/WebGLPannel.md)
+* [MobilePinchZoomControls](./react_components/MobilePinchZoomControls.md)
