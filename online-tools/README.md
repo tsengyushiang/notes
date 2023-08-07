@@ -32,3 +32,8 @@
 ## Resources
 
 - [Free SVG Icons](https://www.svgrepo.com/vectors/cursor/)
+
+## Visual Collaboration
+
+- [Whiteboard](https://metroretro.io/)
+- [Diagram](https://whimsical.com/)
