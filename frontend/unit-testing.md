@@ -2,10 +2,7 @@
 
 ## Setup
 
-### Install
-
-- Option1: from bash command `yarn add --dev jest`.
-- Option2: from `package.json` settings then run `yarn`.
+- Install from `package.json` settings then run `yarn`.
 
 ```json
 {
@@ -18,14 +15,34 @@
     "@testing-library/user-event": "^14.4.3",
     "jest": "26.0.0",
   }
-  "jest": {
-    "testEnvironment": "jsdom",
-    "collectCoverage": true,
-    "collectCoverageFrom": ["**/*.{js,jsx}"]
-  }
 }
 ```
 
+- Generate coverage report
+    
+```json
+{
+  "scripts": {
+    "test-coverage": "jest --coverage",
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.js",
+      "!**/styled.js"
+    ],
+    "coverageThreshold": {
+    "global": {
+        "statements": 100,
+        "branches": 100,
+        "functions": 100,
+        "lines": 100
+      }
+    }
+  }
+}
+```
+  
 - Run `yarn test` and find report at `/coverage/Icov-report/index.html`.
 
 ## Syntax
