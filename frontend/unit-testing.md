@@ -2,24 +2,31 @@
 
 ## Setup
 
-### Add Dev Dependencies
+### Install
 
-- Add package to `package.json` and run `yarn install`.
+- Option1: from bash command `yarn add --dev jest`.
+- Option2: from `package.json` settings then run `yarn`.
 
 ```json
-"scripts": {
-  ...
-  "test": "jest"
-},
-"devDependencies": {
-  "@testing-library/jest-dom": "^5.8.0",
-  "@testing-library/react": "^10.0.4",
-  "@testing-library/user-event": "^14.4.3",
-  "jest": "26.0.0",
+{
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.8.0",
+    "@testing-library/react": "^10.0.4",
+    "@testing-library/user-event": "^14.4.3",
+    "jest": "26.0.0",
+  }
+  "jest": {
+    "testEnvironment": "jsdom",
+    "collectCoverage": true,
+    "collectCoverageFrom": ["**/*.{js,jsx}"]
+  }
 }
 ```
 
-- Run `yarn test` for unit testing.
+- Run `yarn test` and find report at `/coverage/Icov-report/index.html`.
 
 ## Syntax
 
