@@ -126,6 +126,29 @@ function updateMouse(event, mouse: THREE.Vector2) {
 }
 ```
 
+### Touch
+
+- Disable pinch-zoom on mobile.
+
+    - Andriod device
+    ```html
+     <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    ```
+    
+    - IOS device
+    ```javascript
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+    document.addEventListener("gesturestart", preventDefault);
+    document.addEventListener("gesturechange", preventDefault);
+    document.addEventListener("gestureend", preventDefault);
+    ```
+    > Iframe should use the same settings for IOS device, because settings on parent webpage wont block iframe's behavior.
+
 ### Input/Textarea
 
 - judge next character will make element overflow
