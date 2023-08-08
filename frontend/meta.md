@@ -38,8 +38,14 @@
 
 ## Content-Security-Policy(CSP)
 
-- [reference](https://hackmd.io/@Eotones/BkOX6u5kX)
+- [Reference](https://hackmd.io/@Eotones/BkOX6u5kX)
 
 ```html
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:;">
 ```
+
+- Safari issues : 
+
+  - use `child-src` for `worker-src`
+  - use `script-src` for `script-src-elem`.
+
