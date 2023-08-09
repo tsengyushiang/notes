@@ -149,6 +149,13 @@ function updateMouse(event, mouse: THREE.Vector2) {
     ```
     > Iframe should use the same settings for IOS device, because settings on parent webpage wont block iframe's behavior.
 
+    - Disable pull to refresh on IOS
+    ```css
+    html {
+      overflow: hidden;
+    }
+    ```
+
 ### Input/Textarea
 
 - judge next character will make element overflow
