@@ -133,3 +133,8 @@ const PinchZoomControls = ({ children }) => {
 
 export default PinchZoomControls;
 ```
+
+## Issue
+
+### Children is missing when scale gets bigger.
+> Resolved: Add css `transform: translate3d(0px, 0px, 0px)` to children, [reference](https://stackoverflow.com/questions/13666688/webkit-transform-scale-making-items-disappear).
