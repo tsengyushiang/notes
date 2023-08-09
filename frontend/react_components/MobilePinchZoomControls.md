@@ -31,10 +31,10 @@ const attachPinchZoomEvents = (element, setScale) => {
       currentScale = Math.max(baseScale * scale, 1.0);
       setScale(currentScale);
 
-      element.scrollLeft =
-        baseScrollLeft + (currentScale - baseScale) * scrollLeftOffsetUnit;
-      element.scrollTop =
-        baseScrollTop + (currentScale - baseScale) * scrollTopOffsetUnit;
+      element.scrollTo(
+        baseScrollLeft + (currentScale - baseScale) * scrollLeftOffsetUnit,
+        baseScrollTop + (currentScale - baseScale) * scrollTopOffsetUnit,
+      );
     };
 
     const onEnd = () => {
