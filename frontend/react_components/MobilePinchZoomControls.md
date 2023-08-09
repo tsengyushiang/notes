@@ -10,12 +10,10 @@ const Wrapper = styled.div`
   overflow: auto;
 `;
 
-const ZoomTarget = styled.div.attrs((props) => ({
-  style: {
-    transform: `scale(${props.scale})`,
-  },
-}))`
+// NOTE: don't use .attrs((props) => ,  it makes scrollHeight won't update immediately on IOS device.
+const ZoomTarget = styled.div`
   transform-origin: 0% 0%;
+  transform: scale(${(props) => props.scale});
 `;
 
 const attachPinchZoomEvents = (element, setScale) => {
