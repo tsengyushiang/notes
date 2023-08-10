@@ -12,7 +12,7 @@ git pull <branch-name-for-current-repo>
 - Remove remote from local repo.
 
 ```bash
-git remote <branch-name-for-current-repo>
+git remote remove <branch-name-for-current-repo>
 ```
 
 ## Fetch and Push
