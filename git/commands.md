@@ -36,8 +36,14 @@ git remote <branch-name-for-current-repo>
 - exit merge
 
     ```
-    git merge -abort
+    git merge --abort
     ```
+
+- merge directly
+
+  ```
+  git merge <target-branch> --no-commit --no-ff
+  ```
 
 ## Debug
 
