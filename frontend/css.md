@@ -10,7 +10,7 @@
 
 - [reference](https://www.w3schools.com/cssref/css3_pr_mediaquery.php)
 
-    ```
+    ```css
     /* widht smaller than 400px*/
     body {
         background-color: lightblue;
@@ -30,6 +30,7 @@
         }
     }
     ```
+    
 ## Clip-path
 
 - [web editor](https://bennettfeely.com/clippy/)
@@ -196,20 +197,37 @@
 - content 
     
     - [reference](https://ithelp.ithome.com.tw/articles/10197087)
-    ```Ccs
+    ```ccs
     div:before {
         content: "+";
         content: url(w3css.gif);
     }
     ```
 
+## IOS
+
+- Disabled scroll bouncing.
+
+```css
+* {
+  overscroll-behavior:none;
+}
+```
+
+- Disabled pull to refresh.
+
+```css
+html {
+  overflow: hidden;
+}
+```
 
 ## Pure CSS DropDown Menu
 
 - [Demo](https://codepen.io/tsengyushiang-the-typescripter/pen/jOKymaR)
 - css
 
-```
+```css
 .open{
   width:24px;
   height:24px;
@@ -255,7 +273,7 @@
 ```
 - HTML
 
-```
+```html
 <div id="focusDetector">
   <div class="open" tabIndex="0"></div>
   <div id="dropDownMenu">
