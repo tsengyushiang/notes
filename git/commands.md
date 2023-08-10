@@ -1,15 +1,15 @@
 # Commands
 
-## Add Fork repo
+## Fork repo
 
-- Add fork repo to current repo.
+- Add remote repo to local repo.
 
 ```bash
 git remote add <branch-name-for-current-repo> <remote-repo-url>
 git pull <branch-name-for-current-repo>
 ```
 
-- Remove remote for local repo.
+- Remove remote from local repo.
 
 ```bash
 git remote <branch-name-for-current-repo>
