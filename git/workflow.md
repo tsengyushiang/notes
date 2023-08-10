@@ -4,6 +4,8 @@
 
 ## Develop Git Graph
 
+### Git Flow
+
 ``` mermaid
 %%{init: { 'gitGraph': {'showCommitLabel': false}} }%%
 
@@ -67,7 +69,7 @@ gitGraph
     commit
 ```
 
-## Merge Requests
+### Merge Requests
 
 |develop actions|branch's base|MR from|MR to|
 |:---|:---:|:---:|:---:|
@@ -78,3 +80,66 @@ gitGraph
 |fix base issue in frok|`fork/main`|`fork/fix-base`|`fork/main`|
 |sync base|-|`main`|`fork/main`|
 |update fix to base|-|`fork/main`|`main`|
+
+
+## Develope on fork branch simultaneously
+
+### Git Flow
+
+```mermaid
+%%{init: { 'gitGraph': {'showCommitLabel': false}} }%%
+
+gitGraph
+    commit
+    branch fork/main order: 5
+    checkout main
+    commit
+    branch base/feature1 order: 1
+    checkout fork/main
+    commit tag:"repo for client1" type: HIGHLIGHT
+    branch fork/dev order: 9
+    commit tag:"develop branch"
+    checkout base/feature1
+    commit
+    checkout fork/dev
+    branch fork/feature1-customize order: 8
+    checkout fork/dev
+    checkout fork/main
+    commit
+    branch fork/sync-feature1 order:6
+    checkout base/feature1
+    checkout fork/sync-feature1
+    merge base/feature1 tag:"sync feature"
+    checkout fork/feature1-customize
+    merge fork/sync-feature1
+    checkout fork/dev
+    commit
+    checkout fork/feature1-customize
+    commit tag:"customize feature"
+    checkout main
+    commit
+    checkout base/feature1
+    commit
+    checkout fork/sync-feature1
+    merge base/feature1 tag:"sync feature"
+    checkout fork/feature1-customize
+    merge fork/sync-feature1
+    checkout fork/dev
+    merge fork/feature1-customize tag:"resovle customize feature Issue"
+    checkout main
+    merge base/feature1 tag:"resovle feature Issue"
+    commit
+    checkout fork/main
+    merge main tag:"sync base"
+    checkout fork/dev
+    merge fork/main tag:"sync base"
+```
+
+### Merge Requests
+
+|develop actions|branch's base|MR from|MR to|
+|:---|:---:|:---:|:---:|
+|base feature|`main`|`feature`|`main`|
+|sync base feature to fork repo|-|`feature`|`fork/sync-feature`|
+|sync base feature for customizing|-|`fork/sync-feature`|`fork/feature`|
+|customize feature|`fork/dev`|`fork/feature`|`fork/dev`|
