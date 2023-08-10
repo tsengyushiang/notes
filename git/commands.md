@@ -5,8 +5,9 @@
 - Add remote repo to local repo.
 
 ```bash
-git remote add <branch-name-for-current-repo> <remote-repo-url>
-git pull <branch-name-for-current-repo>
+git remote add <remote_name> <remote-repo-url>
+git pull <remote_name>
+git fetch <remote_name> <branch_name> // only fetch target branch
 ```
 
 - Remove remote from local repo.
