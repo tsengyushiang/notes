@@ -1,10 +1,48 @@
 # GitHub
 
-## Github page
+## Continuous integration (CI)
+
+### Run Script
+
+- Add a ci script `.github/workflows/test.yml`
+
+```yml
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+
+jobs:
+  build:
+    name: eslint
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16]
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: run test
+        run: |
+          node --version
+          yarn install
+          yarn lint
+```
+
+- [Enforce Checks Before Merging](https://docs.lacework.net/iac/enforce-merge-checks)
+  - Go to your GitHub repository.
+  - Click the **Settings** tab at the top.
+  - Click **Branches** on the left panel to display the branch protection rule page.
+  - Under Protect matching branches, select **Require status check to pass before merging**.
+
+### Github page
 
 - add a ci script `.github/workflows/DeployGihubPage.yml`
 
-```
+```yml
 name: DeployGihubPage
 
 on:
