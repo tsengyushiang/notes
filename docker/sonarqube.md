@@ -58,4 +58,6 @@ docker start sonarqube
   
 ### Recommend plugins
 
-- [sonar-cnes-report](https://github.com/cnescatlab/sonar-cnes-report#compatibility-matrix) supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).  From my experience, `Sonarqube Community EditionVersion 9.9.1 (build 69595)` and `sonar-cnes-report-4.2.0.jar` should work.
+> Following package's verion works with sonarqube `Community EditionVersion 9.9.1 (build 69595)`.
+
+- [sonar-cnes-report-4.2.0](https://github.com/cnescatlab/sonar-cnes-report#compatibility-matrix), supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).
