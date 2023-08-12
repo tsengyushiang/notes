@@ -1,8 +1,5 @@
 # Sonarqube
 
-- [reference](https://old-oomusou.goodjack.tw/sonarqube/docker/)
-
-
 ## Quick start
 
 - Install from [sonarqube docker image](https://hub.docker.com/_/sonarqube).
@@ -27,7 +24,7 @@ docker run \
 ```
 > For example, my command looks like:    
 
-```
+```bash
 docker run \
     --rm \
     --network="host" \
@@ -43,3 +40,22 @@ docker run \
 - When sonarqube is hosted on the same machine use `--network="host"` to make network work.
 
 - Gitbash on **Windows** will break volume path of docker command.
+
+## Plugins
+
+### Install
+
+- Download `${plugin}.jar` to local and copy into containers then restart.
+
+```bash
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:lts
+docker cp ${plugin}.jar sonarqube:/opt/sonarqube/extensions/plugins
+docker stop sonarqube
+docker start sonarqube
+```
+
+- After restart plugin can be found in `More` tab.
+  
+### Recommend plugins
+
+- [sonar-cnes-report](https://github.com/cnescatlab/sonar-cnes-report#compatibility-matrix) supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).  From my experience, `Sonarqube Community EditionVersion 9.9.1 (build 69595)` and `sonar-cnes-report-4.2.0.jar` should work.
