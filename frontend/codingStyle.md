@@ -211,9 +211,12 @@
 
 - Run validation `npx depcruise --validate .dependency-cruiser.json ${target file/folder}`
 
-- Fix error: `zsh: command not found: dot`
-  - [github issue](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
-  - Caused by graphize missing. On Mac use `brew install graphviz` to install.
+### Issues
+
+- [zsh: command not found: dot](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
+
+  - Mac can use `brew install graphviz` to install and re-run above command.
+  - Run with docker `npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type dot | docker run --rm -i nshine/dot dot -T svg > dependency-graph.svg`
 
 ## Node & Npm version
 
