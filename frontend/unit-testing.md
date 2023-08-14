@@ -45,42 +45,71 @@
   
 - Run `yarn test` and find report at `/coverage/Icov-report/index.html`.
 
-## Syntax
+## Quick start
 
-### Import Packages
+### Write a Test for UI
 
 ```javascript
-import "@testing-library/jest-dom";
-import * as React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-```
 
-### Write a Test
-
-```javascript
-
-function setup(jsx) {
+const setup = (jsx) => {
   return {
     user: userEvent.setup(),
     ...render(jsx),
-  }
-}
+    screen,
+  };
+};
 
-describe("Task Descript", () => {
-  test("test1", () => {
-    // const {user} = setup(<MyComponent />)
-    // screen.logTestingPlaygroundURL(); // this will help you get query syntex
-    // const target=screen.getBy...
-    // expect(...).toBe...
-  });
-
-  test("test2", () => {
-   // second testing code here...
+describe("Testing <Foo/>", () => {
+  test("should do something.", async () => {
+    const { screen, user } = setup(<Foo />);
+    screen.logTestingPlaygroundURL(); // this will help you get query syntex
+    const foo = screen.getByText("foo");
+    await user.click(foo);
+    expect(screen.getByText("bar")).toBeInTheDocument();
   });
 });
 ```
-  
+
+### Write a Test for Redux-saga
+
+```javascript
+import { runSaga } from "redux-saga";
+import { ACTION_SUC } from "./constants/action";
+import { foo } from "./redux/saga/foo";
+import * as fooAPI from "./apis/foo";
+
+jest.mock("./apis/foo", () => ({
+  test: jest.fn(),
+}));
+
+describe("Redux-saga foo/test", () => {
+  test("should put ACTION_SUC when success", async () => {
+    const payload = { payload: "payload" };
+    const response = { data: "response" };
+    fooAPI.test.mockImplementation(() => Promise.resolve(response));
+
+    const dispatched = [];
+    await runSaga(
+      {
+        dispatch: (action) => dispatched.push(action),
+      },
+      foo,
+      payload,
+    ).toPromise();
+
+    expect(fooAPI.test).toHaveBeenCalledWith(payload);
+    expect(dispatched[0]).toEqual({
+      type: ACTION_SUC,
+      payload: response,
+    });
+  });
+});
+```
+
+## Tips
+
 ### Mock 
 
 - Function
