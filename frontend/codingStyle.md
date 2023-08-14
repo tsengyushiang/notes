@@ -4,6 +4,7 @@
 * Prettier : format code
 * Husky : run command when git commit.
 * Dependency-cruiser : check architecture with rule and export graph.
+* jsinspect : Detect copy-pasted and structurally similar code.
 * Lint-staged : run command with specific files.
 * Others :
   * Nextjs import alias 
@@ -217,6 +218,8 @@
 
   - Mac can use `brew install graphviz` to install and re-run above command.
   - Run with docker `npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type dot | docker run --rm -i nshine/dot dot -T svg > dependency-graph.svg`
+
+## [jsinspect](https://github.com/danielstjules/jsinspect)
 
 ## Node & Npm version
 
