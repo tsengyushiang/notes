@@ -45,6 +45,8 @@
   
 - Run `yarn test` and find report at `/coverage/Icov-report/index.html`.
 
+- Get report for single test, run `yarn test ${component}.test.js --coverage` and report will be logged in console.
+
 ## Quick start
 
 ### Write a Test for UI
