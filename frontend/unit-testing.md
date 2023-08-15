@@ -84,23 +84,26 @@ jest.mock("./apis/foo", () => ({
   test: jest.fn(),
 }));
 
+const runSagaHelper = async (foo, payload) => {
+  const dispatched = [];
+  await runSaga(
+    {
+      dispatch: (action) => dispatched.push(action),
+    },
+    foo,
+    payload,
+  ).toPromise();
+  return dispatch;
+};
+
 describe("Redux-saga foo/test", () => {
   test("should put ACTION_SUC when success", async () => {
     const payload = { payload: "payload" };
     const response = { data: "response" };
     fooAPI.test.mockImplementation(() => Promise.resolve(response));
-
-    const dispatched = [];
-    await runSaga(
-      {
-        dispatch: (action) => dispatched.push(action),
-      },
-      foo,
-      payload,
-    ).toPromise();
-
+    const [putSuccess] = runSagaHelper(foo, payload);
     expect(fooAPI.test).toHaveBeenCalledWith(payload);
-    expect(dispatched[0]).toEqual({
+    expect(putSuccess).toEqual({
       type: ACTION_SUC,
       payload: response,
     });
