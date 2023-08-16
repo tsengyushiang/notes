@@ -137,6 +137,8 @@ export function isTextareaOverflow(element) {
 
 ### Canvas
 
+- Avoid applying CSS transform to the canvas size, as it may cause blurriness on iOS Safari.
+
 - There are pixel numbers limitation, [test report](https://github.com/jhildenbiddle/canvas-size#test-results).
 
 ```javascript
