@@ -97,7 +97,7 @@ const css = `background: rgba(${zeroTo255R},${zeroTo255G},${zeroTo255B},${1.0});
 console.log('%c color', css)
 ```
 
-## Events Helpers
+## Elements
 
 ### Document
 
@@ -109,52 +109,6 @@ if (focusedElement) {
     focusedElement.blur();
 }
 ```
-
-### Mouse
-
-- get cursor position
-
-```javascript
-function updateMouse(event, mouse: THREE.Vector2) {
-    if (event.type.includes('touch')) {
-        mouse.x = event.changedTouches[0].clientX;
-        mouse.y = event.changedTouches[0].clientY;
-    } else {
-        mouse.x = event.clientX;
-        mouse.y = event.clientY;
-    }
-}
-```
-
-### Touch
-
-- Disable pinch-zoom on mobile.
-
-    - Andriod device
-    ```html
-     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    ```
-    
-    - IOS device
-    ```javascript
-    function preventDefault(e) {
-        e.preventDefault();
-    }
-    document.addEventListener("gesturestart", preventDefault);
-    document.addEventListener("gesturechange", preventDefault);
-    document.addEventListener("gestureend", preventDefault);
-    ```
-    > Iframe should use the same settings for IOS device, because settings on parent webpage wont block iframe's behavior.
-
-    - Disable pull to refresh on IOS
-    ```css
-    html {
-      overflow: hidden;
-    }
-    ```
 
 ### Input/Textarea
 
@@ -181,23 +135,20 @@ export function isTextareaOverflow(element) {
 }
 ```
 
-### Keyboard
-
-- check number
-
-```javascript
-const isNumber = (key) => {
-    return /^[0-9]$/i.test(key);
-};
-```
-
-- `ctrl+c` (only support `https` webpage, failed in `http`)
-
-```javascript
-navigator.clipboard.writeText("text to copy")
-```
-
 ### Canvas
+
+- There are pixel numbers limitation, [test report](https://github.com/jhildenbiddle/canvas-size#test-results).
+
+```javascript
+const IOS_SAFARI_MAX_CANVAS_PIXELS = 16777216
+const pixel =
+      divRef.current.clientWidth *
+      divRef.current.clientHeight *
+      window.devicePixelRatio *
+      window.devicePixelRatio;
+
+const maxScale = Math.sqrt(IOS_SAFARI_MAX_CANVAS_PIXELS / pixel) - 1e-1;
+```
 
 - Render content only in mask, and circle brush for cleaning mask. 
 
@@ -246,7 +197,73 @@ const applyMask = (mask, canvas, result) => {
 };
 ```
 
-### Media
+## Events
+
+### Mouse
+
+- get cursor position
+
+```javascript
+function updateMouse(event, mouse: THREE.Vector2) {
+    if (event.type.includes('touch')) {
+        mouse.x = event.changedTouches[0].clientX;
+        mouse.y = event.changedTouches[0].clientY;
+    } else {
+        mouse.x = event.clientX;
+        mouse.y = event.clientY;
+    }
+}
+```
+
+### Touch
+
+- Disable pinch-zoom on mobile.
+
+    - Andriod device
+      
+    ```html
+     <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    ```
+    
+    - IOS device
+      
+    ```javascript
+    function preventDefault(e) {
+        e.preventDefault();
+    }
+    document.addEventListener("gesturestart", preventDefault);
+    document.addEventListener("gesturechange", preventDefault);
+    document.addEventListener("gestureend", preventDefault);
+    ```
+    > Iframe should use the same settings for IOS device, because settings on parent webpage wont block iframe's behavior.
+
+    - Disable pull to refresh on IOS
+    ```css
+    html {
+      overflow: hidden;
+    }
+    ```
+    
+### Keyboard
+
+- check number
+
+```javascript
+const isNumber = (key) => {
+    return /^[0-9]$/i.test(key);
+};
+```
+
+- `ctrl+c` (only support `https` webpage, failed in `http`)
+
+```javascript
+navigator.clipboard.writeText("text to copy")
+```
+
+## Media
 
 - Stream recoder foor camera, share screen.
 
