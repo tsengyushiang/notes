@@ -18,6 +18,20 @@ undefined && false // undefined
 Boolean(undefined) // false
 ```
 
+### ObjectURL
+
+- Parser canvas to objectURL.
+
+```javascript
+canvas.toBlob((blob) => URL.createObjectURL(blob));
+```
+
+- Releases an existing object URL.
+
+```javascript
+URL.revokeObjectURL(objectURL);
+```
+
 ### Array
 
 - search and remove object from array
