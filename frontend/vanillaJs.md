@@ -113,6 +113,15 @@ console.log('%c color', css)
 
 ## Elements
 
+### Window
+
+- Focus on element with id.
+
+```javascript
+window.location.hash = "element_id";
+// <div id="element_id"/>
+```
+
 ### Document
 
 - Triggering `onBlur` in JavaScript is useful when implementing the `fouc-within` CSS style
