@@ -115,6 +115,21 @@ describe("Redux-saga foo/test", () => {
 
 ## Tips
 
+### Multiple test cases
+
+```javascript
+test.each([
+  ["error message 1", 1],
+  ["error message 2", 2],
+  ["error message 3", 3],
+])(
+  "should show %s when input is %s.",
+  async (errorMessage, input) => {
+    // test you code here.
+  }
+);
+```
+
 ### Mock 
 
 - Function
