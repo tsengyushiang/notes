@@ -153,6 +153,7 @@ export function isInputOverflow(element, text) {
   return isOverflow;
 }
 
+// scrollHeight including padding, border and the invisible area, so make sure padding and border is 0px or subtract them.
 export function isTextareaOverflow(element) {
   return element.scrollHeight > element.clientHeight;
 }
