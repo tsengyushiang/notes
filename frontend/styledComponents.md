@@ -164,3 +164,42 @@ export const IconMusic = styled.div`
       }
     }
   ```
+
+## Examples
+
+### Dropdown Menu
+
+```javascript
+import styled from "styled-components";
+
+const Icon = styled.div`
+  pointer-events: auto;
+`;
+
+const Menu = styled.div`
+  display: none;
+`;
+
+const Wrapper = styled.div`
+  &:focus-within {
+    ${Menu} {
+      display: flex;
+    }
+    ${Icon} {
+      pointer-events: none;
+    }
+  }
+`;
+
+const DropdownMenu = ({ children }) => (
+  <Wrapper>
+    <Icon tabIndex={0}>
+      // some icon.
+    </Icon>
+
+    <Menu tabIndex={1}>
+      {children}
+    </Menu>
+  </Wrapper>
+);
+```
