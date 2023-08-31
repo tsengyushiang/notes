@@ -2,11 +2,27 @@
 
 ## Object
 
-### object to JSON string 
+### Dictionary Parser
+
+- json
 
 ```javascript
 JSON.stringify(jsObj, null, 4);
 ```
+
+- extends values
+
+```javascript
+
+const data = {
+    key: "value",
+}
+
+const paths = Object.fromEntries(
+  Object.entries(data).map(([key, value]) => [key, extends(value)]),
+);
+```
+
 
 ### undefined
 
