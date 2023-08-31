@@ -4,6 +4,8 @@
 
 - [mobile console](https://developer.chrome.com/docs/devtools/remote-debugging/)
 
+- export network logs: there are download and upload icons in network tab.
+
 - network throttling : `F12 -> Network -> No throttling` to choose network speed
 
 - force css Pseudo classes : `F12 -> elements -> right click a element -> force state`
