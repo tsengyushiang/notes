@@ -1,14 +1,14 @@
 # Coding Style
 
-* [Eslint : check coding style.](##Eslint)
-* [Prettier : format code](##Prettier)
-* [Husky : run command when git commit.](##huskylint-staged)
-* [Lint-staged : run command with specific files.](##huskylint-staged)
-* [Dependency-cruiser : check architecture with rule and export graph.](##Dependency-cruiser)
-* [jsinspect : Detect copy-pasted and structurally similar code.](##jsinspect)
-* [Others](##Others)
-  * Node version
-  * Nextjs import alias
+* [Eslint : check coding style.](#Eslint)
+* [Prettier : format code](#Prettier)
+* [Husky : run command when git commit.](#huskylint-staged)
+* [Lint-staged : run command with specific files.](#huskylint-staged)
+* [Dependency-cruiser : check architecture with rule and export graph.](#Dependency-cruiser)
+* [jsinspect : Detect copy-pasted and structurally similar code.](#jsinspect)
+* [Others](#Others)
+  * [Node version](#node--npm-version)
+  * [Nextjs import alias](#import-alias-for-nextjs)
 
 ## Eslint
 
