@@ -14,9 +14,10 @@
 
 - [JSON](https://jsoncrack.com/editor)
 
-## Documents
+## Formatter
 
-- [Online Flowchart Drawer](https://mermaid-js.github.io/docs/mermaid-live-editor-beta)
+- [Markdown flowchart - mermaid](https://mermaid.live/edit)
+- [GLSL checker](http://evanw.github.io/glslx/)
 
 ## Frontend
 
