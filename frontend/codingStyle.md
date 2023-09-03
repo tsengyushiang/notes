@@ -237,7 +237,7 @@ npx depcruise --validate .dependency-cruiser.json ${target file/folder}
   - Mac can use `brew install graphviz` to install and re-run above command.
   - Run with docker `npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type dot | docker run --rm -i nshine/dot dot -T svg > dependency-graph.svg`
 
-# [jsinspect](https://github.com/danielstjules/jsinspect)
+# jsinspect
 
 - [jsinspect document](https://github.com/danielstjules/jsinspect)
 
