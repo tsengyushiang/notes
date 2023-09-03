@@ -2,8 +2,8 @@
 
 * [Eslint : check coding style.](#Eslint)
 * [Prettier : format code](#Prettier)
-* [Husky : run command when git commit.](#Husky&Lint-staged)
-* [Lint-staged : run command with specific files.](#Husky&Lint-staged)
+* [Husky : run command when git commit.](#huskylint-staged)
+* [Lint-staged : run command with specific files.](#huskylint-staged)
 * [Dependency-cruiser : check architecture with rule and export graph.](#Dependency-cruiser)
 * [jsinspect : Detect copy-pasted and structurally similar code.](#jsinspect)
 * [Others](#Others)
@@ -159,7 +159,7 @@
     }
     ```
 
-# Husky&Lint-staged
+# Husky+Lint-staged
 
 - Husky runs some script before git commit in following case we run prettier and check eslint, if eslint has error commit will not continue.
 - Lint-staged filter files for command.
