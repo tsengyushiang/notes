@@ -1,15 +1,16 @@
 # Coding Style
 
-* Eslint : check coding style.
-* Prettier : format code
-* Husky : run command when git commit.
-* Dependency-cruiser : check architecture with rule and export graph.
-* jsinspect : Detect copy-pasted and structurally similar code.
-* Lint-staged : run command with specific files.
-* Others :
-  * Nextjs import alias 
+* [Eslint : check coding style.](#Eslint)
+* [Prettier : format code](#Prettier)
+* [Husky : run command when git commit.](#Husky+Lint-staged)
+* [Lint-staged : run command with specific files.](#Husky+Lint-staged)
+* [Dependency-cruiser : check architecture with rule and export graph.](#Dependency-cruiser)
+* [jsinspect : Detect copy-pasted and structurally similar code.](#jsinspect)
+* [Others](#Others)
+  * Node version
+  * Nextjs import alias
 
-##  Eslint
+# Eslint
 
 - packages
 
@@ -114,7 +115,7 @@
   yarn eslint --max-warnings=0
   ```
   
-## Prettier
+# Prettier
 
 - packages
 
@@ -158,7 +159,7 @@
     }
     ```
 
-## Husky + Lint-staged
+## Husky+Lint-staged
 
 - Husky runs some script before git commit in following case we run prettier and check eslint, if eslint has error commit will not continue.
 - Lint-staged filter files for command.
@@ -185,8 +186,11 @@
     ]
   },
   ```
-## [Dependency-cruiser](https://github.com/sverweij/dependency-cruiser)
+# Dependency-cruiser
 
+- [Dependency-cruiser document](https://github.com/sverweij/dependency-cruiser)
+
+## Setup
 
 - Install package `yarn add -D dependency-cruiser`
 
@@ -208,18 +212,36 @@
 }
 ```
 
-- Export graph `npx depcruise ${target file/folder} --exclude node_modules --config .dependency-cruiser.json --output-type dot | dot -T svg > dependency-graph.svg`
+## Export
 
-- Run validation `npx depcruise --validate .dependency-cruiser.json ${target file/folder}`
+```bash
+npx depcruise ${target file/folder} --exclude node_modules --config .dependency-cruiser.json --output-type dot | dot -T svg > dependency-graph.svg
+```
 
-### Issues
+- Export markdown graph
+
+```bash
+npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type plugin:dependency-cruiser/mermaid-reporter-plugin > mermaid.md`
+```
+
+## Validation
+
+```
+npx depcruise --validate .dependency-cruiser.json ${target file/folder}
+```
+
+## Issues
 
 - [zsh: command not found: dot](https://github.com/sverweij/dependency-cruiser/issues/570#issuecomment-1042436703)
 
   - Mac can use `brew install graphviz` to install and re-run above command.
   - Run with docker `npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type dot | docker run --rm -i nshine/dot dot -T svg > dependency-graph.svg`
 
-## [jsinspect](https://github.com/danielstjules/jsinspect)
+# [jsinspect](https://github.com/danielstjules/jsinspect)
+
+- [jsinspect document](https://github.com/danielstjules/jsinspect)
+
+# Others
 
 ## Node & Npm version
 
