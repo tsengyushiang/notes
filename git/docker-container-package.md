@@ -29,6 +29,7 @@ WORKDIR /app
 # Copy only necessary files from the builder stage
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/.next/standalone ./app
+COPY --from=builder /app/public ./app/public
 COPY --from=builder /app/.next/static ./app/.next/static
 
 # Link package to github repo
