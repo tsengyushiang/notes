@@ -140,4 +140,6 @@ jobs:
           docker login --username ${{ github.actor }} --password ${{ secrets.WRITE_PACKAGE_TOKEN }} ghcr.io
           docker build . --build-arg repo=${{ github.repository }} -t ghcr.io/${{ github.repository }}:${{ github.ref_name }} --no-cache
           docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+          docker tag ghcr.io/${{ github.repository }}:${{ github.ref_name }} ghcr.io/${{ github.repository }}:latest
+          docker push ghcr.io/${{ github.repository }}:latest
 ```
