@@ -32,9 +32,8 @@ COPY --from=builder /app/.next/standalone ./app
 COPY --from=builder /app/.next/static ./app/.next/static
 
 # Link package to github repo
-ARG user
 ARG repo
-LABEL org.opencontainers.image.source https://github.com/${user}/${repo}
+LABEL org.opencontainers.image.source https://github.com/${repo}
 
 # Expose port 3000
 EXPOSE 3000
@@ -69,7 +68,7 @@ module.exports = {
 
 ### Login
 
-- Get your `${PAT}` from [https://github.com/settings/tokens](https://github.com/settings/tokens)
+- Get your `${PAT}` from [https://github.com/settings/tokens](https://github.com/settings/tokens) with `write:packages` permission.
 
 ```bash
 docker login --username ${username} --password ${PAT} ghcr.io
@@ -78,7 +77,7 @@ docker login --username ${username} --password ${PAT} ghcr.io
 ### Build image
 
 ```bash
-docker build . --build-arg user=${username} --build-arg repo=${reponame} -t ghcr.io/${username}/${reponame}:${version} --no-cache
+docker build . --build-arg repo=${username}/${reponame} -t ghcr.io/${username}/${reponame}:${version} --no-cache
 ```
 
 ### Push image
@@ -88,6 +87,12 @@ docker push ghcr.io/${username}/${reponame}
 ```
 
 ### Test Image
+
+- Logout
+
+```bash
+docker logout
+```
 
 - Remove existed image.
 
@@ -107,3 +112,31 @@ docker run -d -p 3000:3000 ghcr.io/${username}/${reponame}:${version}
 ```
 
 ## Deploy from Github CI
+
+
+### Add Write Package Permission PAT To Repo Secrets
+
+- Add your `PAT` at [https://github.com/${username}/${reponame}/settings/secrets/actions]() and named it `WRITE_PACKAGE_TOKEN`.
+
+### Github CI Yml
+
+Add `.github\workflows\container.yml` to deploy image when push a tag.
+
+```yml
+name: Publish package to GitHub Packages
+on:
+  push:
+    tags:
+      - '*'
+jobs:
+  publish-package:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          docker login --username ${{ github.actor }} --password ${{ secrets.WRITE_PACKAGE_TOKEN }} ghcr.io
+          docker build . --build-arg repo=${{ github.repository }} -t ghcr.io/${{ github.repository }}:${{ github.ref_name }} --no-cache
+          docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+```
