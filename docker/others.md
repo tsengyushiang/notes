@@ -33,10 +33,11 @@
 
 ### Check available package version
 
-- apt update
-- apt-cache policy <packageName>
+- `apt update`
+- `apt-cache policy <packageName>`
 
 - Example of getting available version of `curl`, then we can specify in `dockerfile` using `RUN apt update && apt install curl=7.64.0-4+deb10u6 -y`.
+
 ```.
 test@2023 ~ % docker run -it node:16.13.1-slim bash
 root@795660af5321:/# apt update
