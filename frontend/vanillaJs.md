@@ -238,6 +238,18 @@ const applyMask = (mask, canvas, result) => {
   ctx.globalCompositeOperation = "source-over";
 };
 ```
+### Iframe
+
+- Make iframe content bigger
+
+```css
+iframe {
+    width: 200%;
+    height: 200%;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+}
+```
 
 ## Events
 
