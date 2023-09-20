@@ -4,7 +4,7 @@
 
 ### Access-Control-Allow-Origin
 
-- make api available through CORS policy
+- Make api available to differenct hostname.
 
 ```javascript
 const cors = require('cors');
@@ -14,12 +14,27 @@ app.use(cors());
 
 ### Access-Control-Expose-Headers
 
-- make browser available to read header
+- Make browser available to read headers.
 
 ```javascript
 app.use(cors({
     exposedHeaders: ['Content-Disposition']
 }));
+```
+
+- Read filename from header of download api.
+
+```javascript
+fetch("/download").then(async (res) => {
+  const filename = res.headers
+    .get("Content-Disposition")
+    .match(/filename="(?<filename>.*?)"/);
+
+  return {
+    filename: filename.groups.filename,
+    file: await res.blob(),
+  };
+});
 ```
 
 ## Express
