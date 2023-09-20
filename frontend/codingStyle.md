@@ -15,7 +15,7 @@
 - packages
 
   ```
-  yarn add -D @babel/core @babel/eslint-parser babel-plugin-styled-components eslint-config-prettier eslint-plugin-jest eslint-plugin-prettier
+  yarn add -D @babel/core @babel/eslint-parser eslint-config-prettier eslint-plugin-jest eslint-plugin-prettier
   ```
 
 - `.eslintrc` or `.eslintrc.json` (choose one) 
@@ -57,10 +57,10 @@
       "jest",
       "prettier"
     ],
-    "rules": { // 若專案有加入其他規則請在 README 裡告知為何使用
+    "rules": {
       "react/prop-types": 0,
       "no-console": 0,
-      "require-yield": 0, // 給 sagas 的設定
+      "require-yield": 0, // for generator function
       "prettier/prettier": ["error", {"jsxSingleQuote": false}]
     }
   }
@@ -78,26 +78,7 @@
   **/_app.js
   **/_document.js
   ```
-
-- `.babelrc`
-
-  ```json
-  {
-    "presets": [
-      [
-        "next/babel",
-        {
-          "preset-env": {
-            "useBuiltIns": "usage",
-            "corejs": 3
-          }
-        }
-      ]
-    ],
-    "plugins": [["styled-components", { "ssr": true, "preprocess": false }]]
-  }
-  ```
-
+  
 - add `package.json` script
 
   ```json
@@ -254,18 +235,35 @@ npx depcruise --validate .dependency-cruiser.json ${target file/folder}
 ```
 
 ### Import Alias For Next.js
-  
-- `jsconfig.json`
 
-```
-{
-    "compilerOptions": {
-      "baseUrl": ".",
-      "paths": {
-        "@/components/*": ["components/*"],
-      }
-    }
-  }
-```
 - Then import components with `import * from "@/components/.."` instead of `"../../components"`.
 
+`jsconfig.json`
+
+```json
+{
+ "compilerOptions": {
+  "baseUrl": ".",
+  "paths": {
+    "@/components/*": ["components/*"],
+  }
+ }
+}
+```
+
+- Additional settings for `jest`
+
+`package.json`
+
+```json
+{
+ "jest": {
+  "moduleNameMapper": {
+   "^@/(.*)$": "<rootDir>/$1"
+  },
+  "transform": {
+   "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { "presets": ["next/babel"] }]
+  }
+ }
+}
+```
