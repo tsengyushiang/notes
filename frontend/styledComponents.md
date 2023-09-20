@@ -7,19 +7,34 @@
 
 - install packages
 
-    ```
-    npm install --save styled-components
-    npm install --save-dev babel-plugin-styled-components
-    ```
+```
+npm install --save styled-components
+npm install --save-dev babel-plugin-styled-components
+```
 
-- add `.babelrc`
+- (Deprecated after next12) add `.babelrc`
 
-    ```
-    {
-    "presets": ["next/babel"],
-    "plugins": [["styled-components", { "ssr": true, "displayName": true }]]
-    }
-    ```
+```
+{
+"presets": ["next/babel"],
+"plugins": [["styled-components", { "ssr": true, "displayName": true }]]
+}
+```
+
+> According to the [document](https://styled-components.com/docs/advanced#with-swc), use `next.config.js` as the alternative.
+
+`next.config.js`
+
+```javascript
+const nextConfig = {
+  compiler: {
+    styledComponents: true,
+  },
+}
+
+module.exports = nextConfig
+```
+
 
 ## Usage
 
