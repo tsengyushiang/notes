@@ -1,8 +1,41 @@
 # Nodejs API & Websocket
 
+## Headers
+
+### Access-Control-Allow-Origin
+
+- make api available through CORS policy
+
+```javascript
+const cors = require('cors');
+const app = express();
+app.use(cors());
+```
+
+### Access-Control-Expose-Headers
+
+- make browser available to read header
+
+```javascript
+app.use(cors({
+    exposedHeaders: ['Content-Disposition']
+}));
+```
+
 ## Express
 
 - [reference](https://expressjs.com/en/guide/routing.html)
+
+- Simple server
+
+```javascript
+const express = require('express');
+const app = express();
+const port = 8000
+app.listen(port, () => {
+  console.log(`app listening on port ${port}`)
+})
+```
 
 - Route parameters
 
@@ -10,6 +43,14 @@
 app.get('/shortLink/:Id', (req, res) => {
   res.send(req.params)
 })
+```
+
+- Download file
+
+```javascript
+app.get('/download', function(req, res) {
+  res.download('./file.txt','download.txt');
+});
 ```
 
 ## Websocket
