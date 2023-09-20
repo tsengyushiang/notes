@@ -145,3 +145,37 @@ export const {
 
 export default commonSlice.reducer;
 ```
+
+## Usage
+
+- With store
+
+```javascript
+import { useEffect } from "react";
+
+import store from "../redux/store.js";
+import { setData } from "../redux/common";
+
+const App = () => {
+  useEffect(() => {
+    store.dispatch(setData({}));
+  }, []);
+  return null;
+}
+```
+
+- With hooks
+
+```javascript
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { getData } from "../redux/common";
+
+const App = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getData({}));
+  }, [dispatch]);
+  return null;
+}
+```
