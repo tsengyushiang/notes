@@ -13,7 +13,15 @@
     "@testing-library/jest-dom": "^5.8.0",
     "@testing-library/react": "^10.0.4",
     "@testing-library/user-event": "^14.4.3",
-    "jest": "26.0.0",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.6.3",
+  }
+  "jest": {
+    "testEnvironment": "jsdom",
+    "transform": {
+     "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { "presets": ["next/babel"] }]
+    }
   }
 }
 ```
