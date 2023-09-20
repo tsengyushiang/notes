@@ -260,9 +260,6 @@ npx depcruise --validate .dependency-cruiser.json ${target file/folder}
  "jest": {
   "moduleNameMapper": {
    "^@/(.*)$": "<rootDir>/$1"
-  },
-  "transform": {
-   "^.+\\.(js|jsx|ts|tsx)$": ["babel-jest", { "presets": ["next/babel"] }]
   }
  }
 }
