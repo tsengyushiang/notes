@@ -25,6 +25,25 @@
 - `screen -ls`: list all process
 - `screen -r <process id>`: enter running process
 
+
+### Fetch api - Curl
+
+- download file from link
+
+```
+curl "${download_link}" --output ${filename.extension}
+```
+
+- test api
+
+```
+curl --location -g --request ${api_method} '${api_path}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+ "key": "value", 
+}'
+```
+
 ### Port - lsof
 
 - `apt-get update`
