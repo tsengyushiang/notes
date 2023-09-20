@@ -5,23 +5,35 @@
 ## Docekrfile
 
 - `Docekrfile`
-    ```
-    FROM centos:7
-    WORKDIR /app
-    ADD jdk-8u152-linux-x64.tar.gz /
-    RUN yum install -y wget
-    ENV JAVA_HOME=/jdk1.8.0_152
-    EXPOSE 8080
-    CMD ["/apache-tomcat-7.0.82/bin/catalina.sh", "run"]
-    ```
 
-    - `FROM <base image>`: base image
-    - `WORKDIR` : work path
-    - `RUN`: linux commands
-    - `ADD <host/files> <conatiner/path>`: move files into container
-    - `ENV`: enviroment var
-    - `EXPOSE` : which port you want to use, sill need to map host port at runtime.
-    - `CMD`: run command when container starts
+```dockerfile
+FROM centos:7 as base
+
+FROM base AS builder
+WORKDIR /app
+ENV JAVA_HOME=/jdk1.8.0_152
+ADD jdk-8u152-linux-x64.tar.gz /
+RUN yum install -y wget
+
+FROM base AS runner
+WORKDIR /app
+ARG version
+LABEL version=${version}
+COPY --from=builder /app/build ./
+EXPOSE 8080
+CMD ["bash", "run.sh"]
+```
+
+- `FROM <base image> as <stage>`: base image
+- `WORKDIR` : work path
+- `RUN`: linux commands
+- `ADD <host/files> <conatiner/path>`: move files into container
+- `ARG <version>`: can pass variable from `docker build . --build-arg <version>=1.0.0`.
+- `ENV`: enviroment var
+- `EXPOSE` : which port you want to use, sill need to map host port at runtime.
+- `COPY --from=<stage>`: copy build code from stage, which can clear compiling pacakges.
+- `LABEL`: write meta data to image, can be found with `docker inspect <image name>`
+- `CMD`: run command when container starts
 
 ## Image 
 
