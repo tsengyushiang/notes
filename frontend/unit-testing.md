@@ -57,7 +57,7 @@
 
 ## Quick start
 
-### Write a Test for UI
+### Test for UI
 
 ```javascript
 import { render, screen } from "@testing-library/react";
@@ -82,7 +82,7 @@ describe("Testing <Foo/>", () => {
 });
 ```
 
-### Write a Test for Redux-saga
+### Test for Redux-saga
 
 ```javascript
 import { runSaga } from "redux-saga";
@@ -94,10 +94,12 @@ jest.mock("./apis/foo", () => ({
   test: jest.fn(),
 }));
 
+const state = {};
 const runSagaHelper = async (foo, payload) => {
   const dispatched = [];
   await runSaga(
     {
+      getState: () => state,
       dispatch: (action) => dispatched.push(action),
     },
     foo,
