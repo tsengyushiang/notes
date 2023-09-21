@@ -146,6 +146,9 @@ test.each([
     
 ```javascript
 const mockCallBack = jest.fn();
+
+// mock console.log
+const error = jest.spyOn(console, "error").mockImplementation(() => {});
 ```
 
 - Component
