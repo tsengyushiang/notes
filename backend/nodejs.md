@@ -1,4 +1,12 @@
-# Nodejs API & Websocket
+# Nodejs
+
+## Cookies
+
+- `httpOnly`  attribute is used with cookies to restrict access from the client side.
+
+```javascript
+ctx.res.cookie("token", token, { httpOnly: true });
+```
 
 ## Headers
 
