@@ -85,7 +85,7 @@ describe("Testing <Foo/>", () => {
 ### Test for Redux-saga
 
 ```javascript
-import { runSaga } from "redux-saga";
+import { channel, runSaga } from "redux-saga";
 import { ACTION_SUC } from "./constants/action";
 import { foo } from "./redux/saga/foo";
 import * as fooAPI from "./apis/foo";
@@ -96,29 +96,38 @@ jest.mock("./apis/foo", () => ({
 
 const state = {};
 const runSagaHelper = async (foo, payload) => {
+  const mockChannel = channel();
   const dispatched = [];
-  await runSaga(
+  const saga = await runSaga(
     {
+      channel: mockChannel,
       getState: () => state,
       dispatch: (action) => dispatched.push(action),
     },
     foo,
     payload,
-  ).toPromise();
-  return dispatch;
+  );
+
+  mockChannel.put({ type: "YIELD_TAKE" });
+
+  const response = await saga.toPromise();
+
+  return { dispatched, response };
 };
 
 describe("Redux-saga foo/test", () => {
   test("should put ACTION_SUC when success", async () => {
     const payload = { payload: "payload" };
-    const response = { data: "response" };
-    fooAPI.test.mockImplementation(() => Promise.resolve(response));
-    const [putSuccess] = runSagaHelper(foo, payload);
+    const apiResponse = { data: "response" };
+    fooAPI.test.mockImplementation(() => Promise.resolve(apiResponse));
+    const { dispatched, response } = runSagaHelper(foo, payload);
+    const [putSuccess] = dispatched;
     expect(fooAPI.test).toHaveBeenCalledWith(payload);
     expect(putSuccess).toEqual({
       type: ACTION_SUC,
-      payload: response,
+      payload: apiResponse,
     });
+    expect(response).toEqual(true);
   });
 });
 ```
