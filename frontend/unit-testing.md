@@ -151,6 +151,28 @@ test.each([
 
 ### Mock 
 
+- Window
+
+```javascript
+describe('window.location', () => {
+  const { location } = window;
+
+  beforeAll(() => {
+    delete window.location;
+    window.location = { reload: jest.fn() };
+  });
+
+  afterAll(() => {
+    window.location = location;
+  });
+
+  it('calls reload', () => {
+    window.location.reload();
+    expect(window.location.reload).toHaveBeenCalled();
+  });
+});
+```
+
 - Function
     
 ```javascript
