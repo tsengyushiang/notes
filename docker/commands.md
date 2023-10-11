@@ -85,6 +85,7 @@ CMD ["bash", "run.sh"]
         - `-p 2222:22` : open port
         - `-d` : run in background
         - `-it` : run in foreground
+        - `-w` : workdir and it's convenient with volume `-v .:/app -w /app`.
         - `--network <network name>` : use network
 
 ## Docker-compose
