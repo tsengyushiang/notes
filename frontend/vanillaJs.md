@@ -317,9 +317,50 @@ const isNumber = (key) => {
 navigator.clipboard.writeText("text to copy")
 ```
 
-## Media
+## MediaRecorder
 
-- Stream recoder foor camera, share screen.
+- Stream recoder for canvas
+
+```javascript
+
+const recorder = (() => {
+  let mediaRecorder;
+
+  const start = (canvas) => {
+    const stream = canvas.captureStream();
+    mediaRecorder = new MediaRecorder(stream);
+    mediaRecorder.start();
+  };
+
+  const stop = () => {
+    const recordedBlobs = [];
+    const handleDataAvailable = (event) => {
+      if (event.data && event.data.size > 0) {
+        recordedBlobs.push(event.data);
+      }
+    };
+    return new Promise((resolve) => {
+      mediaRecorder.ondataavailable = handleDataAvailable;
+      mediaRecorder.onstop = () => {
+        resolve(new Blob(recordedBlobs, { type: "video/mp4" }));
+      };
+    });
+  };
+
+  const reset = () => {
+    mediaRecorder = null;
+  };
+
+  return {
+    start,
+    stop,
+    reset,
+  };
+})();
+
+```
+
+- Stream recoder for camera, share screen.
 
 ```javascript
 import { v4 as uuid } from "uuid";
@@ -420,4 +461,3 @@ const Recorder = (() => {
 
 export default Recorder;
 ```
-
