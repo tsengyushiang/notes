@@ -35,6 +35,16 @@ docker run \
     sonarsource/sonar-scanner-cli
 ```
 
+- Or using [offical scanner](https://docs.sonarsource.com/sonarqube/9.9/analyzing-source-code/scanners/sonarscanner/).
+
+```bash
+sonar-scanner \
+  -Dsonar.projectKey=${YOUR_PROJECT_KEY} \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=${SONARQUBE_URL} \
+  -Dsonar.login=${YOUR_AUTH_TOKEN} \
+```
+
 ## Issues
 
 - When sonarqube is hosted on the same machine use `--network="host"` to make network work.
@@ -68,6 +78,41 @@ docker restart sonarqube
     ```
     docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
     ```
+
     > There will have `Branches and Pull Requests` in Administration > HouseKeeping tab means install success.
 
-    - Add `-Dsonar.branch.name=${branch_name}` to specify branch when scanning.
+    - Add `-Dsonar.branch.name=${branch_name}` for branch
+    - Add `-Dsonar.pullrequest.key=${pr_number} -Dsonar.pullrequest.branch=${pr_branch} -Dsonar.pullrequest.base=${base_branch}` for pr.
+
+
+### Build From Dockerfile
+
+- Download plugins
+
+```bash
+curl -L https://github.com/cnescatlab/sonar-cnes-report/releases/download/4.2.0/sonar-cnes-report-4.2.0.jar --output sonar-cnes-report-4.2.0.jar
+
+curl -L https://github.com/cnescatlab/sonar-cnes-report/releases/download/4.2.0/sonar-cnes-report-4.2.0.jar --output sonar-cnes-report-4.2.0.jar
+```
+
+- Add `Dockerfile`
+
+```dockerfile
+FROM sonarqube:9.9.1-community
+
+COPY ./sonar-cnes-report-4.2.0.jar /opt/sonarqube/extensions/plugins/sonar-cnes-report-4.2.0.jar
+
+COPY ./sonarqube-community-branch-plugin-1.14.0.jar /opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar
+
+ENV SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web
+ENV SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce
+
+EXPOSE 9000 9092
+```
+
+- Build and Run, then executes scans for your projects.
+
+```bash
+docker build -t my-sonarqube .
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 my-sonarqube
+```
