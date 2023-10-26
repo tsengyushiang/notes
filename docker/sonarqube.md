@@ -63,7 +63,11 @@ docker restart sonarqube
 
 - [sonarqube-community-branch-plugin 1.14.0](https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/tag/1.14.0)
 
-```
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
-```
-> There will have `Branches and Pull Requests` in Administration > HouseKeeping tab means install success.
+    - Additional steps after move `.jar`
+
+    ```
+    docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
+    ```
+    > There will have `Branches and Pull Requests` in Administration > HouseKeeping tab means install success.
+
+    - Add `-Dsonar.branch.name=${branch_name}` to specify branch when scanning.
