@@ -51,6 +51,22 @@ sonar-scanner \
 
 - Gitbash on **Windows** will break volume path of docker command.
 
+## WebAPI
+
+- API document can be found at http://localhost:9000/web_api.
+
+- Fetch api with a `User Token` set from http://localhost:9000/account/security.
+
+```
+curl -u <token>: 'http://localhost:9000/api/qualitygates/project_status?projectKey=test&pullRequest=1'
+```
+
+- Fetch api with a password
+
+```
+curl -u <user>:<password> 'http://localhost:9000/api/qualitygates/project_status?projectKey=test&pullRequest=1'
+```
+
 ## Plugins
 
 ### Install
