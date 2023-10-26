@@ -63,13 +63,13 @@ docker cp ${plugin}.jar sonarqube:/opt/sonarqube/extensions/plugins
 docker restart sonarqube
 ```
 
-- After restart plugin can be found in `More` tab.
-
 ### Recommend plugins
 
 > Following package's verion works with sonarqube `Community EditionVersion 9.9.1 (build 69595)`.
 
 - [sonar-cnes-report-4.2.0](https://github.com/cnescatlab/sonar-cnes-report/releases/tag/4.2.0), supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).
+    
+    - plugin can be found in `More` tab.
 
 - [sonarqube-community-branch-plugin 1.14.0](https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/tag/1.14.0)
 
