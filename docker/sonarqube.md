@@ -108,7 +108,7 @@ docker restart sonarqube
 ```bash
 curl -L https://github.com/cnescatlab/sonar-cnes-report/releases/download/4.2.0/sonar-cnes-report-4.2.0.jar --output sonar-cnes-report-4.2.0.jar
 
-curl -L https://github.com/cnescatlab/sonar-cnes-report/releases/download/4.2.0/sonar-cnes-report-4.2.0.jar --output sonar-cnes-report-4.2.0.jar
+curl -L https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/download/1.14.0/sonarqube-community-branch-plugin-1.14.0.jar --output sonarqube-community-branch-plugin-1.14.0.jar
 ```
 
 - Add `Dockerfile`
