@@ -5,7 +5,7 @@
 - Install from [sonarqube docker image](https://hub.docker.com/_/sonarqube).
 
 ```bash
-docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092  sonarqube:9.9.1-community
 ```
 
 - Go [http://localhost:9000/](http://localhost:9000/) to create a [manual project](http://localhost:9000/projects/create?mode=manual) and use [local scan](http://localhost:9000/dashboard?id=test&selectedTutorial=local) to get token.
@@ -50,14 +50,20 @@ docker run \
 ```bash
 docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 sonarqube:lts
 docker cp ${plugin}.jar sonarqube:/opt/sonarqube/extensions/plugins
-docker stop sonarqube
-docker start sonarqube
+docker restart sonarqube
 ```
 
 - After restart plugin can be found in `More` tab.
-  
+
 ### Recommend plugins
 
 > Following package's verion works with sonarqube `Community EditionVersion 9.9.1 (build 69595)`.
 
-- [sonar-cnes-report-4.2.0](https://github.com/cnescatlab/sonar-cnes-report#compatibility-matrix), supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).
+- [sonar-cnes-report-4.2.0](https://github.com/cnescatlab/sonar-cnes-report/releases/tag/4.2.0), supported veriosn can be found in [source code](https://github.com/cnescatlab/sonar-cnes-report/blob/4.0.0/src/main/java/fr/cnes/sonar/report/factory/ServerFactory.java#L34C4-L34C4).
+
+- [sonarqube-community-branch-plugin 1.14.0](https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/tag/1.14.0)
+
+```
+docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
+```
+> There will have `Branches and Pull Requests` in Administration > HouseKeeping tab means install success.
