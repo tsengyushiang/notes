@@ -51,6 +51,18 @@ sonar-scanner \
 
 - Gitbash on **Windows** will break volume path of docker command.
 
+## Parameters
+
+- Specify branch or pull request for a scan after install [sonarqube-community-branch-plugin 1.14.0](https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/tag/1.14.0).
+
+    - Add `-Dsonar.branch.name=${branch_name}` for branch.
+    - Add `-Dsonar.pullrequest.key=${pr_number} -Dsonar.pullrequest.branch=${pr_branch} -Dsonar.pullrequest.base=${base_branch}` for pull request.
+
+- Upload javascript unit test converage report.
+
+    - Run `jest test --coverage` to get report.
+    - Add `-Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info` to upload the report.
+
 ## WebAPI
 
 - API document can be found at http://localhost:9000/web_api.
@@ -68,6 +80,8 @@ curl -u <user>:<password> 'http://localhost:9000/api/qualitygates/project_status
 ```
 
 ## Plugins
+
+
 
 ### Install
 
@@ -89,16 +103,13 @@ docker restart sonarqube
 
 - [sonarqube-community-branch-plugin 1.14.0](https://github.com/mc1arke/sonarqube-community-branch-plugin/releases/tag/1.14.0)
 
-    - Additional steps after move `.jar`
+    - The container should be start with the following command, using the `Dockerfile` in the next section is recommended.
 
-    ```
-    docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
-    ```
+        ```
+        docker run -d --name sonarqube -p 9000:9000 -p 9092:9092 -e SONAR_WEB_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=web -e SONAR_CE_JAVAADDITIONALOPTS=-javaagent:/opt/sonarqube/extensions/plugins/sonarqube-community-branch-plugin-1.14.0.jar=ce sonarqube:9.9.1-community
+        ```
 
     > There will have `Branches and Pull Requests` in Administration > HouseKeeping tab means install success.
-
-    - Add `-Dsonar.branch.name=${branch_name}` for branch
-    - Add `-Dsonar.pullrequest.key=${pr_number} -Dsonar.pullrequest.branch=${pr_branch} -Dsonar.pullrequest.base=${base_branch}` for pr.
 
 
 ### Build From Dockerfile
