@@ -151,6 +151,14 @@
 
 ## Div
 
+- [Full screen size](https://wehelp.tw/topic/5732929242136576)
+
+  ```css
+  .container {
+    height: 100dvh;
+  }
+  ```
+
 - keep div ratio when size change
 
     ```css
