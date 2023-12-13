@@ -10,6 +10,9 @@
 - `i` : enter edit mode
 - `Esc`, type `:x` then `Enter` : exit vim
 
+### Monitor Logs
+
+- `tail -f <filename>` can continuously log file even it's changing.
 
 ### File Transmit
 
