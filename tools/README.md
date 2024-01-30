@@ -32,6 +32,10 @@
 - [Markdown flowchart - mermaid](https://mermaid.live/edit)
 - [Software architectures - C4-PlantUML](https://github.com/plantuml-stdlib/C4-PlantUML)
 
+## Api
+
+- [GeoJS: IP Geolocation lookup API](https://www.geojs.io/)
+
 ## Frontend
 
 - [CSS HTML5 Support tables](https://caniuse.com/)

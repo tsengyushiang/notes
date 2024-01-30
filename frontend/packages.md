@@ -21,6 +21,7 @@
   - [Resoucre Monitor : stats.js](https://github.com/mrdoob/stats.js/)
   - [Code Compare Editor: ace-editor](https://github.com/ace-diff/ace-diff)
   - [Unused File Scanner: unimported](https://github.com/smeijer/unimported#example)
+  - [country-calling-code: country code mapping table](https://github.com/joonhocho/country-calling-code)
 
 ## Examples
 
