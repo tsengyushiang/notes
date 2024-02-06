@@ -2,6 +2,14 @@
 
 - [reference](https://www.youtube.com/watch?v=QMa0Q1Dg2KU)
 
+# Static Files
+
+```
+docker run --rm -it -v ./:/usr/share/nginx/html:ro -p 8080:80 nginx
+```
+
+
+# Docker Network
 
 ## Demo Files
 
