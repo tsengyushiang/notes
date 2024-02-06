@@ -218,6 +218,11 @@ npx depcruise --validate .dependency-cruiser.json ${target file/folder}
   - Mac can use `brew install graphviz` to install and re-run above command.
   - Run with docker `npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type dot | docker run --rm -i nshine/dot dot -T svg > dependency-graph.svg`
 
+- `ERROR: Extracting dependencies ran afoul of... pManifest.workspaces.map is not a function`
+
+  - Defines yarn workspace in `package.json` may break route. 
+
+
 ## jsinspect
 
 - [jsinspect document](https://github.com/danielstjules/jsinspect)
