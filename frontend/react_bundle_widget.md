@@ -73,7 +73,7 @@ yarn run build
   <body>
     <h1>HTML/CSS/JS Scratch Template</h1>
     <div id="root"></div>
-    <script src="http://localhost:8080/dist/build/static/js/bundle.min.js"></script>
+    <script src="./bundle.min.js"></script>
   </body>
 </html>
 ```
