@@ -212,6 +212,26 @@
     }
     ```
 
+## CSSStyleSheet
+
+- Dynamic css styles
+
+```javascript
+const style = document.createElement("style");
+document.head.appendChild(style);
+
+const setUniqueStyle = (id, newStyle) => {
+  if (!Object.values(ID).includes) return;
+  const targetIndex = Object.values(style.sheet.cssRules).findIndex(
+    ({ selectorText }) => selectorText === `#${id}`,
+  );
+  if (targetIndex >= 0) {
+    style.sheet.deleteRule(targetIndex);
+  }
+  style.sheet.insertRule(`#${id} ${newStyle}`);
+};
+```
+
 ## IOS
 
 - Disabled scroll bouncing.
