@@ -18,6 +18,7 @@
 - [Save All Resources](https://chrome.google.com/webstore/detail/save-all-resources/abpdnfjocnmdomablahdcfnoggeeiedb) : download web-page resource including data from reqeuest
 - [QR Code Reader](https://chrome.google.com/webstore/detail/qr-code-reader/likadllkkidlligfcdhfnnbkjigdkmci) : scan QRcode on own browser.
 - [Screen Recorder](https://chrome.google.com/webstore/detail/screen-recorder/hniebljpgcogalllopnjokppmgbhaden/related): recorder for screen and webcam.
+- [Dubble](https://chromewebstore.google.com/detail/dubble-%E2%80%94-free-step-by-ste/odinmjjdainghmojdffgpjmkefajhlbn): Free Step-by-Step Guide Creator
 
 ## Visualize
 
