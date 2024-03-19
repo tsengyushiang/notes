@@ -153,6 +153,15 @@ git remote remove <branch-name-for-current-repo>
 - update submodule at parent
     - `git submodule update --remote`
 
+- track branch by adding config in `.gitmodules`
+
+    ```diff
+    [submodule "subModule"]
+    	path = target/folder
+    	url = https://~.git
+    +	branch = preparing
+    ```
+
 - remove submodule
     - `git rm subModule`
     - `rm .git/modules/subModule`
