@@ -180,3 +180,15 @@ git remote remove <branch-name-for-current-repo>
         "my-submodule": "file:./my-submodule/"
     }
     ```
+
+- GitLab CI
+
+  - Visits submodule project (Settings > CI/CD > Token Access) and add app project to the list.
+  - Add variables into `.gitlab-ci.yml`
+      - `--remote` ignores SHA of commit stored in git and use branch instead.
+      - `--no-single-branch` clones all branches, preventing 'branch not found' issues.
+    ```
+    variables:
+        GIT_SUBMODULE_STRATEGY: recursive
+        GIT_SUBMODULE_UPDATE_FLAGS: --remote --no-single-branch
+    ```
