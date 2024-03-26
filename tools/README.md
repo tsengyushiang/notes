@@ -43,6 +43,7 @@
 - [CSS HTML5 Support tables](https://caniuse.com/)
 - [WebGL Report](https://webglreport.com/)
 - [keyboard events and codes](https://www.w3.org/2002/09/tests/keys.html)
+- Visual Regression Test: [lost-pixel](https://github.com/lost-pixel/lost-pixel), [BackstopJS](https://github.com/garris/BackstopJS?tab=readme-ov-file)
 
 ## Resources
 
