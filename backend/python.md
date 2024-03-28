@@ -20,31 +20,37 @@ def hello():
 ```python
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from routes import api_bp
-
-app = Flask(__name__)
-app.app_context().push() # avoid with app.app_context(). warning.
-
-# register routes
-app.register_blueprint(api_bp)
-
-# bind the database and ORM. The DB_URI is specified in the docker-compose file."
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
-db = SQLAlchemy(app)
+from extensions import db
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+  app = Flask(__name__)
+  app.app_context().push() # avoid with app.app_context(). warning.
+
+  app.register_blueprint(api_bp)
+
+  # bind the database and ORM. The DB_URI is specified in the docker-compose file."
+  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
+  db.init_app(app)
+  db.create_all()
+  app.run(host='0.0.0.0', debug=True)
 ```
 
 ## SQLAlchemy
 
+### Initialize
+
+- Init instance in `extensions.py` to avoid circular import.
+
+```python
+from flask_sqlalchemy import SQLAlchemy
+db = SQLAlchemy()
+```
 
 ### Define Schema
 
 ```python
-from app import db
-from flask_sqlalchemy import SQLAlchemy
+from extensions import db
 from datetime import datetime
 
 class User(db.Model):
@@ -61,7 +67,7 @@ class User(db.Model):
 
 ### APIs
 
-- Initialize db `db.create_all()`
+- Create tables by `db.create_all()`.
 
 - Insert data
 
