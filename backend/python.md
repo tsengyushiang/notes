@@ -39,6 +39,53 @@ if __name__ == '__main__':
 ## SQLAlchemy
 
 
+### Define Schema
+
+```python
+from app import db
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(120), unique=True, nullable=False)
+    date_joined = db.Column(db.Date, default=datetime.utcnow)
+    
+    # log format for debug.
+    def __repr__(self):
+        return f'<User: {self.username}>'
+```
+
+### APIs
+
+- Initialize db `db.create_all()`
+
+- Insert data
+
+```python
+admin = User(username='admin', password='admin')
+db.session.add(admin)
+db.session.commit()
+```
+
+- Update data
+
+```python
+
+root = User.query.filter_by(username='admin').first()
+root.password='root'
+db.session.commit()
+```
+
+- Delete data
+
+```python
+target = User.query.filter_by(password='root').first()
+db.session.delete(target)
+db.session.commit()
+```
+
 
 ## Docker-compose
 
