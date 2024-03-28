@@ -22,17 +22,21 @@ import os
 from flask import Flask
 from routes import api_bp
 from extensions import db
+from flask_migrate import Migrate
+
+app = Flask(__name__)
+app.app_context().push() # avoid with app.app_context(). warning.
+
+app.register_blueprint(api_bp)
+
+# bind the database and ORM. The DB_URI is specified in the docker-compose file."
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
+db.init_app(app)
+
+# setup flask-migrate cli
+migrate = Migrate(app, db)
 
 if __name__ == '__main__':
-  app = Flask(__name__)
-  app.app_context().push() # avoid with app.app_context(). warning.
-
-  app.register_blueprint(api_bp)
-
-  # bind the database and ORM. The DB_URI is specified in the docker-compose file."
-  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
-  db.init_app(app)
-  db.create_all()
   app.run(host='0.0.0.0', debug=True)
 ```
 
@@ -115,6 +119,8 @@ db.session.commit()
 - Create Version Control `flask db init`
 - Commit schema to files `flask db migrate -m "some changelogs"`
 - Apply schema of files to database `flask db upgrade`
+
+> Manually check the script is necessary
 
 ## Docker-compose
 
