@@ -94,6 +94,27 @@ db.session.delete(target)
 db.session.commit()
 ```
 
+## Flask-Migrate
+
+- Install package `pip install Flask-Migrate cryptography`
+
+- Setup flask app
+
+```diff
+  from flask import Flask
+  from flask_sqlalchemy import SQLAlchemy
++ from flask_migrate import Migrate
+
+  app = Flask(__name__)
+  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
+
+  db = SQLAlchemy(app)
++ migrate = Migrate(app, db)
+```
+
+- Create Version Control `flask db init`
+- Commit schema to files `flask db migrate -m "some changelogs"`
+- Apply schema of files to database `flask db upgrade`
 
 ## Docker-compose
 
