@@ -24,6 +24,7 @@ from flask_sqlalchemy import SQLAlchemy
 from routes import api_bp
 
 app = Flask(__name__)
+app.app_context().push() # avoid with app.app_context(). warning.
 
 # register routes
 app.register_blueprint(api_bp)
