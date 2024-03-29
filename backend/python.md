@@ -117,8 +117,8 @@ db.session.commit()
 ```
 
 - Create Version Control `flask db init`
-- Commit schema to files `flask db migrate -m "some changelogs"`
-- Apply schema of files to database `flask db upgrade`
+- Check the difference between the database and the schema, and create migration scripts using `flask db migrate -m "some changelogs"`.
+- Apply files settings to database `flask db upgrade`
 
 > Manually check the script is necessary
 
