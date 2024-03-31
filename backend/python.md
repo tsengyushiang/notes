@@ -5,15 +5,25 @@
 - Add `routes/auth.py` for api endpoints
 
 ```python
-from flask import Blueprint
+from flask import Blueprint, request, jsonify
 from models.user import User
 from app.extensions import db
 
 auth_bp = Blueprint('auth', __name__)
 
-@auth_bp.route("/")
-def hello():
-    return "Hello, World!"
+@auth_bp.route("/signup", methods=['POST'])
+def signup():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if User.query.filter_by(username=username).first() is not None:
+        return jsonify({'error_code': 401}), 400
+
+    user = User(username=username, password=password)
+    db.session.add(user)
+    db.session.commit()
+    return jsonify({'message': 'User signed up successfully'}), 200
 ```
 
 - Add `app/__init_.py` to initialize the Flask app.
@@ -153,6 +163,96 @@ db.session.commit()
 - Apply files settings to database `flask db upgrade`
 
 > Manually check the script is necessary
+
+## Flask-Testing
+
+- Install package `pip install Flask-Testing`.
+
+- Register test cli in `main.py`
+
+```diff
+import os
+from app.extensions import db
+from app import create_app
+from flask_migrate import Migrate
+
+app = create_app('development')
+migrate = Migrate(app, db)
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', debug=True)
+
++ @app.cli.command()
++ def test():
++   import unittest
++   import sys
++   tests = unittest.TestLoader().discover("tests")
++   result = unittest.TextTestRunner(verbosity=2).run(tests)
++   if result.errors or result.failures:
++       sys.exit(1)
+```
+
+- Add testcases in `/test/test_*.py` files
+
+```python
+import unittest
+import json
+from flask import url_for
+from flask_testing import TestCase
+from app import create_app, db
+import json
+ 
+class SettingBase(TestCase):
+    def create_app(self):
+        return create_app("testing")
+
+    def setUp(self):
+        db.create_all()
+ 
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+ 
+    def signup(self):
+        response = self.client.post(url_for('auth.signup'),
+                                    json={
+                                        "username": 'admin',
+                                        "password": 'admin',
+                                    })
+        return response
+ 
+class CheckUserAndLogin(SettingBase):
+    def test_signup(self):
+        response = self.signup()
+        self.assertEqual(response.status_code, 200)
+
+    def test_signup_duplicate(self):
+        self.signup()
+        response = self.signup()
+
+        response_data = json.loads(response.data.decode('utf-8'))
+
+        self.assertEqual(response_data['error_code'], 401)
+        self.assertEqual(response.status_code, 400)
+ 
+if __name__ == '__main__':
+    unittest.main()
+```
+
+> Additionally, you can verify using the following command: `curl -X POST   -H "Content-Type: application/json"   -d '{"username": "admin2", "password": "admin2"}'   http://localhost/signup`
+
+- Finally, you can execute `FLASK_APP=main.py flask test` to run the tests
+
+```
+root@208fd29e978c:/app# flask test
+test_signup (test_auth.CheckUserAndLogin) ... ok
+test_signup_duplicate (test_auth.CheckUserAndLogin) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.144s
+
+OK
+```
 
 ## Docker-compose
 
