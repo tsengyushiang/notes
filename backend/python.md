@@ -1,50 +1,85 @@
 # Python
 
-
 ## Flask
 
-- Add `routes.py` for api endpoints
+- Add `routes/auth.py` for api endpoints
 
 ```python
 from flask import Blueprint
+from models.user import User
+from app.extensions import db
 
-api_bp = Blueprint('api', __name__)
+auth_bp = Blueprint('auth', __name__)
 
-@api_bp.route("/")
+@auth_bp.route("/")
 def hello():
     return "Hello, World!"
 ```
 
-- Add `app.py` for configurations.
+- Add `app/__init_.py` to initialize the Flask app.
+
+```python
+from flask import Flask
+from .extensions import db
+from .config import config
+from routes.auth import auth_bp
+ 
+def create_app(config_name):
+ 
+    app = Flask(__name__)
+    app.app_context().push()
+
+    app.config.from_object(config[config_name])
+    db.init_app(app)
+
+    app.register_blueprint(auth_bp)
+
+    return app
+```
+- Add `app/config.py` to store environment variables in different environments.
 
 ```python
 import os
-from flask import Flask
-from routes import api_bp
-from extensions import db
+ 
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+def create_sqlite_uri(db_name):
+    return "sqlite:///" + os.path.join(basedir, db_name)
+ 
+class BaseConfig:
+    SECRET_KEY = 'SECRET_KEY'
+ 
+class DevelopmentConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DB_URI')
+ 
+class TestingConfig(BaseConfig):
+    SQLALCHEMY_DATABASE_URI = create_sqlite_uri("test.db")
+ 
+config = {
+    'development': DevelopmentConfig,
+    'testing': TestingConfig,
+}
+```
+- Use `create_app` in `main.py` to start server.
+
+```python
+import os
+from app.extensions import db
+from app import create_app
 from flask_migrate import Migrate
 
-app = Flask(__name__)
-app.app_context().push() # avoid with app.app_context(). warning.
-
-app.register_blueprint(api_bp)
-
-# bind the database and ORM. The DB_URI is specified in the docker-compose file."
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI')
-db.init_app(app)
-
-# setup flask-migrate cli
+app = create_app('development')
 migrate = Migrate(app, db)
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True)
 ```
 
 ## SQLAlchemy
 
 ### Initialize
 
-- Init instance in `extensions.py` to avoid circular import.
+- Init instance in `app/extensions.py` to avoid circular import.
 
 ```python
 from flask_sqlalchemy import SQLAlchemy
@@ -54,7 +89,7 @@ db = SQLAlchemy()
 ### Define Schema
 
 ```python
-from extensions import db
+from app.extensions import db
 from datetime import datetime
 
 class User(db.Model):
@@ -105,14 +140,11 @@ db.session.commit()
 - Setup flask app
 
 ```diff
-  from flask import Flask
-  from flask_sqlalchemy import SQLAlchemy
+  from app.extensions import db
+  from app import create_app
 + from flask_migrate import Migrate
 
-  app = Flask(__name__)
-  app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'
-
-  db = SQLAlchemy(app)
+  app = create_app('development')
 + migrate = Migrate(app, db)
 ```
 
@@ -149,7 +181,7 @@ services:
 
   server:
     build: ./server
-    command: python app.py
+    command: ./wait-for-it.sh db:3306 --strict -- bash -c "FLASK_APP=main.py flask db upgrade && python main.py"
     environment:
         DB_URI: mysql+pymysql://root:${DB_PASSWORD}@db/${DB_NAME}
     volumes:
