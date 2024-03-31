@@ -168,28 +168,16 @@ db.session.commit()
 
 - Install package `pip install Flask-Testing`.
 
-- Register test cli in `main.py`
+- Add test script `test.py`
 
-```diff
-import os
-from app.extensions import db
-from app import create_app
-from flask_migrate import Migrate
+```python
+import unittest
+import sys
 
-app = create_app('development')
-migrate = Migrate(app, db)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
-
-+ @app.cli.command()
-+ def test():
-+   import unittest
-+   import sys
-+   tests = unittest.TestLoader().discover("tests")
-+   result = unittest.TextTestRunner(verbosity=2).run(tests)
-+   if result.errors or result.failures:
-+       sys.exit(1)
+tests = unittest.TestLoader().discover("tests")
+result = unittest.TextTestRunner(verbosity=2).run(tests)
+if result.errors or result.failures:
+    sys.exit(1)
 ```
 
 - Add testcases in `/test/test_*.py` files
@@ -241,10 +229,10 @@ if __name__ == '__main__':
 
 > Additionally, you can verify using the following command: `curl -X POST   -H "Content-Type: application/json"   -d '{"username": "admin2", "password": "admin2"}'   http://localhost/signup`
 
-- Finally, you can execute `FLASK_APP=main.py flask test` to run the tests
+- Finally, you can execute `python test.py` to run the tests
 
 ```
-root@208fd29e978c:/app# flask test
+root@208fd29e978c:/app# python test.py
 test_signup (test_auth.CheckUserAndLogin) ... ok
 test_signup_duplicate (test_auth.CheckUserAndLogin) ... ok
 
