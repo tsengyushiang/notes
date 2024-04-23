@@ -3,7 +3,7 @@
 * [Deploy](./deploy)
 * [Docker](./docker)
 * [Git](./git/)
-* [Google App Script](./google-apps-script/)
+* [Google](./google/)
 * [Backend](./backend/)
 * [Frontend](./frontend/)
 * [LaTex](./Latex/)
