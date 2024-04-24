@@ -48,6 +48,7 @@
 ## Resources
 
 - [Free SVG Icons](https://www.svgrepo.com/vectors/cursor/)
+- [i18n translator](https://translate.i18next.com/)
 
 ## Collaboration
 
