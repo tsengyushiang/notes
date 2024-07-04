@@ -8,7 +8,7 @@
 docker run --rm -it -v ./:/usr/share/nginx/html:ro -p 8080:80 nginx
 ```
 
-- For signle page applications, overwrite `/etc/nginx/conf.d/default.conf` and put your `index.html` in `/app`
+- For Single-page application, overwrite `/etc/nginx/conf.d/default.conf` and put your `index.html` in `/app`
 
 ```
 server {
