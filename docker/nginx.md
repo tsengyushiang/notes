@@ -8,6 +8,23 @@
 docker run --rm -it -v ./:/usr/share/nginx/html:ro -p 8080:80 nginx
 ```
 
+- For signle page applications, overwrite `/etc/nginx/conf.d/default.conf` and put your `index.html` in `/app`
+
+```
+server {
+    listen 80;
+    server_name localhost;
+
+    root /app;
+
+    index index.html index.htm;
+
+    location / {
+        try_files $uri /index.html;
+    }
+}
+```
+
 
 # Docker Network
 
