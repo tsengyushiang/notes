@@ -4,6 +4,17 @@
 
 - add `.vscode/settings.json` in working directory
 
+## SSH
+
+```
+Name: Remote Development
+Id: ms-vscode-remote.vscode-remote-extensionpack
+Description: An extension pack that lets you open any folder in a container, on a remote machine, or in WSL and take advantage of VS Code's full feature set.
+Version: 0.25.0
+Publisher: Microsoft
+VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
+```
+
 ## Git 
 
 ### Graph
