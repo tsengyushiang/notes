@@ -10,6 +10,7 @@ docker run --rm -it -v ./:/usr/share/nginx/html:ro -p 8080:80 nginx
 
 - For Single-page application, overwrite `/etc/nginx/conf.d/default.conf` and put your `index.html` in `/app`
 
+`./nginx/default.conf`
 ```
 server {
     listen 80;
@@ -23,6 +24,27 @@ server {
         try_files $uri /index.html;
     }
 }
+```
+`Dockerfile`
+```dockerfile
+FROM node:20-alpine AS build
+
+WORKDIR /app
+
+COPY package.json ./
+
+RUN yarn install
+
+COPY . .
+
+RUN yarn build
+
+FROM nginx:alpine
+
+COPY --from=build /app/build /app
+COPY ./nginx /etc/nginx/conf.d
+
+EXPOSE 80
 ```
 
 
