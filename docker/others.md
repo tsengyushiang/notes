@@ -52,6 +52,7 @@ curl --location -g --request ${api_method} '${api_path}' \
 - `apt-get update`
 - `apt-get install lsof`
 - `lsof -i -P -n` : print using ports
+> For windows, use `netstat -aof`
 
 ### Check available package version
 
