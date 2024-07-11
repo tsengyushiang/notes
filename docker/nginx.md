@@ -25,6 +25,15 @@ server {
     }
 }
 ```
+> For SPA that specify a homepage for static assets, utilize route rewriting.
+
+```
+location /dashboard/ {
+    rewrite ^/dashboard/(.*)$ /$1 break;
+    try_files $uri /index.html;
+}
+```
+
 `Dockerfile`
 ```dockerfile
 FROM node:20-alpine AS build
