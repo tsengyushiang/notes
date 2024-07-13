@@ -202,7 +202,7 @@ npx depcruise ${target file/folder} --exclude node_modules --config .dependency-
 - Export markdown graph
 
 ```bash
-npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type plugin:dependency-cruiser/mermaid-reporter-plugin > mermaid.md`
+npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type plugin:dependency-cruiser/mermaid-reporter-plugin > mermaid.md
 ```
 
 ### Validation
