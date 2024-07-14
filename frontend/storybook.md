@@ -56,6 +56,8 @@ export const Test = {
 
 ```
 yarn add @storybook/test-runner -D
+npx playwright install
+npx playwright install-deps
 ```
 
 ### Add script
