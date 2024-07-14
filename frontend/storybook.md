@@ -28,7 +28,7 @@ npx sb init
 yarn storybook
 ```
 
-> If `Error: spawn xdg-open ENOENT` error, change script to `    "storybook": "storybook dev -p 6006 --ci"`
+> If `Error: spawn xdg-open ENOENT` error, change script to `storybook dev -p 6006 --ci`
 
 
 ### Interaction test
