@@ -88,7 +88,7 @@ CMD ["bash", "run.sh"]
         - `-w` : workdir and it's convenient with volume `-v .:/app -w /app`.
         - `--network <network name>` : use network
 
-> Run docker container as terminal, use `docker --rm -it -v .:/app -w /app ${IMAGE} bash`
+> Run docker container as terminal, use `docker run --rm -it -v .:/app -w /app -p 3000:3000 -p 6006:6006 ${IMAGE} bash`
 
 ## Docker-compose
 
