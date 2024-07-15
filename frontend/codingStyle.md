@@ -95,6 +95,29 @@
   // all warning should be resolved 
   yarn eslint --max-warnings=0
   ```
+### Eslint plugins
+
+- [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
+
+  - Installation
+  
+  ```
+  yarn add -D eslint-plugin-simple-import-sort
+  ```
+  
+  - Setup config
+  
+  ```diff
+    "eslintConfig": {
+  +   "plugins": [
+  +     "simple-import-sort"
+  +   ],
+  +   "rules": {
+  +     "simple-import-sort/imports": "error",
+  +     "simple-import-sort/exports": "error"
+  +   }
+    },
+  ```
   
 ## Prettier
 
