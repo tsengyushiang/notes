@@ -47,7 +47,49 @@ export const Test = {
 };
 
 ```
+### RWD Story
 
+- Defines RWD breakpoints in `.storybook/preview.ts`.
+
+```typescript
+const customViewports = {
+  Desktop: {
+    name: "Desktop",
+    styles: {
+      width: "1280px",
+      height: "720px",
+    },
+  },
+  Mobile: {
+    name: "Mobile",
+    styles: {
+      width: "768px",
+      height: "720px",
+    },
+  },
+};
+
+const preview: Preview = {
+  parameters: {
+    viewport: {
+      viewports: customViewports,
+    },
+  },
+};
+```
+
+- Specify `defaultViewport` in story.
+
+```typescript
+export const Desktop: Story = {
+  args,
+  parameters: {
+    viewport: {
+      defaultViewport: "Desktop", // or "Mobile"
+    },
+  },
+};
+```
 
 ## Setup storybook-test-runner
 
