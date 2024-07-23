@@ -2,6 +2,7 @@
 
 - [storybook](https://storybook.js.org/docs/get-started/frameworks/react-vite)
 - [storybook-test-runner](https://github.com/piratetaco/storybook-test-runner)
+- [msw-storybook-addon](https://storybook.js.org/addons/msw-storybook-addon)
 
 ## Setup storybook
 
@@ -107,9 +108,57 @@ const meta = {
   ],
 }
 ```
+## Setup Mock Service Worker
+
+### Installation
+
+- Run commands to add packages.
+
+```
+yarn add msw msw-storybook-addon -D
+npx msw init public/
+```
+
+- Initialize in `./storybook/preview.js`
+
+```javascript
+import { initialize, mswLoader } from 'msw-storybook-addon'
+
+// Initialize MSW
+initialize()
+
+const preview = {
+  parameters: {
+    // your other code...
+  },
+  // Provide the MSW addon loader globally
+  loaders: [mswLoader],
+}
+
+export default preview
+```
+
+### Mock Api in stories
+
+```javascript
+import { http, HttpResponse } from 'msw'
+
+export const SuccessBehavior = {
+  parameters: {
+    msw: {
+      handlers: [
+        http.get(`${HOST}/use`, () => {
+          return HttpResponse.json({
+            foo: 'foo',
+          })
+        }),
+      ],
+    },
+  },
+}
+```
 
 ## Setup storybook-test-runner
-
 
 ### Installation
 
