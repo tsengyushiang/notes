@@ -90,6 +90,23 @@ export const Desktop: Story = {
   },
 };
 ```
+### Decorator for react-router-dom
+
+```javascript
+import { MemoryRouter } from "react-router-dom";
+
+const meta = {
+  title: "Components/Router",
+  component: Router,
+  decorators: [
+    (Story) => (
+      <MemoryRouter initialEntries={["/"]}>
+        <Story />
+      </MemoryRouter>
+    ),
+  ],
+}
+```
 
 ## Setup storybook-test-runner
 
