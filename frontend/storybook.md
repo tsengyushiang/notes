@@ -143,7 +143,10 @@ export default preview
 ```javascript
 import { http, HttpResponse } from 'msw'
 
-export const SuccessBehavior = {
+export const Demo = {
+  args: {
+    // others props for components
+  },
   parameters: {
     msw: {
       handlers: [
