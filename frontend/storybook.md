@@ -150,7 +150,8 @@ export const Demo = {
   parameters: {
     msw: {
       handlers: [
-        http.get(`${HOST}/use`, () => {
+        http.get(`${HOST}/use`, async ({ request }) => {
+          const payload = await request.json();
           return HttpResponse.json({
             foo: 'foo',
           })
