@@ -89,12 +89,12 @@ services:
 docker-compose up -d
 ```
 
-- Visit the demo web app at http://localhost:8080/.
+- Visit the demo web app at [http://localhost:8080/](http://localhost:8080/).
 
   - If you encounter Failed to load resource: net::ERR_BLOCKED_BY_CLIENT in Chrome, it means some plugins are blocking scripts. Disable them or try using private mode.
 
-- Visit Matomo at http://localhost/.
+- Visit Matomo at [http://localhost/](http://localhost/).
 
   - Set up an admin account.
-  - Enter http://localhost:8080/ in the Website URL field for testing purposes.
+  - Enter [http://localhost:8080/](http://localhost:8080/) in the Website URL field for testing purposes.
   - Copy the JavaScript Tracking Code into your HTML file.
