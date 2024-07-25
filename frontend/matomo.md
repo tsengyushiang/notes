@@ -22,7 +22,7 @@ services:
       - MYSQL_DATABASE=my_matomo_tracking
 
   matomo_app:
-    image: matomo:4.11.0-apache
+    image: matomo:5.1.0-apache
     container_name: matomo_app
     restart: always
     depends_on: 
