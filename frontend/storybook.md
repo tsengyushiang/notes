@@ -191,6 +191,28 @@ yarn storybook
 
 ### Run Tester
 
+- With running storybook
+  
 ```
 yarn test-storybook --url http://127.0.0.1:6006
 ```
+
+- Start storybook and test with one command:
+
+  - Installation
+
+  ```
+  yarn add -D concurrently http-server wait-on
+  ```
+
+  - Add script
+
+  `package.json`
+  ```diff
+  {
+    "scripts": {
+  +    "test-storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"yarn build-storybook --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:6006 && yarn test-storybook\""
+    }
+  }
+  ```
+
