@@ -1,7 +1,7 @@
 # Storybook
 
 - [storybook](https://storybook.js.org/docs/get-started/frameworks/react-vite)
-- [storybook-test-runner](https://github.com/piratetaco/storybook-test-runner)
+- [storybook-test-runner](https://github.com/storybookjs/test-runner)
 - [msw-storybook-addon](https://storybook.js.org/addons/msw-storybook-addon)
 
 ## Setup storybook
