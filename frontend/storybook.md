@@ -230,7 +230,7 @@ yarn add -D @storybook/addon-coverage
 {
   "scripts": {
 -    "test-storybook": "test-storybook"
-+    "test-storybook": "test-storybook --coverage"
++    "test-storybook": "test-storybook --coverage && npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook"
   }
 }
 ```
