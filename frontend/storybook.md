@@ -215,3 +215,28 @@ yarn test-storybook --url http://127.0.0.1:6006
   }
   ```
 
+### Coverage Report
+  
+- Installation
+  
+```
+yarn add -D @storybook/addon-coverage
+```
+
+- Change script
+
+`package.json`
+```diff
+{
+  "scripts": {
+-    "test-storybook": "test-storybook"
++    "test-storybook": "test-storybook --coverage"
+  }
+}
+```
+
+- Convert report to lcov
+
+```
+npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook
+```
