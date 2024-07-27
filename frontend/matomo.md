@@ -46,7 +46,9 @@ services:
       - 8080:80
 ```
 
-### Prepared a html for testing `./webapp/index.html` served by nginx
+### Prepared a html for testing 
+
+Serves `./webapp/index.html` with nginx.
 
 ```html
 <!DOCTYPE html>
