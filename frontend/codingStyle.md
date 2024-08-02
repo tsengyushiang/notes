@@ -227,6 +227,13 @@ npx depcruise ${target file/folder} --exclude node_modules --config .dependency-
 ```bash
 npx depcruise ${target file/folder} --exclude node_modules --no-config --output-type plugin:dependency-cruiser/mermaid-reporter-plugin > mermaid.md
 ```
+- High-Level Review
+
+Use `--collapse` to ignore the implementation details of each file, so the result will only show the relationships between the children of `src` with the following command:
+
+```bash
+npx depcruise ${target file/folder} --exclude node_modules --no-config --collapse "^src/[^/]+" --output-type plugin:dependency-cruiser/mermaid-reporter-plugin > mermaid.md
+```
 
 ### Validation
 
