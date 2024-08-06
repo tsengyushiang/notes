@@ -108,6 +108,31 @@ const meta = {
   ],
 }
 ```
+### Arguments Mutation
+
+- [reference](https://storybook.js.org/docs/writing-stories/args#setting-args-from-within-a-story)
+
+```javascript
+import { useArgs } from "@storybook/preview-api";
+
+export const Page: Story = {
+  args: {
+    currentPage: 5,
+    onChange: fn(),
+  },
+  render: (args) => {
+    const [_, updateArgs] = useArgs();
+
+    function onChange(_: any, page: number) {
+      args.onChange(_, page);
+      updateArgs({ currentPage: page });
+    }
+
+    return <Pagination {...args} onChange={onChange} />;
+  },
+};
+```
+
 ## Setup Mock Service Worker
 
 ### Installation
