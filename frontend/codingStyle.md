@@ -95,6 +95,7 @@
   // all warning should be resolved 
   yarn eslint --max-warnings=0
   ```
+
 ### Eslint plugins
 
 - [eslint-plugin-simple-import-sort](https://github.com/lydell/eslint-plugin-simple-import-sort)
@@ -117,6 +118,40 @@
   +     "simple-import-sort/exports": "error"
   +   }
     },
+  ```
+
+- [eslint-plugin-import](https://github.com/import-js/eslint-plugin-import)
+  
+  - Installation
+  
+  ```
+  yarn add -D eslint-plugin-import
+  ```
+  
+  - Setup config
+  
+  ```json
+  "rules": {
+   "no-restricted-imports": [
+     "warn",
+     {
+       "patterns": [
+         {
+           "group": ["@third-party/*"],
+           "message": "Please import from the 'lib' folder instead of '@third-party/*'."
+         }
+       ]
+     }
+   ]
+  },
+  "overrides": [
+    {
+      "files": ["lib/**/*.{ts,tsx}"],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ]
   ```
   
 ## Prettier
