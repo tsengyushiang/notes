@@ -42,6 +42,7 @@ export const Test = {
   },
   play: async ({ args, canvasElement }) => {
     const canvas = within(canvasElement);
+    // if element should wait for api, use "await canvas.findByText("button", undefined, { timeout: 5e3 });" to get the button.
     await userEvent.click(canvas.getByRole("button"));
     await expect(args.onClick).toBeCalled();
   }
