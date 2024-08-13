@@ -5,6 +5,7 @@
   - [js-cookie](https://github.com/js-cookie/js-cookie)
   - [immer](https://github.com/immerjs/immer)
   - [DOMPurify](https://github.com/cure53/DOMPurify)
+  - [source-map-explorer](https://github.com/danvk/source-map-explorer#readme)
 
 ### React
   - [PDF Loader : react-pdf](https://github.com/diegomura/react-pdf)
