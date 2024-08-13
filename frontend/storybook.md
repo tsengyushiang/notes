@@ -203,7 +203,7 @@ npx playwright install --with-deps
 ```diff
 {
   "scripts": {
-+    "test-storybook": "test-storybook"
++    "test-storybook": "test-storybook --testTimeout=60000"
   }
 }
 ```
