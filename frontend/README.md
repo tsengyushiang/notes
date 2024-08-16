@@ -3,6 +3,7 @@
 
 * [apollo client](./references/apollo.html)
 * [Coding Style](./codingStyle.md)
+* [Code Generator](./code_generator.md)
 * [package manager](./package_manager.md)
 * [packages](./packages.md)
 * [HTML Meta](./meta.md)
