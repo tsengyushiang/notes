@@ -35,6 +35,12 @@ export default function (plop) {
         name: "name",
         message: "Input filename",
       },
+      {
+        type: "list",
+        name: "method",
+        message: "Choose a default method.",
+        choices: ["GET", "POST", "PUT", "DELETE"],
+      },
     ],
     actions: [
       {
@@ -47,6 +53,7 @@ export default function (plop) {
 
   plop.setHelper("foo", (str) => str.toUpperCase());
   plop.setHelper("boo", (str) => `${str}.boo`);
+  plop.setHelper("mutiArgs", (...args) => args.join('-'));
 }
 
 ```
@@ -54,7 +61,7 @@ export default function (plop) {
 Add template files `/templates/api.template.hbs`
 
 ```
-const foo = () => console.log("{{foo name}}", "{{boo name}}", "{{name}}");
+const foo = () => console.log("{{mutiArgs name method}}", "{{foo name}}", "{{boo name}}", "{{name}}");
 ```
 
 ## Run generator
