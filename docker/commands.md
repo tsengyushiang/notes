@@ -87,6 +87,7 @@ CMD ["bash", "run.sh"]
         - `-it` : run in foreground
         - `-w` : workdir and it's convenient with volume `-v .:/app -w /app`.
         - `--network <network name>` : use network
+        - `--user "$(id -u):$(id -g)"`: avoid permission issues.
 
 > Run docker container as terminal, use `docker run --rm -it -v .:/app -w /app -p 3000:3000 -p 6006:6006 ${IMAGE} bash`
 
