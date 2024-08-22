@@ -23,6 +23,7 @@
   - [Code Compare Editor: ace-editor](https://github.com/ace-diff/ace-diff)
   - [Unused File Scanner: unimported](https://github.com/smeijer/unimported#example)
   - [country-calling-code: country code mapping table](https://github.com/joonhocho/country-calling-code)
+  - [dom-to-svg: convert a given HTML DOM node into an accessible SVG "screenshot".](https://www.npmjs.com/package/dom-to-svg)
 
 ## Examples
 
