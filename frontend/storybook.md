@@ -134,6 +134,20 @@ export const Page: Story = {
 };
 ```
 
+### LocalStorage
+
+- [reference](https://github.com/storybookjs/storybook/discussions/17766)
+- Rename `preview.ts` to `preview.tsx` and add following content.
+
+```javascript
+const localStorageResetDecorator = (Story) => {
+  window.localStorage.clear();
+  return <Story />;
+};
+
+export const decorators = [localStorageResetDecorator];
+```
+
 ## Setup Mock Service Worker
 
 ### Installation
