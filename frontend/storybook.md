@@ -280,3 +280,16 @@ yarn add -D @storybook/addon-coverage
 ```
 npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/storybook
 ```
+
+- Define the coverage threshold by creating a `.nycrc` file with the following content:
+
+```
+{
+  "all": true,
+  "check-coverage": true,
+  "branches": 80,
+  "functions": 80,
+  "lines": 80,
+  "statements": 80
+}
+```
