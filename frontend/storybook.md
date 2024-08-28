@@ -285,6 +285,7 @@ npx nyc report --reporter=lcov -t coverage/storybook --report-dir coverage/story
 
 ```
 {
+  "exclude": ["src/exclude/**"],
   "all": true,
   "check-coverage": true,
   "branches": 80,
