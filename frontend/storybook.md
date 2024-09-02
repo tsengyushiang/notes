@@ -134,7 +134,7 @@ export const Page: Story = {
 };
 ```
 
-### LocalStorage
+### Global Decorators
 
 - [reference](https://github.com/storybookjs/storybook/discussions/17766)
 - Rename `preview.ts` to `preview.tsx` and add following content.
@@ -145,8 +145,14 @@ const localStorageResetDecorator = (Story) => {
   return <Story />;
 };
 
-export const decorators = [localStorageResetDecorator];
+const TimeFeezeDecorator = (Story: any) => {
+  Date.now = () => new Date("2024-08-10T09:27:45.000Z").getTime();
+  return <Story />;
+};
+
+export const decorators = [localStorageResetDecorator, TimeFeezeDecorator];
 ```
+
 
 ## Setup Mock Service Worker
 
