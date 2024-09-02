@@ -183,23 +183,31 @@ export default preview
 ```javascript
 import { http, HttpResponse } from 'msw'
 
+const mockPost = http.post(`${HOST}/post/api`, async ({ request }) => {
+  const payload = await request.json();
+  return HttpResponse.json({
+    foo: "foo",
+  });
+});
+
+const mockGet = http.get(`${HOST}/get/api`, async ({ request }) => {
+  const url = new URL(request.url);
+  const param = url.searchParams.get("id");
+  return HttpResponse.json({
+    foo: param,
+  });
+});
+
 export const Demo = {
   args: {
     // others props for components
   },
   parameters: {
     msw: {
-      handlers: [
-        http.get(`${HOST}/use`, async ({ request }) => {
-          const payload = await request.json();
-          return HttpResponse.json({
-            foo: 'foo',
-          })
-        }),
-      ],
+      handlers: [mockPost, mockGet],
     },
   },
-}
+};
 ```
 
 ## Setup storybook-test-runner
