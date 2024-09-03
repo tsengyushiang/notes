@@ -232,6 +232,7 @@ const websocketHandler = (() => {
     client.addEventListener("message", (event) => {
       console.log(event); //message from client
     });
+    client.addEventListener("close", () => console.log("cleanup"));
   });
 })();
 
