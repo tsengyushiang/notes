@@ -216,6 +216,37 @@ export const Demo = {
 };
 ```
 
+### Mock Websocket in stories
+
+> Only available in the work-in-progress version `msw@next`.
+
+- [reference](https://github.com/mswjs/msw/discussions/2010)
+
+```javascript
+import { ws } from 'msw'
+
+const websocketHandler = (() => {
+  const chat = ws.link("ws://localhost:3000");
+  return chat.on("connection", ({ client }) => {
+    client.send("hello client");
+    client.addEventListener("message", (event) => {
+      console.log(event); //message from client
+    });
+  });
+})();
+
+export const Demo = {
+  args: {
+    // others props for components
+  },
+  parameters: {
+    msw: {
+      handlers: [websocketHandler],
+    },
+  },
+};
+```
+
 ## Setup storybook-test-runner
 
 ### Installation
