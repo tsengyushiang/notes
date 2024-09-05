@@ -248,6 +248,30 @@ export const Demo = {
 };
 ```
 
+### Mock in Production
+
+```javascript
+import { HttpHandler } from "msw";
+import { setupWorker } from "msw/browser";
+
+const handlers: Array<HttpHandler> = [];
+
+const worker = setupWorker(...handlers);
+
+worker
+  .start({
+    serviceWorker: {
+      url: `/${baseURL}/mockServiceWorker.js`,
+    },
+  })
+  .then(() => {
+    const root = ReactDOM.createRoot(
+      document.getElementById("root") as HTMLElement,
+    );
+    root.render(<App />);
+  });
+```
+
 ## Setup storybook-test-runner
 
 ### Installation
