@@ -83,6 +83,24 @@ Serves `./webapp/index.html` with nginx.
 
 > `_paq.push(['setSiteId', '1']);` should match the id on matomo web ui.
 
+### Integrate with react-router-dom
+
+```javascript
+import { useLocation } from "react-router-dom";
+
+const RouterListener = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const _paq = window._paq || [];
+    _paq.push(["setCustomUrl", location.pathname]);
+    _paq.push(["trackPageView"]);
+  }, [location]);
+
+  return null;
+};
+```
+
 ### Start services
 
 - Run matomo 
