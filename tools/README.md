@@ -40,7 +40,6 @@
 
 ## Frontend
 
-- [License Check](https://openhub.net/)
 - [CSS HTML5 Support tables](https://caniuse.com/)
 - [WebGL Report](https://webglreport.com/)
 - [keyboard events and codes](https://www.w3.org/2002/09/tests/keys.html)
