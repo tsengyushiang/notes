@@ -38,6 +38,14 @@ docker run --rm -e MAIL_USER=admin@$DOCKER_MAILSERVER_DOMAIN_NAME -e MAIL_PASS=a
 
 # Test
 
+## Web GUI
+
+```
+sudo docker run -e ROUNDCUBEMAIL_DEFAULT_HOST=$DOCKER_MAILSERVER_DOMAIN_NAME -e ROUNDCUBEMAIL_SMTP_SERVER=$DOCKER_MAILSERVER_DOMAIN_NAME -p 8000:80 -d roundcube/roundcubemail
+```
+
+## Node
+
 ```javascript
 const nodemailer = require("nodemailer");
 
