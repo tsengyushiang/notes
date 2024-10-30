@@ -14,6 +14,21 @@ Version: 0.25.0
 Publisher: Microsoft
 VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.vscode-remote-extensionpack
 ```
+```
+Host env-local
+  HostName localhost
+  User ubuntu
+
+Host env-remote
+  HostName 11.111.11.11
+  User ubuntu
+  Port 23
+
+Host env-ec2
+  HostName domain.com
+  User ubuntu
+  IdentityFile "C:\Users\${USER_NAME}\.ssh\${PEM_NAME}.pem"
+```
 
 ## Git 
 
