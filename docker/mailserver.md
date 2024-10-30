@@ -22,7 +22,7 @@ DOCKER_MAILSERVER_DOMAIN_NAME=ec2-111-111-111-11.ap.aws.com
 mkdir ~/docker/mailserver/{data,state,logs,config} -p
 ```
 
-- Run `docker-compose up -d` with `docker-compose.yml`
+- Run service with docker
 
 ```yaml
 docker run -d --name=mailserver --hostname="$HOSTNAME" --domainname="$DOCKER_MAILSERVER_DOMAIN_NAME" -p 25:25 -p 143:143 -p 587:587 -p 993:993 -e ENABLE_SPAMASSASSIN=1 -e SPAMASSASSIN_SPAM_TO_INBOX=1 -e ENABLE_CLAMAV=1 -e ENABLE_POSTGREY=1 -e ENABLE_FAIL2BAN=0 -e ENABLE_SASLAUTHD=0 -e ONE_DIR=1 -e TZ=America/New_York -v ~/docker/mailserver/data/:/var/mail/ -v ~/docker/mailserver/state/:/var/mail-state/ -v ~/docker/mailserver/logs/:/var/log/mail/ -v ~/docker/mailserver/config/:/tmp/docker-mailserver/ --restart=unless-stopped mailserver/docker-mailserver
