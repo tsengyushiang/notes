@@ -83,3 +83,5 @@ transporter.verify((error) => {
 - The mail server log is stored in `~/docker/mailserver/logs/mail.log`
 - Check the mail server status with [mxtoolbox](https://mxtoolbox.com/diagnostic.aspx).
 - [Temporary mail](https://10minutemail.com/) for receiving testing.
+- [Mail-tester](https://www.mail-tester.com/)
+- [EC2 Restriction on email sent using port 25](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-resource-limits.html#port-25-throttle)
