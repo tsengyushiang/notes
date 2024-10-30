@@ -77,3 +77,9 @@ transporter.verify((error) => {
 ```
 
 > Check that received mail is stored in `~/docker/mailserver/data/-/${user}/new`
+
+# Debug
+
+- The mail server log is stored in `~/docker/mailserver/logs/mail.log`
+- Check the mail server status with [mxtoolbox](https://mxtoolbox.com/diagnostic.aspx).
+- [Temporary mail](https://10minutemail.com/) for receiving testing.
