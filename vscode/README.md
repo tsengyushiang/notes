@@ -30,6 +30,12 @@ Host env-ec2
   IdentityFile "C:\Users\${USER_NAME}\.ssh\${PEM_NAME}.pem"
 ```
 
+```bash
+chmod 400 "C:\Users\${USER_NAME}\.ssh\${PEM_NAME}.pem"
+ssh -i "C:\Users\${USER_NAME}\.ssh\${PEM_NAME}.pem" ubuntu@domain.com
+```
+
+
 ## Git 
 
 ### Graph
