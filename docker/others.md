@@ -2,6 +2,22 @@
 
 ## Linux Commands
 
+### SSH
+
+- Create a `.pem` file on the virtual machine.
+  
+```
+ssh-keygen -b 4096
+cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+cp .ssh/id_rsa /home/your_user/your_key.pem
+```
+
+- Copy the content of the `.pem` file to the local machine and use it with SSH.
+
+```
+ssh -p 22 -i "C:\Users\YUSHIANG.TSENG\.ssh\yushiang.pem" yushiangtseng@localhost
+```
+
 ### Text Editor - Vim
 
 - `apt-get update`
