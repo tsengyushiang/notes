@@ -18,6 +18,16 @@ cp .ssh/id_rsa /home/your_user/your_key.pem
 ssh -p 22 -i "C:\Users\YUSHIANG.TSENG\.ssh\yushiang.pem" yushiangtseng@localhost
 ```
 
+> Unable to log in due to the error log message: `SSH Authentication Refused: Bad Ownership or Modes for Directory.`
+
+- View the log on the virtual machine: `tail -f /var/log/auth.log`
+- Resolve the issue by adjusting file permissions:
+```
+chmod go-w /home/your_user
+chmod 700 /home/your_user/.ssh
+chmod 600 /home/your_user/.ssh/authorized_keys
+```
+
 ### Text Editor - Vim
 
 - `apt-get update`
