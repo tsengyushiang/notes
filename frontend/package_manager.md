@@ -3,7 +3,17 @@
 ## Yarn
 
 - Start on local network `yarn start --host 0.0.0.0`
-- Check vulnerability by `yarn audit` and upgrade related packages to fix them. 
+- Check vulnerability by `yarn audit` and upgrade related packages to fix them. If the official package hasn't been updated, we can fix it ourselves.
+  
+```diff
+{
+  "devDependencies": {
+  },
++ "resolutions": {
++   "nanoid": "^5.0.9"
++ }
+}
+```
 
 ## NVM
 
