@@ -189,7 +189,8 @@ export default preview
 ```javascript
 import { http, HttpResponse } from 'msw'
 
-const mockPost = http.post(`${HOST}/post/api`, async ({ request }) => {
+const mockPost = http.post(`${HOST}/post/api/:id`, async ({ request, params }) => {
+  const id = params.id;
   const payload = await request.json();
   return HttpResponse.json({
     foo: "foo",
