@@ -26,6 +26,7 @@
   - [dom-to-svg: convert a given HTML DOM node into an accessible SVG "screenshot".](https://www.npmjs.com/package/dom-to-svg)
   - [svg2pdf.js: a javascript-only SVG to PDF conversion](https://github.com/yWorks/svg2pdf.js)
   - [ELK's layout algorithms for JavaScript](https://github.com/kieler/elkjs)
+  - [BotD: Bot detection library that runs in the browser](https://github.com/fingerprintjs/BotD?tab=readme-ov-file)
 
 ## Examples
 
