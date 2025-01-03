@@ -140,6 +140,14 @@ export const Page: Story = {
 - Rename `preview.ts` to `preview.tsx` and add following content.
 
 ```javascript
+
+const loginCookiesDecorator = (Story) => {
+  document.cookie = "authToken=mock_token; path=/; SameSite=None; Secure";
+  // clear cookie
+  // document.cookie = "authToken=; path=/; SameSite=None; Secure";
+  return <Story />;
+};
+
 const localStorageResetDecorator = (Story) => {
   window.localStorage.clear();
   return <Story />;
@@ -150,7 +158,7 @@ const TimeFeezeDecorator = (Story: any) => {
   return <Story />;
 };
 
-export const decorators = [localStorageResetDecorator, TimeFeezeDecorator];
+export const decorators = [localStorageResetDecorator, TimeFeezeDecorator, loginCookiesDecorator];
 ```
 
 
@@ -197,7 +205,12 @@ const mockPost = http.post(`${HOST}/post/api/:id`, async ({ request, params }) =
   });
 });
 
-const mockGet = http.get(`${HOST}/get/api`, async ({ request }) => {
+const mockGet = http.get(`${HOST}/get/api`, async ({ request, cookies }) => {
+  if (!cookies.authToken) {
+    return HttpResponse.json("auth failed", {
+      status: 400,
+    });
+  }
   const url = new URL(request.url);
   const param = url.searchParams.get("id");
   return HttpResponse.json({
