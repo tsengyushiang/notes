@@ -124,8 +124,6 @@ export default defineConfig(() => ({
 
 ```
 
-
-
 To generate an individual storybook project for components, run:
 
 ```sh
@@ -134,4 +132,22 @@ nx add @nx/storybook
 nx g @nx/storybook:configuration @test/docs
 ```
 
+To enable SSR support for Next.js components, use the source code of the library instead of the built version by modifying `libs/ui/package.json`.
 
+```diff
+{
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "development": "./src/index.ts",
+-     "types": "./dist/index.d.ts",
+-     "import": "./dist/index.js",
+-     "default": "./dist/index.js"
++     "types": "./src/index.ts",
++     "import": "./src/index.ts",
++     "default": "./src/index.ts"
+    }
+  }
+}
+
+```
