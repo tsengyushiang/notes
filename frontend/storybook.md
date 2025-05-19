@@ -286,6 +286,25 @@ worker
   });
 ```
 
+### Mock in Server Side (Nextjs 15)
+
+`./mock/server`
+```javascript
+import { setupServer } from "msw/node";
+const handlers = [];
+export const server = setupServer(...handlers);
+```
+
+`instrumentations.js`
+```javascript
+export async function register() {
+  if (process.env.NEXT_RUNTIME === "nodejs") {
+    const { server } = await import("./mock/server");
+    server.listen();
+  }
+}
+```
+
 ## Setup storybook-test-runner
 
 ### Installation
