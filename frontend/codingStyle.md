@@ -256,6 +256,7 @@
 ```bash
 npx depcruise ${target file/folder} --exclude node_modules --config .dependency-cruiser.json --output-type dot | dot -T svg > dependency-graph.svg
 ```
+> To enable TypeScript path aliases (like @packages/foo), add the `--ts-config tsconfig.json` flag
 
 - Export markdown graph
 
