@@ -286,9 +286,22 @@ worker
   });
 ```
 
-### Mock in Server Side (Nextjs 15)
+### Mock in Nextjs 15
 
-`./mock/server`
+`./mock/browser.js`
+```javascript
+import { setupWorker } from "msw/browser";
+const handlers = [];
+export const worker = setupWorker(...handlers);
+```
+
+`instrumentation-client.js`
+```javascript
+const { worker } = await import("./stories/mock/browser");
+worker.start();
+```
+
+`./mock/server.js`
 ```javascript
 import { setupServer } from "msw/node";
 const handlers = [];
