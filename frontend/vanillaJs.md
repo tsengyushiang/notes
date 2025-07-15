@@ -119,6 +119,31 @@ function openInNewTab(url) {
 }
 ```
 
+### HTML in new tab
+
+```javascript
+const html = `
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <title>My Blob Page</title>
+      <script>
+        console.log("Hello from the blob!");
+      </script>
+    </head>
+    <body>
+      <h1>This is rendered from a Blob</h1>
+    </body>
+  </html>
+`;
+
+const blob = new Blob([html], { type: 'text/html' });
+const url = URL.createObjectURL(blob);
+
+// Open in a new tab
+window.open(url, '_blank');
+```
+
 ## Debug
 
 - log color in console
