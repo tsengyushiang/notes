@@ -43,7 +43,7 @@ git remote remove <branch-name-for-current-repo>
 - merge directly
 
   ```
-  git merge <target-branch> --no-commit --no-ff
+  git merge <target-branch> --no-edit --no-ff
   ```
 
 ## Debug
