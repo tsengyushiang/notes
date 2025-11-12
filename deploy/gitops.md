@@ -87,3 +87,45 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 ```bash
 kubectl port-forward -n argocd svc/argocd-server 8080:443
 ```
+
+## GitLab CI for Building Docker Images
+
+### Register a GitLab Runner
+
+```
+docker run -d --name gitlab-runner --restart always \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+
+docker exec -it gitlab-runner gitlab-runner register --url https://gitlab.com --token copy-from-gitlab-ui
+```
+
+### Sample `Dockerfile`
+
+```dockerfile
+FROM alpine:3.18
+ARG MY_ARG="default_value"
+RUN echo "Build argument is: ${MY_ARG}"
+ENV MY_ARG=${MY_ARG}
+CMD ["sh", "-c", "echo Running with argument: ${MY_ARG}"]
+```
+
+### Sample `.gitlab-ci.yml`
+
+```yml
+stages:
+  - build
+
+build_image:
+  stage: build
+  image: docker:24.0.2
+  services:
+    - docker:24.0.2-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker build -t $IMAGE_TAG --build-arg MY_ARG=$CI_COMMIT_SHA -f Dockerfile .
+    - docker push $IMAGE_TAG
+```
