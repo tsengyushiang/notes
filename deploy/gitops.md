@@ -2,7 +2,9 @@
 
 ## k3s
 
-### Option1: offical k3s
+### Installation
+
+#### option1: offical k3s
 
 - [Document](https://docs.k3s.io/quick-start)
 
@@ -12,7 +14,7 @@ curl -sfL https://get.k3s.io | sh -
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ```
 
-### Option2: colima
+#### option2: colima
 
 - [Document](https://github.com/abiosoft/colima)
 
@@ -21,9 +23,6 @@ colima stop
 colima start --runtime containerd --kubernetes -p k3s
 export KUBECONFIG=~/.kube/config
 ```
-
-### Installation
-
 
 ## Argo CD
 
@@ -129,3 +128,4 @@ build_image:
     - docker build -t $IMAGE_TAG --build-arg MY_ARG=$CI_COMMIT_SHA -f Dockerfile .
     - docker push $IMAGE_TAG
 ```
+
