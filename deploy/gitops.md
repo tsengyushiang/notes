@@ -108,7 +108,7 @@ FROM alpine:3.18
 ARG MY_ARG="default_value"
 RUN echo "Build argument is: ${MY_ARG}"
 ENV MY_ARG=${MY_ARG}
-CMD ["sh", "-c", "echo Running with argument: ${MY_ARG}"]
+CMD ["sh", "-c", "while true; do echo Running with argument: ${MY_ARG}; sleep 5; done"]
 ```
 
 ### Sample `.gitlab-ci.yml`
