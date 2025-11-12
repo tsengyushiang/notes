@@ -5,6 +5,7 @@
 ### Option1: offical k3s
 
 - [Document](https://docs.k3s.io/quick-start)
+
 ```bash
 curl -sfL https://get.k3s.io | sh -
 
@@ -14,6 +15,7 @@ export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 ### Option2: colima
 
 - [Document](https://github.com/abiosoft/colima)
+
 ```bash
 colima stop
 colima start --runtime containerd --kubernetes -p k3s
@@ -49,16 +51,20 @@ spec:
   project: default
 
   source:
-    repoURL: https://gitlab.com/nanuchi/argocd-app-config.git
+    repoURL: https://gitlab.com/delta.yushiang.tseng/argocd.git
     targetRevision: HEAD
-    path: dev
+    path: myapp
   destination:
     server: https://kubernetes.default.svc
     namespace: myapp
 
   syncPolicy:
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
 ```
 
 - Apply to k3s
