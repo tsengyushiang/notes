@@ -87,6 +87,34 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 kubectl port-forward -n argocd svc/argocd-server 8080:443
 ```
 
+## Docker Registry
+
+### Installation
+
+```bash
+docker run -d -p 5000:5000 -v /home/user1/storage:/var/lib/registry --name registry registry:2
+```
+
+### Push Image to Registry
+
+- Sample `Dockerfile`
+
+```dockerfile
+FROM alpine:3.18
+ARG MY_ARG="default_value"
+RUN echo "Build argument is: ${MY_ARG}"
+ENV MY_ARG=${MY_ARG}
+CMD ["sh", "-c", "while true; do echo Running with argument: ${MY_ARG}; sleep 5; done"]
+```
+
+- Build and push
+
+```bash
+docker build -t test .
+docker tag test localhost:5000/test
+docker push localhost:5000/test
+```
+
 ## GitLab CI for Building Docker Images
 
 ### Register a GitLab Runner
@@ -98,16 +126,6 @@ docker run -d --name gitlab-runner --restart always \
   gitlab/gitlab-runner:latest
 
 docker exec -it gitlab-runner gitlab-runner register --url https://gitlab.com --token copy-from-gitlab-ui
-```
-
-### Sample `Dockerfile`
-
-```dockerfile
-FROM alpine:3.18
-ARG MY_ARG="default_value"
-RUN echo "Build argument is: ${MY_ARG}"
-ENV MY_ARG=${MY_ARG}
-CMD ["sh", "-c", "while true; do echo Running with argument: ${MY_ARG}; sleep 5; done"]
 ```
 
 ### Sample `.gitlab-ci.yml`
