@@ -92,3 +92,84 @@ except:
     variables:
         - $CI_MERGE_REQUEST_TITLE =~ /^WIP:.*/ || $CI_MERGE_REQUEST_TITLE =~ /^Draft:.*/
 ```
+
+### Check Branches and Merge Requests
+
+`.gitlab-ci.yml`
+```yml
+stages:
+  - test
+
+check-branches-mrs:
+  stage: test
+  image: alpine:latest
+  variables:
+    TARGET_BRANCH: "dev"
+    IGNORE_BRANCHES: "main, origin, dev"
+  before_script:
+    - apk add --no-cache git curl jq
+  script:
+    - git clone "$CI_REPOSITORY_URL" repo
+    - cd repo
+    - git fetch --all --prune
+
+    - BRANCHES=$(git for-each-ref --format='%(refname:short)' refs/remotes/origin/ | grep -v 'HEAD' | sed 's|^origin/||')
+    - echo "$BRANCHES"
+
+    - |
+      ALL_MRS_JSON=$(curl --silent --header "PRIVATE-TOKEN: $CI_JOB_TOKEN" \
+        "$CI_API_V4_URL/projects/$CI_PROJECT_ID/merge_requests?state=opened")
+
+    - echo "===== Check each branch ====="
+    - |
+      # Print table header
+      printf "%-25s %-10s %-10s %-40s\n" "Branch" "Merged" "MR IID" "MR Title"
+      printf "%-25s %-10s %-10s %-40s\n" "------" "------" "------" "--------"
+
+      for BR in $BRANCHES; do
+          # Skip ignored branches
+          if echo "$IGNORE_BRANCHES" | grep -qw "$BR"; then
+              printf "%-25s %-10s %-10s %-40s\n" "$BR" "-" "-" "-"
+              continue
+          fi
+
+          # Get MR for this branch
+          MR=$(echo "$ALL_MRS_JSON" | jq -c --arg BR "$BR" '.[] | select(.source_branch==$BR)')
+
+          if [ -z "$MR" ]; then
+              IID="-"
+              TITLE="-"
+          else
+              IID=$(echo "$MR" | jq -r '.iid')
+              TITLE=$(echo "$MR" | jq -r '.title')
+          fi
+
+          # Check if merged
+          if git merge-base --is-ancestor origin/"$BR" origin/"$TARGET_BRANCH" >/dev/null 2>&1; then
+              MERGED="Yes"
+          else
+              MERGED="No"
+          fi
+
+          # Print table row
+          printf "%-25s %-10s %-10s %-40s\n" "$BR" "$MERGED" "$IID" "$TITLE"
+      done
+```
+The result will be:
+
+```bash
+===== Check each branch =====
+$ # Print table header # collapsed multi-line command
+Branch                    Merged     MR IID     MR Title                                
+------                    ------     ------     --------                                
+origin                    -          -          -                                       
+already-in-dev            Yes        3          Draft: already-in-dev                   
+dev                       -          -          -                                       
+main                      -          -          -                                       
+merge-wo-mr               Yes        -          -                                       
+ready-with-mr             No         1          Draft: ready-with-mr                    
+wo-mr                     No         -          -                                       
+Cleaning up project directory and file based variables
+00:01
+Job succeeded
+```
