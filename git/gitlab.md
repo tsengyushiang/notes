@@ -98,10 +98,10 @@ except:
 `.gitlab-ci.yml`
 ```yml
 stages:
-  - test
+  - report
 
-check-branches-mrs:
-  stage: test
+generate-report:
+  stage: report
   image: alpine:latest
   variables:
     TARGET_BRANCH: "dev"
@@ -122,14 +122,12 @@ check-branches-mrs:
 
     - echo "===== Check each branch ====="
     - |
-      # Print table header
-      printf "%-25s %-10s %-10s %-40s\n" "Branch" "Merged" "MR IID" "MR Title"
-      printf "%-25s %-10s %-10s %-40s\n" "------" "------" "------" "--------"
+      RESULT="Branch,Merged,MR_ID,MR_Title\n"
 
       for BR in $BRANCHES; do
           # Skip ignored branches
           if echo "$IGNORE_BRANCHES" | grep -qw "$BR"; then
-              printf "%-25s %-10s %-10s %-40s\n" "$BR" "-" "-" "-"
+              RESULT="$RESULT$BR,-,-,-\n"
               continue
           fi
 
@@ -151,25 +149,58 @@ check-branches-mrs:
               MERGED="No"
           fi
 
-          # Print table row
-          printf "%-25s %-10s %-10s %-40s\n" "$BR" "$MERGED" "$IID" "$TITLE"
+          RESULT="$RESULT$BR,$MERGED,$IID,$TITLE\n"
       done
-```
-The result will be:
 
-```bash
-===== Check each branch =====
-$ # Print table header # collapsed multi-line command
-Branch                    Merged     MR IID     MR Title                                
-------                    ------     ------     --------                                
-origin                    -          -          -                                       
-already-in-dev            Yes        3          Draft: already-in-dev                   
-dev                       -          -          -                                       
-main                      -          -          -                                       
-merge-wo-mr               Yes        -          -                                       
-ready-with-mr             No         1          Draft: ready-with-mr                    
-wo-mr                     No         -          -                                       
-Cleaning up project directory and file based variables
-00:01
-Job succeeded
+      echo -e "$RESULT" > $CI_PROJECT_DIR/report.csv
+  artifacts:
+    paths:
+      - report.csv
+    expire_in: 1 day
+
+
+run-snippet:
+  stage: report
+  image: node:latest
+  needs:
+    - job: generate-report
+      artifacts: true
+  variables:
+    WEBHOOK_SNIPPET_ID: "4904668"
+    WEBHOOK_URL: "https://webhook-test.com/74c3fec59f92b922110646aa8cb23217"
+  script:
+  - curl -s "$CI_API_V4_URL/projects/$CI_PROJECT_ID/snippets/$WEBHOOK_SNIPPET_ID/raw" > snippet.js
+  - node snippet.js $CI_PROJECT_DIR/report.csv
+
+```
+- (optional) Prepare a public project snippet `csv-to-webhook.js`:
+
+```javascript
+const fs = require('fs');
+const filePath = process.argv[2];
+const content = fs.readFileSync(filePath, 'utf8');
+
+function parseCSV(csv) {
+  const lines = csv.split('\n').filter(line => line.trim() !== '');
+  const headers = lines.shift().split(',').map(h => h.trim());
+  return lines.map(line => {
+    const values = line.split(',').map(v => v.trim());
+    const obj = {};
+    headers.forEach((header, i) => {
+      obj[header] = values[i] || '';
+    });
+    return obj;
+  });
+}
+
+const payload = parseCSV(content);
+console.log("Parsed CSV:", payload);
+
+fetch(process.env.WEBHOOK_URL, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(payload)
+})
 ```
