@@ -158,6 +158,29 @@ generate-report:
       - report.csv
     expire_in: 1 day
 
+push-to-branch:
+  stage: report
+  image: alpine:latest
+  needs:
+    - job: generate-report
+      artifacts: true
+  variables:
+    GIT_STRATEGY: clone
+    TARGET_BRANCH: "workflow"
+  before_script:
+    - apk add --no-cache git
+    - git config --global user.email "ci-bot@example.com"
+    - git config --global user.name "CI Bot"
+  script:
+    - git fetch origin
+    - git switch "$TARGET_BRANCH" 2>/dev/null || git switch -c "$TARGET_BRANCH" origin/main
+    - git pull
+    - cp ./report.csv ./status.csv
+    - date '+%Y-%m-%d %H:%M:%S' >> ./status.csv
+    - git add ./status.csv
+    - |
+      git commit -m "chore: update report from pipeline $CI_PIPELINE_ID"
+    - git push --set-upstream "$CI_REPOSITORY_URL" HEAD:"$TARGET_BRANCH"
 
 run-snippet:
   stage: report
@@ -173,7 +196,9 @@ run-snippet:
   - node snippet.js $CI_PROJECT_DIR/report.csv
 
 ```
-- (optional) Prepare a public project snippet `csv-to-webhook.js`:
+> If the CI job will push code, make sure to enable `“Allow Git push”` in the project’s `CI/CD settings`.
+
+- (Optional) Prepare a public project snippet named `csv-to-webhook.js`.
 
 ```javascript
 const fs = require('fs');
