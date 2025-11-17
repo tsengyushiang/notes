@@ -72,6 +72,30 @@ curl --location -g --request ${api_method} '${api_path}' \
  "key": "value", 
 }'
 ```
+### Schedule Jobs — crontab
+
+- Run `crontab -e`, then press **i** to start editing.  
+  Press **Esc** and type `:wq` to save and quit.  
+  Example:
+
+  ```
+  # Run every minute (unix-cron-format)
+  * * * * * /bin/bash /path/to/test.sh
+  ```
+
+- Use `crontab -l` to view current jobs.
+- Use `crontab -r` to remove **all** jobs.
+- Be careful: cron jobs do **not** run with the same environment as your shell, so always use absolute paths.  
+  For example:
+
+  ```diff
+  - git clone http://...
+  + /usr/bin/git clone http://...
+
+  - echo "result" >> ./log.txt
+  + echo "result" >> $HOME/where/is/your/folder/log.txt
+  ```
+
 
 ### Port - lsof
 
