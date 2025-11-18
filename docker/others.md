@@ -96,6 +96,17 @@ curl --location -g --request ${api_method} '${api_path}' \
   + echo "result" >> $HOME/where/is/your/folder/log.txt
   ```
 
+- Make your script executable:
+
+  ```bash
+  chmod +x /path/to/test.sh
+  ```
+
+- Give cron permission on macOS, [Reference](https://www.bejarano.io/fixing-cron-jobs-in-mojave/)
+
+1. Open **System Settings → Security & Privacy → Privacy**
+2. Select **Full Disk Access**
+3. Add **/usr/sbin/cron**
 
 ### Port - lsof
 
