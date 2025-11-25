@@ -180,7 +180,7 @@ push-to-branch:
     - git add ./status.csv
     - |
       git commit -m "chore: update report from pipeline $CI_PIPELINE_ID"
-    - git push --set-upstream "$CI_REPOSITORY_URL" HEAD:"$TARGET_BRANCH"
+    - git push --set-upstream "$CI_REPOSITORY_URL" HEAD:"$TARGET_BRANCH" # For private repo: git push --set-upstream "https://oauth2:${PAT_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}.git" HEAD:$TARGET_BRANCH
 
 run-snippet:
   stage: report
