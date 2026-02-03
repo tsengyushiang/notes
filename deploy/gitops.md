@@ -38,6 +38,48 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ### Configuring Git repository and target cluster
 
 - [Document](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/)
+
+- Initialize the Git repository at `https://gitlab.com/delta.yushiang.tseng/argocd.git` 
+
+- Create `myappp/deployment.yaml` and `myapp/service.yaml`
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: registry.gitlab.com/delta.yushiang.tseng/argocd:aad77ac0b5ef429a2ec98de6deb2b5834da30c3b
+        ports:
+        - containerPort: 8080
+```
+
+```yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+```
+
+
 - Create `application.yaml`
 
 ```yml
@@ -146,4 +188,5 @@ build_image:
     - docker build -t $IMAGE_TAG --build-arg MY_ARG=$CI_COMMIT_SHA -f Dockerfile .
     - docker push $IMAGE_TAG
 ```
+
 
