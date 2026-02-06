@@ -42,7 +42,7 @@ containers:
 - Execute the following command to run the Rancher container:
 
 ```
-docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/rancher
+docker run -d --restart=unless-stopped --name rancher -p 80:80 -p 443:443 --privileged rancher/rancher
 ```
 
 - Once the container is running, access the Rancher UI by navigating to `https://localhost` in your web browser. 
@@ -50,7 +50,7 @@ docker run -d --restart=unless-stopped -p 80:80 -p 443:443 --privileged rancher/
 - Retrieve the initial administrator password by running the following command:
 
 ```
-docker logs -f <container-id> | grep "Bootstrap Password:"
+docker logs -f rancher 2>&1 | grep "Bootstrap Password:"
 ```
 
 - Follow the on-screen prompts to set a new password for the `admin` account.
