@@ -26,6 +26,7 @@ containers:
 ```bash
 docker run -d -p 5000:5000 --restart always --name registry registry
 docker tag frontend:latest localhost:5000/frontend:latest
+docker push localhost:5000/frontend:latest
 ```
 
 ```yml
