@@ -1,6 +1,6 @@
 # K3s
 
-### Start with colima
+## Qucik Start with colima
 
 ```
 colima start --kubernetes --k3s-arg "--write-kubeconfig-mode=644" --cpu 4 --memory 32
@@ -9,6 +9,8 @@ colima start --kubernetes --k3s-arg "--write-kubeconfig-mode=644" --cpu 4 --memo
 PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
 default    Running    aarch64    4       32GiB     100GiB    docker+k3s
 ```
+
+## Sample Application
 
 ### Load Custom Image 
 
@@ -34,7 +36,7 @@ containers:
   - name: frontend
     image: localhost:5000/frontend:latest
 ```
-### Sample Application
+### Manifests
 
 - Define Manifests: create a file named `demo.yaml` with the following resources:
 
@@ -97,7 +99,7 @@ spec:
                   number: 80
 ```
 
-- Execute Deployment
+### Execute Deployment
 
 ```
 /Users/yushiang.tseng/Desktop
@@ -109,7 +111,7 @@ service/frontend-service created
 ingress.networking.k8s.io/ingress created
 ```
 
-- Cleanup
+### Cleanup
 
 ```
 kubectl delete -f ./demo.yaml
