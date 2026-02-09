@@ -10,7 +10,7 @@ PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRE
 default    Running    aarch64    4       32GiB     100GiB    docker+k3s
 ```
 
-### Load Image 
+### Load Custom Image 
 
 - Option 1: Use local cache via YAML configuration.
 
@@ -33,6 +33,86 @@ docker push localhost:5000/frontend:latest
 containers:
   - name: frontend
     image: localhost:5000/frontend:latest
+```
+### Sample Application
+
+- Define Manifests: create a file named `demo.yaml` with the following resources:
+
+```yml
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: demo
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: nginx
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: demo
+spec:
+  selector:
+    app: frontend
+  ports:
+    - port: 80
+      targetPort: 80
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx
+  namespace: demo
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend-service
+                port:
+                  number: 80
+```
+
+- Execute Deployment
+
+```
+/Users/yushiang.tseng/Desktop
+% kubectl apply -f ./demo.yaml
+
+namespace/demo created
+deployment.apps/frontend created
+service/frontend-service created
+ingress.networking.k8s.io/ingress created
+```
+
+- Cleanup
+
+```
+kubectl delete -f ./demo.yaml
 ```
 
 ## Rancher
