@@ -3,7 +3,7 @@
 ### Start with colima
 
 ```
-colima start --kubernetes --cpu 4 --memory 32
+colima start --kubernetes --k3s-arg "--write-kubeconfig-mode=644" --cpu 4 --memory 32
  
 % colima list
 PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
