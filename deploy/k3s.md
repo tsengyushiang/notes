@@ -10,6 +10,8 @@ PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRE
 default    Running    aarch64    4       32GiB     100GiB    docker+k3s
 ```
 
+> Use the `--network-address`, `--network-preferred-route` and `--network-mode bridged` tags for bridge networks.
+
 ## Sample Application
 
 ### Load Custom Image 
