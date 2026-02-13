@@ -11,7 +11,7 @@ default    Running    aarch64    4       32GiB     100GiB    docker+k3s
 ```
 > Use `--k3s-arg "--write-kubeconfig-mode=644"` to overwrite the default arguments and ensure Traefik is enabled.
 
-> Use the `--network-address`, `--network-preferred-route` and `--network-mode bridged` tags for bridge networks.
+> Use the `--network-address` and `--network-mode bridged` tags for bridge networks.
 
 > To view the VM configuration, run: `cat ~/.colima/${profile}/colima.yaml`.
 
