@@ -3,14 +3,17 @@
 ## Qucik Start with colima
 
 ```
-colima start --kubernetes --k3s-arg "--write-kubeconfig-mode=644" --cpu 4 --memory 32
+colima start --kubernetes --cpu 4 --memory 32
  
 % colima list
 PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
 default    Running    aarch64    4       32GiB     100GiB    docker+k3s
 ```
+> Use `--k3s-arg "--write-kubeconfig-mode=644"` to overwrite the default arguments and ensure Traefik is enabled.
 
 > Use the `--network-address`, `--network-preferred-route` and `--network-mode bridged` tags for bridge networks.
+
+> To view the VM configuration, run: `cat ~/.colima/${profile}/colima.yaml`.
 
 ## Sample Application
 
