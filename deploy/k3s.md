@@ -3,7 +3,7 @@
 ## Qucik Start with colima
 
 ```
-colima start --kubernetes --cpu 4 --memory 32
+colima start --kubernetes --cpu 4 --memory 32 -p k3s
  
 % colima list
 PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
@@ -122,6 +122,103 @@ ingress.networking.k8s.io/ingress created
 ```
 kubectl delete -f ./demo.yaml
 ```
+
+## Agent
+
+### Agent Configuration
+
+- Update TLS SAN & Restart
+
+Identify the IP address and restart Colima with the `--tls-san` flag to allow external API access.
+
+```bash
+% colima list
+PROFILE      STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
+default      Stopped    aarch64    4       32GiB     100GiB                  
+k3s          Running    aarch64    4       32GiB     100GiB    docker+k3s    192.168.1.24
+
+colima stop -p k3s
+colima start -p k3s --k3s-arg "--tls-san=192.168.1.24"
+```
+
+- Extract Credentials & Port
+
+SSH into the instance to retrieve the cluster token and verify the API port.
+
+```bash
+colima ssh -p k3s
+
+lima@colima-k3s:/$ cat /var/lib/rancher/k3s/server/node-token
+K10db701baf4cc01280128a29aeaa26d85a6b9759ac7078ce194229ef6f3128ca40::server:8aff78f94df2cce86df02b3f821b4ab7
+
+lima@colima-k3s-agent:/$ cat /etc/systemd/system/k3s.service
+...
+server \
+   '--write-kubeconfig-mode' \
+   '644' \
+   '--tls-san=192.168.1.24' \
+   '--docker' \
+   '--advertise-address' \
+   '192.168.1.24' \
+   '--flannel-iface' \
+   'col0' \
+   '--https-listen-port' \
+   '62988' \
+```
+
+- Verify Connection
+
+Test the API health endpoint using the updated IP and port.
+
+```bash
+lima@colima-k3s:/$ curl -k https://192.168.1.24:62988/livez
+```
+
+### Configure Agent VM
+
+- Provision Instance
+
+Start a new Colima instance with bridged networking.
+
+```bash
+colima start -p k3s-agent \
+  --cpu 4 --memory 32 \
+  --network-address \
+  --network-mode bridged 
+```
+
+- Join Cluster
+
+SSH into the agent and execute the K3s installation script to connect to the server.
+
+```bash
+colima ssh -p k3s-agent
+curl -sfL https://get.k3s.io | K3S_URL=https://192.168.1.24:62988 K3S_TOKEN=K10db701baf4cc01280128a29aeaa26d85a6b9759ac7078ce194229ef6f3128ca40::server:8aff78f94df2cce86df02b3f821b4ab7 sh -s - agent
+```
+
+### Verify Agent Connectivity
+
+- Confirm Node Status
+
+Verify that the agent has successfully joined the cluster.
+
+```bash
+lima@colima-k3s:/$ kubectl get nodes
+NAME               STATUS   ROLES                  AGE   VERSION
+colima-k3s         Ready    control-plane,master   12d   v1.33.4+k3s1
+colima-k3s-agent   Ready    <none>                 76s   v1.34.4+k3s1
+```
+
+- Locate Pods by Node
+
+Filter pods to confirm they are scheduled on the specific agent node.
+
+```
+lima@colima-k3s:/$ kubectl get pod -A -o wide | grep "colima-k3s-agent"
+NAMESPACE       NAME        READY   STATUS             IP             NODE
+demo            some-pod    0/1     ImagePullBackOff   192.168.5.3    colima-k3s-agent
+```
+> `ImagePullBackOff` occurs because `localhost:5000` is unreachable from the agent. Ensure the agent has access to a shared registry or a local copy of the image.
 
 ## Rancher
 
