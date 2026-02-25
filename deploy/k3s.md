@@ -220,6 +220,11 @@ demo            some-pod    0/1     ImagePullBackOff   192.168.5.3    colima-k3s
 ```
 > `ImagePullBackOff` occurs because `localhost:5000` is unreachable from the agent. Ensure the agent has access to a shared registry or a local copy of the image.
 
+### Agent Reset Guide
+
+- Clear Password on Agent: `sudo rm /etc/rancher/node/password`
+- Remove Node from Server: `kubectl delete node colima-k3s-agent`
+ 
 ## Rancher
 
 ### Run with Docker
