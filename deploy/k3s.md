@@ -224,6 +224,28 @@ demo            some-pod    0/1     ImagePullBackOff   192.168.5.3    colima-k3s
 
 - Clear Password on Agent: `sudo rm /etc/rancher/node/password`
 - Remove Node from Server: `kubectl delete node colima-k3s-agent`
+
+## HA Configuration
+
+### Initialize Primary Server
+
+```bash
+colima stop -p k3s
+colima start -p k3s --k3s-arg "--cluster-init"
+```
+
+### Join Odd-Number Servers (3-Node HA Control Plane)
+
+```bash
+colima start -p k3s-master2 \
+  --kubernetes \
+  --cpu 4 --memory 32 \
+  --network-address \
+  --network-mode bridged \
+  --k3s-arg "--write-kubeconfig-mode=644" \
+  --k3s-arg "--server=https://192.168.1.24:62988" \
+  --k3s-arg "--token=K10db701baf4cc01280128a29aeaa26d85a6b9759ac7078ce194229ef6f3128ca40::server:8aff78f94df2cce86df02b3f821b4ab7"
+```
  
 ## Rancher
 
