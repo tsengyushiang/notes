@@ -133,6 +133,10 @@ POST _ingest/pipeline/csv_parser/_simulate
 ```yaml
 filebeat.inputs:
   - type: filestream
+
+    file_identity.path: {}
+    prospector.scanner.fingerprint.enabled: false
+    
     id: daily-csv-pipeline
     enabled: true
     paths:
