@@ -129,6 +129,8 @@ filebeat.inputs:
     enabled: true
     paths:
       - /usr/share/filebeat/csv_data/*.csv
+    harvester_limit: 1 # Processes one file at a time to prevent resource spikes
+    close_eof: true # Closes the harvester as soon as the end of a file is reached
 
 output.elasticsearch:
   hosts: ["https://elasticsearch:9200"]
@@ -136,6 +138,9 @@ output.elasticsearch:
   password: "Bbdra7e36sO8OL6ic0lY"
   ssl.verification_mode: "none"
   pipeline: "csv_parser"
+  bulk_max_size: 1 # Sends events individually to ensure each batch limit is met
+  worker: 1 # Uses a single thread to maintain a slow but stable ingestion rate
+
 ```
 
 - Run the Filebeat container:
