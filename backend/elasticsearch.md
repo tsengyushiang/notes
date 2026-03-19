@@ -64,6 +64,14 @@ eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6IjNjY2NkNTJlZjE1
 PUT _ingest/pipeline/csv_parser
 {
   "description": "Extracts custom timestamp from filename 2026-03-16_00-04-13",
+  "on_failure": [
+    {
+      "set": {
+        "field": "ingest_error",
+        "value": "{{_ingest.on_failure_message}}"
+      }
+    }
+  ],
   "processors": [
     {
       "grok": {
@@ -81,7 +89,7 @@ PUT _ingest/pipeline/csv_parser
       "date": {
         "field": "_temp_ts",
         "formats": ["yyyy-MM-dd HH:mm:ss"],
-        "target_field": "timestamp"
+        "target_field": "@timestamp"
       }
     },
     {
@@ -129,8 +137,12 @@ filebeat.inputs:
     enabled: true
     paths:
       - /usr/share/filebeat/csv_data/*.csv
-    harvester_limit: 1 # Processes one file at a time to prevent resource spikes
-    close_eof: true # Closes the harvester as soon as the end of a file is reached
+    processors:
+      - replace:
+          fields:
+            - field: "message"
+              pattern: '"'
+              replacement: ""
 
 output.elasticsearch:
   hosts: ["https://elasticsearch:9200"]
@@ -138,9 +150,10 @@ output.elasticsearch:
   password: "Bbdra7e36sO8OL6ic0lY"
   ssl.verification_mode: "none"
   pipeline: "csv_parser"
-  bulk_max_size: 1 # Sends events individually to ensure each batch limit is met
-  worker: 1 # Uses a single thread to maintain a slow but stable ingestion rate
+  index: "my-index"
 
+setup.template.name: "my-index"
+setup.template.pattern: "my-index"
 ```
 
 - Run the Filebeat container:
