@@ -125,6 +125,39 @@ POST _ingest/pipeline/csv_parser/_simulate
 }
 ```
 
+- Index Template Setup
+
+Configures modular mappings and automated data stream settings for all `my-index*` indices to ensure consistent schema and ingestion processing.
+
+```JSON
+PUT _component_template/my-data-mappings
+{
+  "template": {
+    "mappings": {
+      "properties": {
+        "due_date": { "type": "date" },
+        "status": { "type": "keyword" },
+        "owner": { "type": "keyword" }
+      }
+    }
+  }
+}
+
+PUT _index_template/my_index_template
+{
+  "index_patterns": ["my-index*"],
+  "data_stream": { },
+  "composed_of": ["my-data-mappings"], 
+  "priority": 500,
+  "template": {
+    "settings": {
+      "index.default_pipeline": "csv_parser"
+    }
+  }
+}
+```
+
+
 ### Setup Filebeat
 
 - Configure `filebeat.yml` to monitor file changes:
@@ -156,8 +189,7 @@ output.elasticsearch:
   pipeline: "csv_parser"
   index: "my-index"
 
-setup.template.name: "my-index"
-setup.template.pattern: "my-index"
+setup.template.enabled: false
 ```
 
 - Run the Filebeat container:
