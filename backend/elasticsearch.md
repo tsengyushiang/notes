@@ -23,7 +23,7 @@ PASSWORD elastic = <password>
 ```
 
 - Default User: `elastic`
-- Password: (Use the generated value, e.g., <password>)
+- Password: (Use the generated value)
 
 ### Verify Connection
 
