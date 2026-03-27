@@ -169,6 +169,7 @@ filebeat.inputs:
   - type: filestream
 
     file_identity.path: ~
+    prospector.scanner.symlinks: true
     prospector.scanner.fingerprint.enabled: false
     
     id: daily-csv-pipeline
