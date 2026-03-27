@@ -19,11 +19,11 @@ bin/elasticsearch-setup-passwords auto
 
 ...
 Changed password for user elastic
-PASSWORD elastic = Bbdra7e36sO8OL6ic0lY
+PASSWORD elastic = <password>
 ```
 
 - Default User: `elastic`
-- Password: (Use the generated value, e.g., Bbdra7e36sO8OL6ic0lY)
+- Password: (Use the generated value, e.g., <password>)
 
 ### Verify Connection
 
@@ -46,10 +46,6 @@ docker container exec -it elasticsearch bash
 elasticsearch-create-enrollment-token -s kibana
 
 eyJ2ZXIiOiI4LjE0LjAiLCJhZHIiOlsiMTcyLjE4LjAuMjo5MjAwIl0sImZnciI6IjNjY2NkNTJlZjE1NjJhMzdkYzgwYTU3ZjA3OGMxMDUwNTk0YTZiZWRkYzcxOTY3NDBmOWQ0OWFmYzYwODU0YTQiLCJrZXkiOiJiN0tqLXB3Qk5FbXdfaGRmY2QyVTphQ1N5cTZUR0xzY2pQaXJrX01mWVV3In0=
-
-docker container exec -it kibana bash
-bash-5.1$ bin/kibana-verification-code
-Your verification code is:  459 349
 ```
 
 ### Configuration & Login
@@ -189,7 +185,7 @@ filebeat.inputs:
 output.elasticsearch:
   hosts: ["https://elasticsearch:9200"]
   username: "elastic"
-  password: "Bbdra7e36sO8OL6ic0lY"
+  password: "<password>"
   ssl.verification_mode: "none"
   pipeline: "csv_parser"
   index: "my-index"
