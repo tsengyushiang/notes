@@ -56,6 +56,7 @@ Your verification code is:  459 349
 
 - Visit `http://localhost:5601/`
 - Paste in enroll token `eyJ2ZXIiOiI4LjE0LjA...`
+- Verification: Run the following to get your code: `docker container exec -it kibana bin/kibana-verification-code`
 - Log in using the `elastic` username and password generated in the previous step.
 
 ## Ingest Pipeline for daily CSV files
