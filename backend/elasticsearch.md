@@ -166,12 +166,7 @@ PUT _index_template/my_index_template
 
 ```yaml
 filebeat.inputs:
-  - type: filestream
-
-    file_identity.path: ~
-    prospector.scanner.symlinks: true
-    prospector.scanner.fingerprint.enabled: false
-    
+  - type: filestream   
     id: daily-csv-pipeline
     enabled: true
     paths:
