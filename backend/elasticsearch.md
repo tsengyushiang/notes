@@ -168,7 +168,7 @@ PUT _index_template/my_index_template
 filebeat.inputs:
   - type: filestream
 
-    file_identity.native: ~
+    file_identity.path: ~
     prospector.scanner.fingerprint.enabled: false
     
     id: daily-csv-pipeline
