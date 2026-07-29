@@ -1,5 +1,29 @@
 # Commands
 
+## Worktrees
+
+- Git worktrees allow you to work on multiple branches simultaneously in separate directories without switching contexts.
+
+```
+# Create a new directory and checkout a new branch
+git worktree add -b ../new_folder feature/new_branch
+
+# Create a new directory for an existing remote/local branch
+git worktree add ../new_folder feature/existing_branch
+
+# List all active worktrees and their paths
+git worktree list
+
+# Remove a worktree directory when finished
+git worktree remove ../new_folder
+```
+
+- Mount a shared Docker volume for `node_modules` across worktree directories to reuse installed dependencies without duplicating disk space.
+
+```
+sudo docker run -it --rm -w /app -v .:/app -v user_node_modules:/app/node_modules -p 3000:3000  node:20 bash
+```
+
 ## Fork repo
 
 - Add remote repo to local repo.
