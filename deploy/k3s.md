@@ -3,7 +3,7 @@
 ## Qucik Start with colima
 
 ```
-colima start --kubernetes --cpu 4 --memory 32 -p k3s
+colima start --dns 8.8.8.8 --dns 1.1.1.1 --kubernetes --cpu 4 --memory 32 -p k3s
  
 % colima list
 PROFILE    STATUS     ARCH       CPUS    MEMORY    DISK      RUNTIME       ADDRESS
